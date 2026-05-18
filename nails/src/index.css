@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@200;300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    @apply font-sans antialiased;
+    background-color: #F2DEE4;
+    color: #0A0A0A;
+  }
+  ::selection { background: #2D1520; color: #FDF5F7; }
+}
+
+@layer components {
+  /* ── Buttons ─────────────────────────────────── */
+  .btn-primary {
+    @apply inline-flex items-center gap-3 px-8 py-4
+           text-[11px] font-medium tracking-[0.25em] uppercase
+           transition-all duration-300;
+    background: #2D1520;
+    color: #F6EBF0;
+  }
+  .btn-primary:hover {
+    background: #4A2535;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(45,21,32,0.22);
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-3 px-8 py-4
+           text-[11px] font-medium tracking-[0.25em] uppercase
+           border transition-all duration-300;
+    border-color: #2D1520;
+    color: #2D1520;
+  }
+  .btn-outline:hover {
+    background: #2D1520;
+    color: #F6EBF0;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(45,21,32,0.18);
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2
+           text-[11px] font-medium tracking-[0.2em] uppercase
+           transition-colors duration-300;
+    color: #6B6B6B;
+  }
+  .btn-ghost:hover { color: #0A0A0A; }
+
+  /* ── Labels / Headings ───────────────────────── */
+  .section-tag {
+    @apply block text-[10px] font-medium tracking-[0.35em] uppercase mb-4;
+    color: #9B9B9B;
+  }
+
+  /* ── Sidebar nav item ────────────────────────── */
+  .nav-item-btn {
+    @apply relative flex items-center gap-4 w-full text-left py-3 px-6
+           text-[11px] font-normal tracking-[0.22em] uppercase cursor-pointer
+           transition-colors duration-300;
+    color: #A07080;
+    border-left: 2px solid transparent;
+  }
+  .nav-item-btn::before {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #2D1520;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .nav-item-btn:hover,
+  .nav-item-btn.active { color: #2D1520; }
+  .nav-item-btn:hover::before,
+  .nav-item-btn.active::before { transform: scaleY(1); }
+
+  /* ── Service sub-nav ─────────────────────────── */
+  .service-nav-btn {
+    @apply w-full text-left px-6 py-3.5 text-[11px] tracking-[0.2em] uppercase
+           transition-all duration-200 border-l-2;
+  }
+  .service-nav-btn.active {
+    @apply border-ink text-ink font-medium bg-snow;
+  }
+  .service-nav-btn:not(.active) {
+    @apply border-transparent text-silver hover:text-ash hover:border-ghost;
+  }
+}
+
+/* ── Scrollbar ───────────────────────────────────── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #D0D0D0; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #9B9B9B; }
+
+.sidebar-scroll::-webkit-scrollbar-track { background: #0C0C0C; }
+.sidebar-scroll::-webkit-scrollbar-thumb { background: #333; }
+
+/* ── Gallery lightbox ────────────────────────────── */
+.lightbox-open { overflow: hidden; }
