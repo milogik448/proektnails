@@ -2,7 +2,8 @@ import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Send, MessageCircle, Loader } from 'lucide-react'
 
-const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:3001/api/chat'
+const API_URL = import.meta.env.VITE_API_URL
+  || (import.meta.env.DEV ? 'http://localhost:3001/api/chat' : 'https://anjelika-nails-api.vercel.app/api/chat')
 
 const WELCOME = {
   role: 'assistant',
