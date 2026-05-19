@@ -1,4 +1,5 @@
 import supabase from './supabase.js'
+import { addBookingToCalendar } from './calendar.js'
 
 // Робочі години залежно від дня тижня (0=Нд, 1=Пн, ..., 6=Сб)
 const WORK_HOURS = {
@@ -143,6 +144,9 @@ export async function createBooking({ clientName, contact, service, date, time }
     .single()
 
   if (bookingErr) throw new Error(bookingErr.message)
+
+  // Додаємо в Google Calendar (не блокуємо якщо помилка)
+  addBookingToCalendar({ clientName, contact, service, date, time, durationMin: duration })
 
   return { bookingId: booking.id, date, time, service, clientName }
 }
