@@ -65,12 +65,13 @@ export const translations = {
     },
     contacts: {
       tag: '006', title: 'Контакти',
-      desc: 'Запис виключно через Instagram. Напишіть в Direct — відповім якнайшвидше та підберемо зручний час.',
-      instagramLabel: 'Instagram', instagramNote: 'Запис виключно через Direct',
+      desc: 'Записатись можна через AI-чат на сайті або напряму в Instagram Direct — відповімо якнайшвидше та підберемо зручний час.',
+      instagramLabel: 'Instagram', instagramNote: 'Запис через Direct або AI-чат',
       cityLabel: 'Місто', cityVal: 'Praha, Česká republika', cityNote: 'Адреса — в Direct',
       scheduleLabel: 'Графік',
       schedule: ['Пн–Пт: 9:00 – 20:00', 'Субота: 10:00 – 18:00', 'Неділя: за домовленістю'],
       btn: 'Написати в Instagram',
+      responseTime: 'Відповідаємо протягом 5–15 хвилин',
     },
   },
 
@@ -140,12 +141,13 @@ export const translations = {
     },
     contacts: {
       tag: '006', title: 'Contacts',
-      desc: 'Booking exclusively via Instagram. Write in Direct — I\'ll reply as soon as possible and we\'ll find a convenient time.',
-      instagramLabel: 'Instagram', instagramNote: 'Booking via Direct only',
+      desc: 'You can book via the AI chat on the website or directly through Instagram Direct — we\'ll reply quickly and find a convenient time.',
+      instagramLabel: 'Instagram', instagramNote: 'Book via Direct or AI chat',
       cityLabel: 'City', cityVal: 'Praha, Czech Republic', cityNote: 'Address — in Direct',
       scheduleLabel: 'Schedule',
       schedule: ['Mon–Fri: 9:00 – 20:00', 'Saturday: 10:00 – 18:00', 'Sunday: by appointment'],
       btn: 'Write on Instagram',
+      responseTime: 'We respond within 5–15 minutes',
     },
   },
 
@@ -215,12 +217,13 @@ export const translations = {
     },
     contacts: {
       tag: '006', title: 'Kontakty',
-      desc: 'Objednání výhradně přes Instagram. Napište do Direct — odpovím co nejdříve a najdeme vhodný čas.',
-      instagramLabel: 'Instagram', instagramNote: 'Objednání pouze přes Direct',
+      desc: 'Objednat se lze přes AI chat na webu nebo přímo do Instagram Direct — odpovíme co nejdříve a najdeme vhodný čas.',
+      instagramLabel: 'Instagram', instagramNote: 'Objednání přes Direct nebo AI chat',
       cityLabel: 'Město', cityVal: 'Praha, Česká republika', cityNote: 'Adresa — v Direct',
       scheduleLabel: 'Rozvrh',
       schedule: ['Po–Pá: 9:00 – 20:00', 'Sobota: 10:00 – 18:00', 'Neděle: dle domluvy'],
       btn: 'Napsat na Instagram',
+      responseTime: 'Odpovídáme do 5–15 minut',
     },
   },
 }
