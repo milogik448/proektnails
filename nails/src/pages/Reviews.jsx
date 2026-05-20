@@ -1,24 +1,23 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Star, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Star, ChevronLeft, ChevronRight, Sparkles, Instagram, ArrowUpRight } from 'lucide-react'
 
-const fadeUpView = (delay = 0) => ({
-  initial:     { opacity: 0, y: 24 },
+const fadeUp = (delay = 0) => ({
+  initial:     { opacity: 0, y: 22 },
   whileInView: { opacity: 1, y: 0 },
-  viewport:    { once: true, margin: '-40px' },
-  transition:  { duration: 0.72, delay, ease: [0.25, 0.46, 0.45, 0.94] },
+  viewport:    { once: true, margin: '-30px' },
+  transition:  { duration: 0.7, delay, ease: [0.25, 0.46, 0.45, 0.94] },
 })
 
-function Stars({ count }) {
+function Stars({ count, size = 11 }) {
   return (
-    <div className="flex gap-1">
+    <div style={{ display: 'flex', gap: 3 }}>
       {Array.from({ length: 5 }).map((_, i) => (
         <Star
-          key={i}
-          size={11}
+          key={i} size={size}
           fill={i < count ? '#C8A0AE' : 'none'}
-          stroke={i < count ? '#C8A0AE' : 'rgba(200,160,174,0.35)'}
-          strokeWidth={1.5}
+          stroke={i < count ? '#C8A0AE' : 'rgba(200,160,174,0.3)'}
+          strokeWidth={1.4}
         />
       ))}
     </div>
@@ -29,18 +28,22 @@ function NavButton({ onClick, children }) {
   return (
     <button
       onClick={onClick}
-      className="w-11 h-11 flex items-center justify-center transition-all duration-300"
-      style={{ border: '1px solid rgba(200,160,174,0.4)', color: '#C8A0AE' }}
+      style={{
+        width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center',
+        border: '1px solid rgba(200,160,174,0.35)', color: '#C8A0AE',
+        borderRadius: 10, background: 'transparent',
+        cursor: 'pointer', transition: 'all 0.28s ease',
+      }}
       onMouseEnter={e => {
-        e.currentTarget.style.backgroundColor = '#2D1520'
+        e.currentTarget.style.background = '#2D1520'
         e.currentTarget.style.borderColor = '#2D1520'
         e.currentTarget.style.color = '#F6EBF0'
         e.currentTarget.style.transform = 'translateY(-1px)'
-        e.currentTarget.style.boxShadow = '0 4px 14px rgba(45,21,32,0.18)'
+        e.currentTarget.style.boxShadow = '0 6px 18px rgba(45,21,32,0.2)'
       }}
       onMouseLeave={e => {
-        e.currentTarget.style.backgroundColor = 'transparent'
-        e.currentTarget.style.borderColor = 'rgba(200,160,174,0.4)'
+        e.currentTarget.style.background = 'transparent'
+        e.currentTarget.style.borderColor = 'rgba(200,160,174,0.35)'
         e.currentTarget.style.color = '#C8A0AE'
         e.currentTarget.style.transform = 'translateY(0)'
         e.currentTarget.style.boxShadow = 'none'
@@ -48,6 +51,260 @@ function NavButton({ onClick, children }) {
     >
       {children}
     </button>
+  )
+}
+
+function FeaturedReview({ review }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 18 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
+      transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+      style={{
+        backgroundColor: 'rgba(255,255,255,0.74)',
+        border: '1px solid rgba(200,160,174,0.16)',
+        borderRadius: 22,
+        padding: '36px 38px 32px',
+        boxShadow: '0 8px 36px rgba(45,21,32,0.07), 0 2px 8px rgba(45,21,32,0.04)',
+        backdropFilter: 'blur(14px)',
+        position: 'relative', overflow: 'hidden',
+      }}
+    >
+      {/* Decorative quote */}
+      <div style={{
+        fontSize: 88, fontFamily: 'Playfair Display, serif', fontStyle: 'italic',
+        color: 'rgba(200,160,174,0.18)', lineHeight: 0.75, fontWeight: 300,
+        marginBottom: 6, userSelect: 'none',
+      }}>
+        "
+      </div>
+
+      <p style={{
+        fontSize: 'clamp(15px, 1.8vw, 19px)',
+        color: '#2D1520', fontFamily: 'Playfair Display, serif', fontWeight: 400,
+        lineHeight: 1.78, marginBottom: 28,
+      }}>
+        {review.text}
+      </p>
+
+      {/* Author row */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+          <div style={{
+            width: 42, height: 42, borderRadius: '50%', flexShrink: 0,
+            background: 'linear-gradient(135deg, #3D1E2A, #2D1520)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            boxShadow: '0 4px 14px rgba(45,21,32,0.2)',
+          }}>
+            <span style={{ fontFamily: 'Playfair Display, serif', fontSize: 16, color: '#F6EBF0', fontWeight: 300 }}>
+              {review.name[0]}
+            </span>
+          </div>
+          <div>
+            <div style={{ fontSize: 13, fontWeight: 500, color: '#2D1520', letterSpacing: '0.02em', fontFamily: 'Raleway, sans-serif' }}>
+              {review.name}
+            </div>
+            <div style={{ fontSize: 9.5, color: '#A07888', letterSpacing: '0.22em', textTransform: 'uppercase', fontFamily: 'Raleway, sans-serif', marginTop: 3 }}>
+              {review.city} · {review.date}
+            </div>
+          </div>
+        </div>
+        <Stars count={review.stars} size={12} />
+      </div>
+    </motion.div>
+  )
+}
+
+function ReviewCard({ review, isActive, onClick, delay }) {
+  return (
+    <motion.button
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-20px' }}
+      transition={{ delay, duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
+      onClick={onClick}
+      style={{
+        backgroundColor: isActive ? 'rgba(255,255,255,0.92)' : 'rgba(255,255,255,0.62)',
+        border: `1px solid ${isActive ? 'rgba(200,160,174,0.42)' : 'rgba(200,160,174,0.15)'}`,
+        borderRadius: 18,
+        padding: '22px 24px',
+        boxShadow: isActive
+          ? '0 16px 44px rgba(45,21,32,0.1), 0 2px 8px rgba(45,21,32,0.06)'
+          : '0 2px 12px rgba(45,21,32,0.04)',
+        backdropFilter: 'blur(10px)',
+        textAlign: 'left', width: '100%', cursor: 'pointer',
+        transition: 'all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+        transform: isActive ? 'translateY(-3px)' : 'translateY(0)',
+      }}
+      onMouseEnter={e => {
+        if (!isActive) {
+          e.currentTarget.style.transform = 'translateY(-3px)'
+          e.currentTarget.style.boxShadow = '0 14px 36px rgba(45,21,32,0.08)'
+          e.currentTarget.style.borderColor = 'rgba(200,160,174,0.28)'
+          e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.82)'
+        }
+      }}
+      onMouseLeave={e => {
+        if (!isActive) {
+          e.currentTarget.style.transform = 'translateY(0)'
+          e.currentTarget.style.boxShadow = '0 2px 12px rgba(45,21,32,0.04)'
+          e.currentTarget.style.borderColor = 'rgba(200,160,174,0.15)'
+          e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.62)'
+        }
+      }}
+    >
+      <Stars count={review.stars} />
+      <p style={{
+        fontSize: 12.5, color: '#6B5060', lineHeight: 1.9,
+        fontFamily: 'Raleway, sans-serif', fontWeight: 300,
+        marginTop: 12, marginBottom: 12,
+        display: '-webkit-box', WebkitLineClamp: 3,
+        WebkitBoxOrient: 'vertical', overflow: 'hidden',
+      }}>
+        {review.text}
+      </p>
+      <div style={{
+        fontSize: 9.5, color: '#A07888', letterSpacing: '0.2em',
+        textTransform: 'uppercase', fontFamily: 'Raleway, sans-serif', fontWeight: 300,
+      }}>
+        {review.name} · {review.date}
+      </div>
+    </motion.button>
+  )
+}
+
+function StatsCard({ t }) {
+  const openChat = () => window.dispatchEvent(new CustomEvent('open-ai-chat'))
+
+  const STATS = [
+    { value: '200+', label: t.reviews.stat1 || 'задоволених клієнтів' },
+    { value: '5.0',  label: t.reviews.stat2 || 'середній рейтинг' },
+    { value: '90%',  label: t.reviews.stat3 || 'повертаються знову' },
+  ]
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 28, scale: 0.97 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.75, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+      style={{
+        background: 'linear-gradient(150deg, #3D1E2A 0%, #2D1520 50%, #391723 100%)',
+        borderRadius: 24,
+        padding: '36px 30px',
+        border: '1px solid rgba(200,160,174,0.12)',
+        boxShadow: '0 36px 80px rgba(45,21,32,0.22), 0 0 0 1px rgba(200,160,174,0.07), inset 0 1px 0 rgba(255,255,255,0.06)',
+        position: 'relative', overflow: 'hidden',
+      }}
+    >
+      {/* Glow */}
+      <div style={{
+        position: 'absolute', top: -60, right: -60, width: 200, height: 200, borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(200,160,174,0.12), transparent)',
+        pointerEvents: 'none',
+      }} />
+
+      {/* Label */}
+      <div style={{
+        fontSize: 8.5, letterSpacing: '0.38em', textTransform: 'uppercase',
+        color: 'rgba(200,160,174,0.5)', fontFamily: 'Raleway, sans-serif', marginBottom: 8,
+      }}>
+        VELOURA Studio
+      </div>
+      <div style={{
+        fontSize: 18, color: '#F0DFE6',
+        fontFamily: 'Playfair Display, serif', fontWeight: 400, marginBottom: 28,
+      }}>
+        {t.reviews.statsTitle || 'Відгуки клієнтів'}
+      </div>
+
+      {/* Stats */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 0, marginBottom: 26 }}>
+        {STATS.map(({ value, label }, i) => (
+          <div key={label}>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, paddingTop: 16, paddingBottom: 16 }}>
+              <div style={{
+                fontSize: 28, color: '#F0DFE6',
+                fontFamily: 'Playfair Display, serif', fontWeight: 400, lineHeight: 1,
+              }}>
+                {value}
+              </div>
+              <div style={{
+                fontSize: 11, color: 'rgba(200,160,174,0.55)',
+                fontFamily: 'Raleway, sans-serif', fontWeight: 300,
+              }}>
+                {label}
+              </div>
+            </div>
+            {i < STATS.length - 1 && (
+              <div style={{ height: 1, background: 'rgba(200,160,174,0.1)' }} />
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* Divider */}
+      <div style={{ height: 1, background: 'rgba(200,160,174,0.12)', marginBottom: 18 }} />
+
+      {/* AI CTA */}
+      <motion.button
+        onClick={openChat}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        style={{
+          width: '100%', padding: '14px 18px',
+          background: 'rgba(200,160,174,0.16)', border: '1px solid rgba(200,160,174,0.28)',
+          borderRadius: 12, color: '#F0DFE6',
+          display: 'flex', alignItems: 'center', gap: 12,
+          cursor: 'pointer', textAlign: 'left', marginBottom: 10,
+          transition: 'all 0.25s ease',
+        }}
+        onMouseEnter={e => {
+          e.currentTarget.style.background = 'rgba(200,160,174,0.24)'
+          e.currentTarget.style.borderColor = 'rgba(200,160,174,0.42)'
+        }}
+        onMouseLeave={e => {
+          e.currentTarget.style.background = 'rgba(200,160,174,0.16)'
+          e.currentTarget.style.borderColor = 'rgba(200,160,174,0.28)'
+        }}
+      >
+        <Sparkles size={14} style={{ color: '#C8A0AE', flexShrink: 0 }} />
+        <span style={{ fontSize: 13, fontFamily: 'Raleway, sans-serif', fontWeight: 400, flex: 1 }}>
+          {t.contacts?.aiBtn || 'AI запис онлайн'}
+        </span>
+        <ArrowUpRight size={13} style={{ color: 'rgba(200,160,174,0.4)', flexShrink: 0 }} />
+      </motion.button>
+
+      {/* Instagram */}
+      <motion.a
+        href="https://www.instagram.com/anjelikaa_nails"
+        target="_blank" rel="noopener noreferrer"
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        style={{
+          width: '100%', padding: '14px 18px',
+          background: 'transparent', border: '1px solid rgba(200,160,174,0.16)',
+          borderRadius: 12, color: 'rgba(200,160,174,0.65)',
+          display: 'flex', alignItems: 'center', gap: 12,
+          textDecoration: 'none', transition: 'all 0.25s ease',
+        }}
+        onMouseEnter={e => {
+          e.currentTarget.style.borderColor = 'rgba(200,160,174,0.3)'
+          e.currentTarget.style.color = 'rgba(200,160,174,0.9)'
+        }}
+        onMouseLeave={e => {
+          e.currentTarget.style.borderColor = 'rgba(200,160,174,0.16)'
+          e.currentTarget.style.color = 'rgba(200,160,174,0.65)'
+        }}
+      >
+        <Instagram size={14} strokeWidth={1.5} style={{ flexShrink: 0 }} />
+        <span style={{ fontSize: 13, fontFamily: 'Raleway, sans-serif', fontWeight: 300, flex: 1 }}>
+          Instagram Direct
+        </span>
+        <ArrowUpRight size={13} style={{ opacity: 0.35, flexShrink: 0 }} />
+      </motion.a>
+    </motion.div>
   )
 }
 
@@ -66,155 +323,100 @@ export default function Reviews({ t }) {
       className="min-h-screen relative"
     >
       {/* Background glows */}
-      <div
-        aria-hidden className="absolute top-0 right-0 pointer-events-none"
-        style={{
-          width: '460px', height: '460px', borderRadius: '50%', zIndex: 0,
-          background: 'radial-gradient(circle, rgba(200,160,174,0.09) 0%, transparent 68%)',
-          transform: 'translate(25%, -25%)',
-        }}
-      />
-      <div
-        aria-hidden className="absolute bottom-0 left-0 pointer-events-none"
-        style={{
-          width: '300px', height: '300px', borderRadius: '50%', zIndex: 0,
-          background: 'radial-gradient(circle, rgba(200,160,174,0.06) 0%, transparent 70%)',
-          transform: 'translate(-30%, 30%)',
-        }}
-      />
+      <div aria-hidden style={{
+        position: 'absolute', top: 0, right: 0, width: 560, height: 560,
+        borderRadius: '50%', zIndex: 0, pointerEvents: 'none',
+        background: 'radial-gradient(circle, rgba(200,160,174,0.11) 0%, transparent 62%)',
+        transform: 'translate(25%, -30%)',
+      }} />
+      <div aria-hidden style={{
+        position: 'absolute', bottom: '15%', left: 0, width: 380, height: 380,
+        borderRadius: '50%', zIndex: 0, pointerEvents: 'none',
+        background: 'radial-gradient(circle, rgba(200,160,174,0.08) 0%, transparent 68%)',
+        transform: 'translate(-40%, 0)',
+      }} />
 
-      {/* Header */}
-      <div className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pt-16 pb-12 border-b border-ghost">
-        <span className="section-tag">{r.tag}</span>
-        <h1
-          className="font-serif font-light leading-none"
-          style={{ fontSize: 'clamp(42px, 7vw, 88px)', color: '#2D1520' }}
+      {/* Header — centered */}
+      <div className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pt-16 pb-10" style={{ textAlign: 'center' }}>
+        <motion.span
+          initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="section-tag" style={{ display: 'block', textAlign: 'center' }}
+        >
+          {r.tag}
+        </motion.span>
+        <motion.h1
+          initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.06 }}
+          className="font-serif font-light"
+          style={{ fontSize: 'clamp(38px, 5.5vw, 72px)', color: '#2D1520', letterSpacing: '-0.01em', lineHeight: 1.05 }}
         >
           {r.title}
-        </h1>
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.12 }}
+          style={{
+            fontSize: '10.5px', letterSpacing: '0.3em', textTransform: 'uppercase',
+            color: '#C8A0AE', fontFamily: 'Raleway, sans-serif', fontWeight: 300, marginTop: 12,
+          }}
+        >
+          Praha · Verified Reviews
+        </motion.p>
+        <motion.div
+          initial={{ scaleX: 0, opacity: 0 }} animate={{ scaleX: 1, opacity: 1 }}
+          transition={{ duration: 0.9, delay: 0.2 }}
+          style={{
+            height: 1, maxWidth: 200, margin: '20px auto 0',
+            background: 'linear-gradient(90deg, transparent, rgba(200,160,174,0.55), transparent)',
+          }}
+        />
       </div>
 
-      {/* Featured review */}
-      <div className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 py-20">
-        <div className="max-w-3xl">
+      {/* Content */}
+      <div className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pb-20">
+        <div style={{ maxWidth: 1020, margin: '0 auto' }}>
+          <div className="flex flex-col lg:flex-row gap-10 lg:gap-14 items-start">
 
-          {/* Decorative quote */}
-          <div
-            aria-hidden
-            className="font-serif italic select-none mb-1"
-            style={{
-              fontSize: '84px',
-              lineHeight: 0.85,
-              color: 'rgba(200,160,174,0.22)',
-              fontWeight: 300,
-            }}
-          >
-            "
-          </div>
+            {/* Left — featured + cards */}
+            <div style={{ flex: 1, minWidth: 0 }}>
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={current}
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.4 }}
-            >
-              <p
-                className="font-serif font-light leading-[1.65] mb-10"
-                style={{ fontSize: 'clamp(18px, 2.4vw, 27px)', color: '#2D1520' }}
-              >
-                {r.items[current].text}
-              </p>
+              {/* Featured review */}
+              <AnimatePresence mode="wait">
+                <FeaturedReview key={current} review={r.items[current]} />
+              </AnimatePresence>
 
-              <div className="flex items-center gap-5">
-                {/* Avatar — round cherry */}
-                <div
-                  className="w-12 h-12 flex items-center justify-center shrink-0"
-                  style={{
-                    backgroundColor: '#2D1520',
-                    borderRadius: '50%',
-                    boxShadow: '0 4px 14px rgba(45,21,32,0.2)',
-                  }}
-                >
-                  <span
-                    className="font-serif"
-                    style={{ fontSize: '18px', color: '#F6EBF0', fontWeight: 300 }}
-                  >
-                    {r.items[current].name[0]}
-                  </span>
-                </div>
-                <div>
-                  <div
-                    className="font-medium mb-0.5"
-                    style={{ fontSize: '13px', color: '#2D1520', letterSpacing: '0.02em' }}
-                  >
-                    {r.items[current].name}
-                  </div>
-                  <div
-                    className="tracking-[0.22em] uppercase"
-                    style={{ fontSize: '10px', color: '#A07888' }}
-                  >
-                    {r.items[current].city} · {r.items[current].date}
-                  </div>
-                </div>
-                <div className="ml-auto">
-                  <Stars count={r.items[current].stars} />
-                </div>
+              {/* Nav controls */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 20, marginBottom: 32 }}>
+                <NavButton onClick={prev}><ChevronLeft size={15} /></NavButton>
+                <NavButton onClick={next}><ChevronRight size={15} /></NavButton>
+                <span style={{
+                  fontSize: 9.5, letterSpacing: '0.28em', textTransform: 'uppercase',
+                  color: '#C8A0AE', fontFamily: 'Raleway, sans-serif', marginLeft: 6,
+                }}>
+                  {current + 1} / {r.items.length}
+                </span>
               </div>
-            </motion.div>
-          </AnimatePresence>
 
-          {/* Navigation */}
-          <div className="flex items-center gap-3 mt-14">
-            <NavButton onClick={prev}><ChevronLeft size={17} /></NavButton>
-            <NavButton onClick={next}><ChevronRight size={17} /></NavButton>
-            <span
-              className="ml-3 tracking-[0.25em] uppercase"
-              style={{ fontSize: '10px', color: '#C8A0AE' }}
-            >
-              {current + 1} / {r.items.length}
-            </span>
-          </div>
-        </div>
-
-        {/* Review cards */}
-        <div className="mt-20 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {r.items.map((review, i) => (
-            <motion.button
-              key={i}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-30px' }}
-              transition={{ delay: i * 0.07, duration: 0.55 }}
-              onClick={() => setCurrent(i)}
-              className="text-left p-6 transition-all duration-300"
-              style={{
-                backgroundColor: current === i ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.55)',
-                border: `1px solid ${current === i ? 'rgba(200,160,174,0.5)' : 'rgba(200,160,174,0.18)'}`,
-                borderRadius: '16px',
-                boxShadow: current === i
-                  ? '0 8px 28px rgba(45,21,32,0.1)'
-                  : '0 2px 10px rgba(45,21,32,0.04)',
-                backdropFilter: 'blur(4px)',
-                transform: current === i ? 'translateY(-2px)' : 'translateY(0)',
-              }}
-            >
-              <Stars count={review.stars} />
-              <p
-                className="font-light leading-relaxed mt-4 mb-4 line-clamp-3"
-                style={{ fontSize: '13px', color: '#6B5060', lineHeight: '1.88' }}
-              >
-                {review.text}
-              </p>
-              <div
-                className="tracking-[0.2em] uppercase"
-                style={{ fontSize: '10px', color: '#A07888' }}
-              >
-                {review.name} · {review.date}
+              {/* Review cards grid */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 10 }}>
+                {r.items.map((review, i) => (
+                  <ReviewCard
+                    key={i} review={review}
+                    isActive={current === i}
+                    onClick={() => setCurrent(i)}
+                    delay={i * 0.07}
+                  />
+                ))}
               </div>
-            </motion.button>
-          ))}
+            </div>
+
+            {/* Right — stats card */}
+            <div style={{ width: '100%', maxWidth: 320, flexShrink: 0 }} className="lg:sticky lg:top-8">
+              <StatsCard t={t} />
+            </div>
+
+          </div>
         </div>
       </div>
     </motion.div>
