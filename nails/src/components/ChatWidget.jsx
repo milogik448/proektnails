@@ -52,6 +52,7 @@ export default function ChatWidget() {
   const [loading, setLoading]   = useState(false)
   const bottomRef               = useRef(null)
   const inputRef                = useRef(null)
+  const containerRef            = useRef(null)
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -67,6 +68,18 @@ export default function ChatWidget() {
     window.addEventListener('open-ai-chat', handler)
     return () => window.removeEventListener('open-ai-chat', handler)
   }, [])
+
+  // Закривається по кліку поза чатом
+  useEffect(() => {
+    if (!isOpen) return
+    const handler = e => {
+      if (containerRef.current && !containerRef.current.contains(e.target)) {
+        setIsOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [isOpen])
 
   const sendMessage = async () => {
     const text = input.trim()
@@ -108,7 +121,7 @@ export default function ChatWidget() {
   }
 
   return (
-    <div style={{
+    <div ref={containerRef} style={{
       position: 'fixed', bottom: 24, right: 24, zIndex: 200,
       display: 'flex', alignItems: 'flex-end', flexDirection: 'row', gap: 12,
     }}>
