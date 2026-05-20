@@ -99,7 +99,7 @@ export default function Home({ onNavigate, t }) {
           </p>
           <div className="flex flex-col xs:flex-row sm:flex-row gap-3 shrink-0">
             <button
-              onClick={() => window.dispatchEvent(new CustomEvent('open-ai-chat'))}
+              onClick={() => onNavigate('contacts')}
               className="btn-primary"
               style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}
             >
