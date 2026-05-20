@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Star, ChevronLeft, ChevronRight, Sparkles, Instagram, ArrowUpRight } from 'lucide-react'
+import { Star, ChevronLeft, ChevronRight } from 'lucide-react'
 
 const fadeUp = (delay = 0) => ({
   initial:     { opacity: 0, y: 22 },
@@ -174,9 +174,7 @@ function ReviewCard({ review, isActive, onClick, delay }) {
   )
 }
 
-function StatsCard({ t }) {
-  const openChat = () => window.dispatchEvent(new CustomEvent('open-ai-chat'))
-
+function TrustCard({ t }) {
   const STATS = [
     { value: '200+', label: t.reviews.stat1 || 'задоволених клієнтів' },
     { value: '5.0',  label: t.reviews.stat2 || 'середній рейтинг' },
@@ -205,25 +203,44 @@ function StatsCard({ t }) {
         pointerEvents: 'none',
       }} />
 
-      {/* Label */}
+      {/* Top label */}
       <div style={{
         fontSize: 8.5, letterSpacing: '0.38em', textTransform: 'uppercase',
         color: 'rgba(200,160,174,0.5)', fontFamily: 'Raleway, sans-serif', marginBottom: 8,
       }}>
         VELOURA Studio
       </div>
+
+      {/* Title */}
       <div style={{
-        fontSize: 18, color: '#F0DFE6',
-        fontFamily: 'Playfair Display, serif', fontWeight: 400, marginBottom: 28,
+        fontSize: 20, color: '#F0DFE6',
+        fontFamily: 'Playfair Display, serif', fontWeight: 400, marginBottom: 6,
       }}>
-        {t.reviews.statsTitle || 'Відгуки клієнтів'}
+        Довіра клієнтів
+      </div>
+
+      {/* Stars row */}
+      <div style={{ display: 'flex', gap: 4, marginBottom: 26 }}>
+        {Array.from({ length: 5 }).map((_, i) => (
+          <Star
+            key={i} size={12}
+            fill="#C8A0AE" stroke="#C8A0AE" strokeWidth={1.4}
+          />
+        ))}
+        <span style={{
+          fontSize: 9.5, letterSpacing: '0.22em', textTransform: 'uppercase',
+          color: 'rgba(200,160,174,0.45)', fontFamily: 'Raleway, sans-serif',
+          marginLeft: 8, alignSelf: 'center',
+        }}>
+          Verified reviews
+        </span>
       </div>
 
       {/* Stats */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 0, marginBottom: 26 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 0, marginBottom: 28 }}>
         {STATS.map(({ value, label }, i) => (
           <div key={label}>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, paddingTop: 16, paddingBottom: 16 }}>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, paddingTop: 15, paddingBottom: 15 }}>
               <div style={{
                 fontSize: 28, color: '#F0DFE6',
                 fontFamily: 'Playfair Display, serif', fontWeight: 400, lineHeight: 1,
@@ -245,65 +262,23 @@ function StatsCard({ t }) {
       </div>
 
       {/* Divider */}
-      <div style={{ height: 1, background: 'rgba(200,160,174,0.12)', marginBottom: 18 }} />
+      <div style={{ height: 1, background: 'rgba(200,160,174,0.12)', marginBottom: 22 }} />
 
-      {/* AI CTA */}
-      <motion.button
-        onClick={openChat}
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-        style={{
-          width: '100%', padding: '14px 18px',
-          background: 'rgba(200,160,174,0.16)', border: '1px solid rgba(200,160,174,0.28)',
-          borderRadius: 12, color: '#F0DFE6',
-          display: 'flex', alignItems: 'center', gap: 12,
-          cursor: 'pointer', textAlign: 'left', marginBottom: 10,
-          transition: 'all 0.25s ease',
-        }}
-        onMouseEnter={e => {
-          e.currentTarget.style.background = 'rgba(200,160,174,0.24)'
-          e.currentTarget.style.borderColor = 'rgba(200,160,174,0.42)'
-        }}
-        onMouseLeave={e => {
-          e.currentTarget.style.background = 'rgba(200,160,174,0.16)'
-          e.currentTarget.style.borderColor = 'rgba(200,160,174,0.28)'
-        }}
-      >
-        <Sparkles size={14} style={{ color: '#C8A0AE', flexShrink: 0 }} />
-        <span style={{ fontSize: 13, fontFamily: 'Raleway, sans-serif', fontWeight: 400, flex: 1 }}>
-          {t.contacts?.aiBtn || 'AI запис онлайн'}
-        </span>
-        <ArrowUpRight size={13} style={{ color: 'rgba(200,160,174,0.4)', flexShrink: 0 }} />
-      </motion.button>
-
-      {/* Instagram */}
-      <motion.a
-        href="https://www.instagram.com/anjelikaa_nails"
-        target="_blank" rel="noopener noreferrer"
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-        style={{
-          width: '100%', padding: '14px 18px',
-          background: 'transparent', border: '1px solid rgba(200,160,174,0.16)',
-          borderRadius: 12, color: 'rgba(200,160,174,0.65)',
-          display: 'flex', alignItems: 'center', gap: 12,
-          textDecoration: 'none', transition: 'all 0.25s ease',
-        }}
-        onMouseEnter={e => {
-          e.currentTarget.style.borderColor = 'rgba(200,160,174,0.3)'
-          e.currentTarget.style.color = 'rgba(200,160,174,0.9)'
-        }}
-        onMouseLeave={e => {
-          e.currentTarget.style.borderColor = 'rgba(200,160,174,0.16)'
-          e.currentTarget.style.color = 'rgba(200,160,174,0.65)'
-        }}
-      >
-        <Instagram size={14} strokeWidth={1.5} style={{ flexShrink: 0 }} />
-        <span style={{ fontSize: 13, fontFamily: 'Raleway, sans-serif', fontWeight: 300, flex: 1 }}>
-          Instagram Direct
-        </span>
-        <ArrowUpRight size={13} style={{ opacity: 0.35, flexShrink: 0 }} />
-      </motion.a>
+      {/* Quote */}
+      <div style={{ position: 'relative', paddingLeft: 16 }}>
+        <div style={{
+          position: 'absolute', left: 0, top: 0, bottom: 0, width: 2,
+          background: 'linear-gradient(180deg, rgba(200,160,174,0.6), rgba(200,160,174,0.1))',
+          borderRadius: 2,
+        }} />
+        <p style={{
+          fontSize: 12.5, color: 'rgba(240,223,230,0.55)',
+          fontFamily: 'Playfair Display, serif', fontStyle: 'italic',
+          lineHeight: 1.85, fontWeight: 300,
+        }}>
+          Кожен відгук — це результат акуратної роботи, комфорту та уваги до деталей.
+        </p>
+      </div>
     </motion.div>
   )
 }
@@ -411,9 +386,9 @@ export default function Reviews({ t }) {
               </div>
             </div>
 
-            {/* Right — stats card */}
+            {/* Right — trust panel */}
             <div style={{ width: '100%', maxWidth: 320, flexShrink: 0 }} className="lg:sticky lg:top-8">
-              <StatsCard t={t} />
+              <TrustCard t={t} />
             </div>
 
           </div>
