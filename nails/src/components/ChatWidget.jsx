@@ -135,20 +135,20 @@ export default function ChatWidget() {
             transition={{ duration: 0.35, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
             onClick={() => setIsOpen(true)}
             style={{
-              background: 'rgba(45,21,32,0.93)',
-              backdropFilter: 'blur(10px)',
-              color: '#F0DFE6',
-              padding: '8px 16px 8px 12px',
+              background: 'rgba(45,21,32,0.82)',
+              backdropFilter: 'blur(14px)',
+              color: 'rgba(240,223,230,0.9)',
+              padding: '7px 14px 7px 10px',
               borderRadius: '20px',
-              fontSize: '11.5px',
-              letterSpacing: '0.06em',
+              fontSize: '10.5px',
+              letterSpacing: '0.07em',
               whiteSpace: 'nowrap',
               fontFamily: 'Raleway, sans-serif',
-              fontWeight: 400,
-              boxShadow: '0 6px 24px rgba(45,21,32,0.28), 0 0 0 1px rgba(200,160,174,0.12)',
+              fontWeight: 300,
+              boxShadow: '0 4px 16px rgba(45,21,32,0.18), 0 0 0 1px rgba(200,160,174,0.1)',
               cursor: 'pointer',
               display: 'flex', alignItems: 'center', gap: 7,
-              marginBottom: 10,
+              marginBottom: 8,
             }}
           >
             <Sparkles size={12} style={{ color: '#C8A0AE', flexShrink: 0 }} />
@@ -311,25 +311,25 @@ export default function ChatWidget() {
         >
           <motion.button
             onClick={() => setIsOpen(v => !v)}
-            whileHover={{ scale: 1.07 }}
-            whileTap={{ scale: 0.93 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             style={{
-              width: 62, height: 62, borderRadius: '50%',
+              width: 54, height: 54, borderRadius: '50%',
               background: 'linear-gradient(145deg, #3D1E2A 0%, #2D1520 55%, #3A1825 100%)',
               color: '#F0DFE6',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               boxShadow: isOpen
-                ? '0 4px 16px rgba(45,21,32,0.28)'
-                : '0 12px 36px rgba(45,21,32,0.4), 0 3px 10px rgba(45,21,32,0.2), 0 0 0 1px rgba(200,160,174,0.15), inset 0 1px 0 rgba(255,255,255,0.08)',
+                ? '0 4px 14px rgba(45,21,32,0.22)'
+                : '0 8px 28px rgba(45,21,32,0.3), 0 2px 8px rgba(45,21,32,0.14), 0 0 0 1px rgba(200,160,174,0.12), inset 0 1px 0 rgba(255,255,255,0.07)',
               cursor: 'pointer', position: 'relative',
-              border: '1px solid rgba(200,160,174,0.15)',
+              border: '1px solid rgba(200,160,174,0.12)',
               transition: 'box-shadow 0.3s',
             }}
           >
             <AnimatePresence mode="wait">
               {isOpen
-                ? <motion.span key="x"   initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.18 }}><X size={21} /></motion.span>
-                : <motion.span key="msg" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.18 }}><MessageCircle size={21} /></motion.span>
+                ? <motion.span key="x"   initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.18 }}><X size={18} /></motion.span>
+                : <motion.span key="msg" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.18 }}><MessageCircle size={18} /></motion.span>
               }
             </AnimatePresence>
 

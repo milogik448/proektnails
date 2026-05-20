@@ -16,30 +16,30 @@ function ContactCard({ Icon, label, value, href, note, schedule, delay }) {
       viewport={{ once: true, margin: '-20px' }}
       transition={{ duration: 0.65, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
       style={{
-        backgroundColor: 'rgba(255,255,255,0.65)',
-        border: '1px solid rgba(200,160,174,0.18)',
-        borderRadius: '18px',
-        padding: '22px 26px',
-        boxShadow: '0 2px 16px rgba(45,21,32,0.04)',
-        backdropFilter: 'blur(6px)',
-        transition: 'all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+        backgroundColor: 'rgba(255,255,255,0.72)',
+        border: '1px solid rgba(200,160,174,0.16)',
+        borderRadius: '20px',
+        padding: '26px 30px',
+        boxShadow: '0 4px 24px rgba(45,21,32,0.06), 0 1px 3px rgba(45,21,32,0.04)',
+        backdropFilter: 'blur(14px)',
+        transition: 'all 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
         display: 'flex',
         alignItems: 'flex-start',
-        gap: 18,
+        gap: 20,
       }}
       onMouseEnter={e => {
         const el = e.currentTarget
-        el.style.transform = 'translateY(-3px)'
-        el.style.boxShadow = '0 16px 40px rgba(45,21,32,0.08), 0 0 0 1px rgba(200,160,174,0.3)'
-        el.style.borderColor = 'rgba(200,160,174,0.32)'
-        el.style.backgroundColor = 'rgba(255,255,255,0.88)'
+        el.style.transform = 'translateY(-4px)'
+        el.style.boxShadow = '0 24px 56px rgba(45,21,32,0.1), 0 4px 12px rgba(45,21,32,0.06), 0 0 0 1px rgba(200,160,174,0.28)'
+        el.style.borderColor = 'rgba(200,160,174,0.3)'
+        el.style.backgroundColor = 'rgba(255,255,255,0.92)'
       }}
       onMouseLeave={e => {
         const el = e.currentTarget
         el.style.transform = 'translateY(0)'
-        el.style.boxShadow = '0 2px 16px rgba(45,21,32,0.04)'
-        el.style.borderColor = 'rgba(200,160,174,0.18)'
-        el.style.backgroundColor = 'rgba(255,255,255,0.65)'
+        el.style.boxShadow = '0 4px 24px rgba(45,21,32,0.06), 0 1px 3px rgba(45,21,32,0.04)'
+        el.style.borderColor = 'rgba(200,160,174,0.16)'
+        el.style.backgroundColor = 'rgba(255,255,255,0.72)'
       }}
     >
       <div style={{
@@ -114,11 +114,11 @@ function BookingCard({ c }) {
       viewport={{ once: true, margin: '-20px' }}
       transition={{ duration: 0.75, delay: 0.18, ease: [0.25, 0.46, 0.45, 0.94] }}
       style={{
-        background: 'linear-gradient(150deg, #3D1E2A 0%, #2D1520 55%, #3A1825 100%)',
-        borderRadius: 24,
-        padding: '36px 32px',
-        border: '1px solid rgba(200,160,174,0.14)',
-        boxShadow: '0 28px 72px rgba(45,21,32,0.22), 0 4px 20px rgba(45,21,32,0.14), inset 0 1px 0 rgba(255,255,255,0.06)',
+        background: 'linear-gradient(150deg, #3D1E2A 0%, #2D1520 50%, #391723 100%)',
+        borderRadius: 26,
+        padding: '40px 36px',
+        border: '1px solid rgba(200,160,174,0.12)',
+        boxShadow: '0 40px 90px rgba(45,21,32,0.28), 0 8px 24px rgba(45,21,32,0.18), 0 0 0 1px rgba(200,160,174,0.08), inset 0 1px 0 rgba(255,255,255,0.07)',
         display: 'flex',
         flexDirection: 'column',
         gap: 0,
@@ -135,24 +135,42 @@ function BookingCard({ c }) {
       }} />
 
       {/* Header */}
-      <div style={{ marginBottom: 28 }}>
-        <motion.span
-          animate={{ y: [0, -4, 0] }}
-          transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
-          style={{ fontSize: 32, lineHeight: 1, display: 'block', marginBottom: 16 }}
-        >
-          💅
-        </motion.span>
+      <div style={{ marginBottom: 30 }}>
+        {/* Online status */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 18 }}>
+          <div style={{ position: 'relative', width: 7, height: 7, flexShrink: 0 }}>
+            <span style={{
+              display: 'block', width: 7, height: 7, borderRadius: '50%',
+              background: '#7ED9A5',
+              boxShadow: '0 0 8px rgba(126,217,165,0.7)',
+            }} />
+            <motion.span
+              style={{
+                position: 'absolute', inset: -3, borderRadius: '50%',
+                background: 'rgba(126,217,165,0.25)',
+              }}
+              animate={{ scale: [1, 2.6, 1], opacity: [0.6, 0, 0.6] }}
+              transition={{ duration: 2.8, repeat: Infinity }}
+            />
+          </div>
+          <span style={{
+            fontSize: '9.5px', letterSpacing: '0.18em', textTransform: 'uppercase',
+            color: 'rgba(168,216,168,0.65)', fontFamily: 'Raleway, sans-serif', fontWeight: 300,
+          }}>
+            AI assistant online
+          </span>
+        </div>
+
         <div style={{
-          fontSize: '20px', color: '#F0DFE6',
+          fontSize: '21px', color: '#F0DFE6',
           fontFamily: 'Playfair Display, serif', fontWeight: 400,
-          lineHeight: 1.3, marginBottom: 8,
+          lineHeight: 1.3, marginBottom: 6,
         }}>
           {c.ctaTitle}
         </div>
         <div style={{
-          fontSize: '12px', color: 'rgba(200,160,174,0.6)',
-          letterSpacing: '0.06em', fontFamily: 'Raleway, sans-serif', fontWeight: 300,
+          fontSize: '11.5px', color: 'rgba(200,160,174,0.5)',
+          letterSpacing: '0.05em', fontFamily: 'Raleway, sans-serif', fontWeight: 300,
         }}>
           {c.ctaSubtitle}
         </div>
@@ -307,18 +325,30 @@ export default function Contacts({ t }) {
       transition={{ duration: 0.38 }}
       className="min-h-screen relative"
     >
-      {/* Glows */}
+      {/* Background depth glows */}
       <div aria-hidden style={{
-        position: 'absolute', top: 0, right: 0, width: 520, height: 520,
+        position: 'absolute', top: 0, right: 0, width: 600, height: 600,
         borderRadius: '50%', zIndex: 0, pointerEvents: 'none',
-        background: 'radial-gradient(circle, rgba(200,160,174,0.1) 0%, transparent 65%)',
-        transform: 'translate(20%, -25%)',
+        background: 'radial-gradient(circle, rgba(200,160,174,0.13) 0%, transparent 62%)',
+        transform: 'translate(25%, -30%)',
       }} />
       <div aria-hidden style={{
-        position: 'absolute', bottom: '20%', left: 0, width: 340, height: 340,
+        position: 'absolute', bottom: '10%', left: 0, width: 420, height: 420,
         borderRadius: '50%', zIndex: 0, pointerEvents: 'none',
-        background: 'radial-gradient(circle, rgba(200,160,174,0.07) 0%, transparent 70%)',
-        transform: 'translate(-35%, 0)',
+        background: 'radial-gradient(circle, rgba(200,160,174,0.09) 0%, transparent 68%)',
+        transform: 'translate(-40%, 0)',
+      }} />
+      <div aria-hidden style={{
+        position: 'absolute', top: '40%', left: '50%', width: 320, height: 320,
+        borderRadius: '50%', zIndex: 0, pointerEvents: 'none',
+        background: 'radial-gradient(circle, rgba(45,21,32,0.04) 0%, transparent 70%)',
+        transform: 'translate(-50%, -50%)',
+      }} />
+      {/* Subtle grain/noise overlay */}
+      <div aria-hidden style={{
+        position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', opacity: 0.35,
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='512' height='512' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E")`,
+        backgroundSize: '260px 260px',
       }} />
 
       {/* Header — centered */}
@@ -332,18 +362,28 @@ export default function Contacts({ t }) {
         </motion.span>
         <motion.h1
           {...fadeUp(0.05)}
-          className="font-serif font-light leading-none"
-          style={{ fontSize: 'clamp(42px, 7vw, 88px)', color: '#2D1520' }}
+          className="font-serif font-light"
+          style={{ fontSize: 'clamp(38px, 5.5vw, 72px)', color: '#2D1520', letterSpacing: '-0.01em', lineHeight: 1.05 }}
         >
           {c.title}
         </motion.h1>
+        <motion.p
+          {...fadeUp(0.12)}
+          style={{
+            fontSize: '10.5px', letterSpacing: '0.3em', textTransform: 'uppercase',
+            color: '#C8A0AE', fontFamily: 'Raleway, sans-serif', fontWeight: 300,
+            marginTop: 12,
+          }}
+        >
+          Praha · Premium Nail Studio
+        </motion.p>
         <motion.div
           initial={{ scaleX: 0, opacity: 0 }}
           animate={{ scaleX: 1, opacity: 1 }}
-          transition={{ duration: 0.9, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ duration: 0.9, delay: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
           style={{
-            marginTop: 22, height: 1, maxWidth: 260, margin: '22px auto 0',
-            background: 'linear-gradient(90deg, transparent 0%, rgba(200,160,174,0.6) 35%, rgba(200,160,174,0.6) 65%, transparent 100%)',
+            height: 1, maxWidth: 200, margin: '20px auto 0',
+            background: 'linear-gradient(90deg, transparent 0%, rgba(200,160,174,0.55) 35%, rgba(200,160,174,0.55) 65%, transparent 100%)',
           }}
         />
       </div>
@@ -382,11 +422,39 @@ export default function Contacts({ t }) {
             </div>
 
             {/* Right — booking CTA */}
-            <div style={{ width: '100%', maxWidth: 360, flexShrink: 0 }} className="lg:sticky lg:top-8">
+            <div style={{ width: '100%', maxWidth: 400, flexShrink: 0 }} className="lg:sticky lg:top-8">
               <BookingCard c={c} />
             </div>
 
           </div>
+
+          {/* Bottom accent */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.5 }}
+            style={{ marginTop: 72, textAlign: 'center' }}
+          >
+            <div style={{
+              height: 1, maxWidth: 320, margin: '0 auto 24px',
+              background: 'linear-gradient(90deg, transparent, rgba(200,160,174,0.35), transparent)',
+            }} />
+            <div style={{
+              fontSize: '8px', letterSpacing: '0.48em', textTransform: 'uppercase',
+              color: 'rgba(160,112,128,0.38)', fontFamily: 'Raleway, sans-serif', fontWeight: 400,
+              marginBottom: 10,
+            }}>
+              VELOURA · Praha · Czech Republic
+            </div>
+            <div style={{
+              fontSize: '12.5px', fontFamily: 'Playfair Display, serif', fontStyle: 'italic',
+              color: 'rgba(45,21,32,0.22)', fontWeight: 400, letterSpacing: '0.02em',
+            }}>
+              "Краса у деталях"
+            </div>
+          </motion.div>
+
         </div>
       </div>
     </motion.div>

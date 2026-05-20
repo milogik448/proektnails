@@ -80,8 +80,8 @@ function SidebarInner({ activePage, onNavigate, lang, setLang, t }) {
         ))}
       </nav>
 
-      {/* ── Spacer — grows to fill empty space between nav and footer ── */}
-      <div style={{ flex: 1 }} />
+      {/* ── Spacer — controlled, не розтягує надто ── */}
+      <div style={{ flex: '1 1 0', minHeight: 20, maxHeight: 72 }} />
 
       {/* ── Bottom block: Instagram + Language — grouped together ── */}
       <div style={{ padding: '0 28px 24px', flexShrink: 0 }}>
