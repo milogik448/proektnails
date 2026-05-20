@@ -260,43 +260,58 @@ export default function ChatWidget() {
       </AnimatePresence>
 
       {/* Toggle button */}
-      <motion.button
-        onClick={() => setIsOpen(v => !v)}
-        whileHover={{ scale: 1.07 }}
-        whileTap={{ scale: 0.95 }}
-        style={{
-          width: 56, height: 56, borderRadius: '50%',
-          background: '#2D1520',
-          color: '#F6EBF0',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          boxShadow: '0 8px 24px rgba(45,21,32,0.28)',
-          cursor: 'pointer',
-          position: 'relative',
-        }}
+      <motion.div
+        animate={!isOpen ? { y: [0, -5, 0] } : { y: 0 }}
+        transition={!isOpen
+          ? { duration: 3.5, repeat: Infinity, ease: 'easeInOut' }
+          : { duration: 0.2 }
+        }
       >
-        <AnimatePresence mode="wait">
-          {isOpen
-            ? <motion.span key="x"  initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.18 }}><X size={22} /></motion.span>
-            : <motion.span key="msg" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.18 }}><MessageCircle size={22} /></motion.span>
-          }
-        </AnimatePresence>
+        <motion.button
+          onClick={() => setIsOpen(v => !v)}
+          whileHover={{ scale: 1.07 }}
+          whileTap={{ scale: 0.93 }}
+          style={{
+            width: 60, height: 60, borderRadius: '50%',
+            background: 'linear-gradient(145deg, #3D1E2A 0%, #2D1520 55%, #3A1825 100%)',
+            color: '#F0DFE6',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            boxShadow: isOpen
+              ? '0 4px 16px rgba(45,21,32,0.28)'
+              : '0 10px 32px rgba(45,21,32,0.38), 0 2px 8px rgba(45,21,32,0.18), 0 0 0 1px rgba(200,160,174,0.14), inset 0 1px 0 rgba(255,255,255,0.07)',
+            cursor: 'pointer',
+            position: 'relative',
+            border: '1px solid rgba(200,160,174,0.15)',
+            transition: 'box-shadow 0.3s',
+          }}
+        >
+          <AnimatePresence mode="wait">
+            {isOpen
+              ? <motion.span key="x"   initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.18 }}><X size={21} /></motion.span>
+              : <motion.span key="msg" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.18 }}><MessageCircle size={21} /></motion.span>
+            }
+          </AnimatePresence>
 
-        {/* Пульсуючий dot — "онлайн" */}
-        {!isOpen && (
-          <span style={{
-            position: 'absolute', top: 10, right: 10,
-            width: 10, height: 10, borderRadius: '50%',
-            background: '#C8A0AE',
-            border: '2px solid #2D1520',
-          }}>
-            <motion.span
-              style={{ position: 'absolute', inset: -2, borderRadius: '50%', background: 'rgba(200,160,174,0.5)' }}
-              animate={{ scale: [1, 1.8, 1], opacity: [0.8, 0, 0.8] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-          </span>
-        )}
-      </motion.button>
+          {/* Online indicator */}
+          {!isOpen && (
+            <span style={{
+              position: 'absolute', top: 9, right: 9,
+              width: 11, height: 11, borderRadius: '50%',
+              background: 'linear-gradient(135deg, #E8AABF, #C8A0AE)',
+              border: '2px solid #2D1520',
+            }}>
+              <motion.span
+                style={{
+                  position: 'absolute', inset: -3, borderRadius: '50%',
+                  background: 'rgba(200,160,174,0.45)',
+                }}
+                animate={{ scale: [1, 2.2, 1], opacity: [0.6, 0, 0.6] }}
+                transition={{ duration: 2.5, repeat: Infinity }}
+              />
+            </span>
+          )}
+        </motion.button>
+      </motion.div>
 
       <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
     </div>
