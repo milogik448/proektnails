@@ -321,9 +321,15 @@ export default function Contacts({ t }) {
         transform: 'translate(-35%, 0)',
       }} />
 
-      {/* Header */}
-      <div className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pt-16 pb-10">
-        <motion.span {...fadeUp(0)} className="section-tag">{c.tag}</motion.span>
+      {/* Header — centered */}
+      <div className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pt-16 pb-10" style={{ textAlign: 'center' }}>
+        <motion.span
+          {...fadeUp(0)}
+          className="section-tag"
+          style={{ display: 'block', textAlign: 'center' }}
+        >
+          {c.tag}
+        </motion.span>
         <motion.h1
           {...fadeUp(0.05)}
           className="font-serif font-light leading-none"
@@ -336,45 +342,51 @@ export default function Contacts({ t }) {
           animate={{ scaleX: 1, opacity: 1 }}
           transition={{ duration: 0.9, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
           style={{
-            marginTop: 22, height: 1, transformOrigin: 'left',
-            background: 'linear-gradient(90deg, rgba(200,160,174,0.55) 0%, rgba(200,160,174,0.18) 45%, transparent 100%)',
+            marginTop: 22, height: 1, maxWidth: 260, margin: '22px auto 0',
+            background: 'linear-gradient(90deg, transparent 0%, rgba(200,160,174,0.6) 35%, rgba(200,160,174,0.6) 65%, transparent 100%)',
           }}
         />
       </div>
 
-      {/* Content */}
+      {/* Content — centered container */}
       <div className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pb-20">
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+        <div style={{ maxWidth: 960, margin: '0 auto' }}>
 
-          {/* Left column — info */}
-          <div style={{ flex: 1, maxWidth: 480 }}>
-            <motion.p
-              {...fadeUp(0.1)}
-              style={{
-                fontSize: '14px', color: '#6B5060', lineHeight: 2,
-                letterSpacing: '0.015em', fontFamily: 'Raleway, sans-serif',
-                fontWeight: 300, marginBottom: 32,
-              }}
-            >
-              {c.desc}
-            </motion.p>
+          {/* Description — centered */}
+          <motion.p
+            {...fadeUp(0.1)}
+            style={{
+              fontSize: '14px', color: '#6B5060', lineHeight: 2,
+              letterSpacing: '0.015em', fontFamily: 'Raleway, sans-serif',
+              fontWeight: 300, marginBottom: 40,
+              textAlign: 'center', maxWidth: 540, margin: '0 auto 40px',
+            }}
+          >
+            {c.desc}
+          </motion.p>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-              {INFO.map(({ Icon, label, value, href, note, schedule }, i) => (
-                <ContactCard
-                  key={label} Icon={Icon} label={label} value={value}
-                  href={href} note={note} schedule={schedule}
-                  delay={0.12 + i * 0.09}
-                />
-              ))}
+          {/* Two columns — centered as a unit */}
+          <div className="flex flex-col lg:flex-row gap-10 lg:gap-14 items-start justify-center">
+
+            {/* Left — contact cards */}
+            <div style={{ flex: 1, maxWidth: 460, width: '100%' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                {INFO.map(({ Icon, label, value, href, note, schedule }, i) => (
+                  <ContactCard
+                    key={label} Icon={Icon} label={label} value={value}
+                    href={href} note={note} schedule={schedule}
+                    delay={0.12 + i * 0.09}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
 
-          {/* Right column — booking CTA */}
-          <div style={{ width: '100%', maxWidth: 360 }} className="lg:sticky lg:top-8">
-            <BookingCard c={c} />
-          </div>
+            {/* Right — booking CTA */}
+            <div style={{ width: '100%', maxWidth: 360, flexShrink: 0 }} className="lg:sticky lg:top-8">
+              <BookingCard c={c} />
+            </div>
 
+          </div>
         </div>
       </div>
     </motion.div>
