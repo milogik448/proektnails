@@ -30,15 +30,19 @@ const itemVariants = {
 
 function SidebarInner({ activePage, onNavigate, lang, setLang, t }) {
   return (
-    <div className="flex flex-col h-full overflow-y-auto">
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', overflowY: 'auto' }}>
 
-      {/* ── Logo ── */}
-      <div style={{ padding: '28px 28px 22px', flexShrink: 0 }}>
+      {/* ── Logo ── animated */}
+      <motion.div
+        initial={{ opacity: 0, y: -8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.02, ease: 'easeOut' }}
+        style={{ padding: '28px 28px 22px', flexShrink: 0 }}
+      >
         <button
           onClick={() => onNavigate('home')}
           style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', display: 'block', textAlign: 'left' }}
         >
-          {/* V Monogram */}
           <svg width="44" height="44" viewBox="0 0 40 40" fill="none" style={{ display: 'block', marginBottom: 12 }}>
             <circle cx="20" cy="20" r="18.5" stroke="rgba(200,160,174,0.48)" strokeWidth="0.72"/>
             <line x1="9.5" y1="12.5" x2="14.5" y2="12.5" stroke={TEXT_ACTIVE} strokeWidth="1.15"/>
@@ -53,12 +57,17 @@ function SidebarInner({ activePage, onNavigate, lang, setLang, t }) {
             Studio · Prague
           </div>
         </button>
-      </div>
+      </motion.div>
 
       {/* Divider */}
-      <div style={{ margin: '0 28px', height: 1, backgroundColor: DIVIDER, flexShrink: 0 }} />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4, delay: 0.06 }}
+        style={{ margin: '0 28px', height: 1, backgroundColor: DIVIDER, flexShrink: 0 }}
+      />
 
-      {/* ── Nav ── compact, natural height */}
+      {/* ── Nav ── */}
       <nav style={{ flexShrink: 0, paddingTop: 8, paddingBottom: 4 }}>
         {NAV_IDS.map(({ id, Icon }, i) => (
           <motion.button
@@ -80,58 +89,62 @@ function SidebarInner({ activePage, onNavigate, lang, setLang, t }) {
         ))}
       </nav>
 
-      {/* ── Spacer — controlled, не розтягує надто ── */}
-      <div style={{ flex: '1 1 0', minHeight: 20, maxHeight: 72 }} />
-
-      {/* ── Bottom block: Instagram + Language — grouped together ── */}
-      <div style={{ padding: '0 28px 24px', flexShrink: 0 }}>
-        {/* Divider above instagram */}
-        <div style={{ height: 1, backgroundColor: DIVIDER, marginBottom: 18 }} />
+      {/* ── Bottom block — marginTop: auto притискає до низу ── */}
+      <div style={{ marginTop: 'auto', padding: '0 28px 24px', flexShrink: 0 }}>
 
         {/* Instagram */}
-        <a
-          href="https://www.instagram.com/anjelikaa_nails"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: 'flex', alignItems: 'center', gap: 9,
-            fontSize: '9.5px', letterSpacing: '0.22em', textTransform: 'uppercase',
-            color: TEXT_MUTED, textDecoration: 'none',
-            transition: 'color 0.3s',
-          }}
-          onMouseEnter={e => e.currentTarget.style.color = TEXT_ACTIVE}
-          onMouseLeave={e => e.currentTarget.style.color = TEXT_MUTED}
+        <motion.div
+          initial={{ opacity: 0, x: -14 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.42, delay: 0.44, ease: 'easeOut' }}
         >
-          <Instagram size={11} />
-          @anjelikaa_nails
-        </a>
-
-        {/* Divider above language */}
-        <div style={{ height: 1, backgroundColor: DIVIDER, margin: '16px 0 14px' }} />
+          <div style={{ height: 1, backgroundColor: DIVIDER, marginBottom: 18 }} />
+          <a
+            href="https://www.instagram.com/anjelikaa_nails"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'flex', alignItems: 'center', gap: 9,
+              fontSize: '9.5px', letterSpacing: '0.22em', textTransform: 'uppercase',
+              color: TEXT_MUTED, textDecoration: 'none', transition: 'color 0.3s',
+            }}
+            onMouseEnter={e => e.currentTarget.style.color = TEXT_ACTIVE}
+            onMouseLeave={e => e.currentTarget.style.color = TEXT_MUTED}
+          >
+            <Instagram size={11} />
+            @anjelikaa_nails
+          </a>
+        </motion.div>
 
         {/* Language switcher */}
-        <div style={{ display: 'flex', gap: 2 }}>
-          {LANGS.map(({ code, label }) => (
-            <button
-              key={code}
-              onClick={() => setLang(code)}
-              style={{
-                fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase',
-                padding: '5px 10px',
-                color: lang === code ? TEXT_ACTIVE : TEXT_MUTED,
-                backgroundColor: lang === code ? 'rgba(45,21,32,0.08)' : 'transparent',
-                fontWeight: lang === code ? 500 : 300,
-                fontFamily: 'Raleway, sans-serif',
-                border: 'none', cursor: 'pointer',
-                transition: 'all 0.2s',
-              }}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
-      </div>
+        <motion.div
+          initial={{ opacity: 0, x: -14 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.42, delay: 0.52, ease: 'easeOut' }}
+        >
+          <div style={{ height: 1, backgroundColor: DIVIDER, margin: '16px 0 14px' }} />
+          <div style={{ display: 'flex', gap: 2 }}>
+            {LANGS.map(({ code, label }) => (
+              <button
+                key={code}
+                onClick={() => setLang(code)}
+                style={{
+                  fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase',
+                  padding: '5px 10px',
+                  color: lang === code ? TEXT_ACTIVE : TEXT_MUTED,
+                  backgroundColor: lang === code ? 'rgba(45,21,32,0.08)' : 'transparent',
+                  fontWeight: lang === code ? 500 : 300,
+                  fontFamily: 'Raleway, sans-serif',
+                  border: 'none', cursor: 'pointer', transition: 'all 0.2s',
+                }}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </motion.div>
 
+      </div>
     </div>
   )
 }
