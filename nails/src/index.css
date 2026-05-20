@@ -59,8 +59,8 @@
 
   /* ── Sidebar nav item ────────────────────────── */
   .nav-item-btn {
-    @apply relative flex items-center gap-4 w-full text-left py-3 px-6
-           text-[11px] font-normal tracking-[0.22em] uppercase cursor-pointer
+    @apply relative flex items-center gap-4 w-full text-left py-3.5 px-7
+           text-[10.5px] font-normal tracking-[0.24em] uppercase cursor-pointer
            transition-colors duration-300;
     color: #A07080;
     border-left: 2px solid transparent;
