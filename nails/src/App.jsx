@@ -108,9 +108,18 @@ export default function App() {
                style={{ backgroundColor: 'rgba(242,222,228,0.97)', backdropFilter: 'blur(12px)' }}>
             <button
               onClick={() => navigate('home')}
-              className="font-serif text-xl tracking-[0.28em] text-ink"
+              style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 10 }}
             >
-              ANJELIKA
+              <svg width="26" height="26" viewBox="0 0 40 40" fill="none">
+                <circle cx="20" cy="20" r="18.5" stroke="rgba(200,160,174,0.5)" strokeWidth="0.8"/>
+                <line x1="9.5" y1="12.5" x2="14.5" y2="12.5" stroke="#2D1520" strokeWidth="1.2"/>
+                <line x1="25.5" y1="12.5" x2="30.5" y2="12.5" stroke="#2D1520" strokeWidth="1.2"/>
+                <polyline points="11.5,12.5 20,28.5 28.5,12.5" stroke="#2D1520" strokeWidth="1.2" fill="none" strokeLinejoin="miter"/>
+                <circle cx="20" cy="28.5" r="1.3" fill="rgba(200,160,174,0.7)"/>
+              </svg>
+              <span style={{ fontFamily: 'Raleway, sans-serif', fontSize: '13px', letterSpacing: '0.3em', fontWeight: 500, color: '#2D1520' }}>
+                VELOURA
+              </span>
             </button>
             <button
               onClick={() => setMenuOpen(v => !v)}

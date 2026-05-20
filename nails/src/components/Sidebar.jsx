@@ -33,18 +33,20 @@ function SidebarInner({ activePage, onNavigate, lang, setLang, t }) {
     <div className="flex flex-col h-full overflow-y-auto">
       {/* Logo */}
       <div className="px-6 pt-10 pb-8 shrink-0">
-        <button onClick={() => onNavigate('home')} className="block text-left">
-          <div
-            className="font-serif text-[22px] tracking-[0.32em] leading-none mb-1.5"
-            style={{ color: TEXT_ACTIVE, fontWeight: 400 }}
-          >
-            ANJELIKA
+        <button onClick={() => onNavigate('home')} style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', display: 'block', textAlign: 'left' }}>
+          {/* V Monogram */}
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" style={{ display: 'block', marginBottom: 10 }}>
+            <circle cx="20" cy="20" r="18.5" stroke="rgba(200,160,174,0.5)" strokeWidth="0.75"/>
+            <line x1="9.5" y1="12.5" x2="14.5" y2="12.5" stroke={TEXT_ACTIVE} strokeWidth="1.1"/>
+            <line x1="25.5" y1="12.5" x2="30.5" y2="12.5" stroke={TEXT_ACTIVE} strokeWidth="1.1"/>
+            <polyline points="11.5,12.5 20,28.5 28.5,12.5" stroke={TEXT_ACTIVE} strokeWidth="1.1" fill="none" strokeLinejoin="miter"/>
+            <circle cx="20" cy="28.5" r="1.2" fill="rgba(200,160,174,0.7)"/>
+          </svg>
+          <div style={{ fontSize: '12.5px', letterSpacing: '0.36em', fontFamily: 'Raleway, sans-serif', fontWeight: 500, color: TEXT_ACTIVE, lineHeight: 1 }}>
+            VELOURA
           </div>
-          <div
-            className="text-[9px] tracking-[0.45em] uppercase font-light"
-            style={{ color: TEXT_MUTED }}
-          >
-            Nail Studio · Praha
+          <div style={{ fontSize: '7.5px', letterSpacing: '0.4em', fontFamily: 'Raleway, sans-serif', fontWeight: 300, color: TEXT_MUTED, marginTop: 4, textTransform: 'uppercase' }}>
+            Studio · Prague
           </div>
         </button>
       </div>

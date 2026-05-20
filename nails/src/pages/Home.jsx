@@ -37,7 +37,7 @@ export default function Home({ onNavigate, t }) {
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section className="relative overflow-hidden flex flex-col px-8 md:px-12 lg:px-16 xl:px-20 pt-16 pb-20">
 
-        {/* Decorative watermark "A" */}
+        {/* Decorative watermark "V" */}
         <div
           aria-hidden
           className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none select-none leading-none"
@@ -51,7 +51,7 @@ export default function Home({ onNavigate, t }) {
               lineHeight: 1,
               transform: 'translateX(8%)',
             }}
-          >A</span>
+          >V</span>
         </div>
 
         {/* Tag */}

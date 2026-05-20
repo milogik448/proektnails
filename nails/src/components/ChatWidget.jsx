@@ -7,7 +7,7 @@ const API_URL = import.meta.env.VITE_API_URL
 
 const WELCOME = {
   role: 'assistant',
-  content: 'Привіт! 💅 Я допоможу вам записатись до Анжеліки на манікюр або педикюр. Як вас звати?',
+  content: 'Привіт! 💅 Я AI-асистент VELOURA Studio. Допоможу вам записатись на манікюр або педикюр. Як вас звати?',
 }
 
 function TypingDots() {
@@ -187,30 +187,35 @@ export default function ChatWidget() {
               }}>
                 <div style={{
                   width: 40, height: 40, borderRadius: '50%',
-                  background: 'rgba(200,160,174,0.2)',
-                  border: '1px solid rgba(200,160,174,0.25)',
+                  background: 'rgba(200,160,174,0.15)',
+                  border: '1px solid rgba(200,160,174,0.28)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   flexShrink: 0,
                 }}>
-                  <span style={{ fontSize: 18 }}>💅</span>
+                  <svg width="22" height="22" viewBox="0 0 40 40" fill="none">
+                    <line x1="9.5" y1="12" x2="14.5" y2="12" stroke="#F0DFE6" strokeWidth="1.3"/>
+                    <line x1="25.5" y1="12" x2="30.5" y2="12" stroke="#F0DFE6" strokeWidth="1.3"/>
+                    <polyline points="11.5,12 20,28.5 28.5,12" stroke="#F0DFE6" strokeWidth="1.3" fill="none" strokeLinejoin="miter"/>
+                    <circle cx="20" cy="28.5" r="1.4" fill="rgba(200,160,174,0.8)"/>
+                  </svg>
                 </div>
                 <div style={{ flex: 1 }}>
                   <div style={{
-                    fontSize: 13, fontWeight: 600, color: '#F0DFE6',
-                    letterSpacing: '0.04em', fontFamily: 'Raleway, sans-serif',
+                    fontSize: 12.5, fontWeight: 600, color: '#F0DFE6',
+                    letterSpacing: '0.18em', fontFamily: 'Raleway, sans-serif',
                   }}>
-                    Анжеліка · Nail Studio
+                    VELOURA
                   </div>
                   <div style={{
-                    fontSize: 10.5, color: 'rgba(200,160,174,0.7)',
-                    letterSpacing: '0.07em', fontFamily: 'Raleway, sans-serif',
-                    display: 'flex', alignItems: 'center', gap: 5, marginTop: 2,
+                    fontSize: 10, color: 'rgba(200,160,174,0.65)',
+                    letterSpacing: '0.09em', fontFamily: 'Raleway, sans-serif',
+                    display: 'flex', alignItems: 'center', gap: 5, marginTop: 3,
                   }}>
                     <span style={{
                       width: 5, height: 5, borderRadius: '50%',
                       background: '#A8D8A8', display: 'inline-block',
                     }} />
-                    Praha · AI запис онлайн
+                    Premium Nail Studio · Prague
                   </div>
                 </div>
                 <button
