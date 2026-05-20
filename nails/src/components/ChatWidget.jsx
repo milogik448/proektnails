@@ -93,7 +93,6 @@ export default function ChatWidget() {
     setLoading(true)
 
     const apiMessages = updatedMessages
-      .filter(m => m !== WELCOME)
       .map(({ role, content }) => ({ role, content }))
 
     try {
