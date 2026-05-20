@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, Instagram } from 'lucide-react'
+import { ArrowRight, Instagram, Sparkles } from 'lucide-react'
 
 const ALL_WORKS = [
   '/images/works/IMG_3143.PNG',
@@ -98,14 +98,14 @@ export default function Home({ onNavigate, t }) {
             {h.desc}
           </p>
           <div className="flex flex-col xs:flex-row sm:flex-row gap-3 shrink-0">
-            <a
-              href="https://www.instagram.com/anjelikaa_nails"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent('open-ai-chat'))}
               className="btn-primary"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}
             >
-              {h.btn1} <ArrowRight size={12} />
-            </a>
+              <Sparkles size={12} />
+              {h.btn1}
+            </button>
             <button onClick={() => onNavigate('services')} className="btn-outline">
               {h.btn2}
             </button>

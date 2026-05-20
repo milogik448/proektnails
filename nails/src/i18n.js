@@ -14,7 +14,7 @@ export const translations = {
         { num: '01', title: 'Стерильні інструменти', desc: 'Одноразові матеріали та повна стерилізація після кожного клієнта.' },
         { num: '02', title: 'Акуратна робота', desc: 'Кожна деталь виконана з максимальною увагою — бездоганний результат.' },
         { num: '03', title: 'Комфортна атмосфера', desc: 'Затишна та спокійна обстановка для вашого задоволення й відпочинку.' },
-        { num: '04', title: 'Онлайн запис', desc: 'Зручний запис через Instagram Direct — у будь-який зручний час.' },
+        { num: '04', title: 'Онлайн запис', desc: 'Запис через AI-чат прямо на сайті або Instagram Direct — швидко та зручно.' },
       ],
     },
     about: {
@@ -95,7 +95,7 @@ export const translations = {
         { num: '01', title: 'Sterile tools', desc: 'Disposable materials and complete sterilization after every client.' },
         { num: '02', title: 'Precise work', desc: 'Every detail crafted with maximum care — a flawless result every time.' },
         { num: '03', title: 'Comfortable atmosphere', desc: 'A cozy and calm setting for your enjoyment and relaxation.' },
-        { num: '04', title: 'Online booking', desc: 'Easy booking via Instagram Direct — at any time of day.' },
+        { num: '04', title: 'Online booking', desc: 'Book via AI chat on the website or Instagram Direct — fast and convenient.' },
       ],
     },
     about: {
@@ -176,7 +176,7 @@ export const translations = {
         { num: '01', title: 'Sterilní nástroje', desc: 'Jednorázové materiály a úplná sterilizace po každém klientovi.' },
         { num: '02', title: 'Precizní práce', desc: 'Každý detail zpracován s maximální pečlivostí — dokonalý výsledek.' },
         { num: '03', title: 'Pohodlná atmosféra', desc: 'Útulné a klidné prostředí pro vaše potěšení a odpočinek.' },
-        { num: '04', title: 'Online rezervace', desc: 'Snadná rezervace přes Instagram Direct — kdykoli během dne.' },
+        { num: '04', title: 'Online rezervace', desc: 'Rezervace přes AI chat na webu nebo Instagram Direct — rychle a pohodlně.' },
       ],
     },
     about: {
