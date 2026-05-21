@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Instagram, Sparkles, Shield, Gem, Leaf } from 'lucide-react'
+import { Instagram, Sparkles, Heart, Clock, BadgeCheck, MapPin } from 'lucide-react'
 
 const ALL_WORKS = [
   '/images/works/IMG_3143.PNG',
@@ -13,24 +13,24 @@ const ALL_WORKS = [
 
 const WHY_CARDS = [
   {
-    Icon: Shield,
-    title: 'Стерильні інструменти',
-    desc: 'Одноразові матеріали та повна стерилізація після кожного клієнта — ваша безпека понад усе.',
+    Icon: Heart,
+    title: 'Індивідуальний підхід',
+    desc: 'Враховую форму нігтів, стиль та побажання. Кожна клієнтка отримує рішення саме для неї.',
   },
   {
-    Icon: Gem,
-    title: 'Premium матеріали',
-    desc: 'Лише перевірені бренди гель-лаків та покриттів з довготривалим ефектом.',
+    Icon: Clock,
+    title: 'Тривалий результат',
+    desc: 'Покриття тримається тижнями без сколів та втрати блиску — якість, що говорить сама за себе.',
   },
   {
-    Icon: Sparkles,
-    title: 'AI-запис онлайн',
-    desc: 'Зручний запис через AI-асистент — у будь-який час, без дзвінків та очікування.',
+    Icon: BadgeCheck,
+    title: 'Чесні ціни',
+    desc: 'Повна вартість обговорюється заздалегідь. Ніяких прихованих доплат та сюрпризів.',
   },
   {
-    Icon: Leaf,
-    title: 'Комфортна атмосфера',
-    desc: 'Затишне та спокійне середовище, де кожна деталь створена для вашого задоволення.',
+    Icon: MapPin,
+    title: 'Praha, Czech Republic',
+    desc: 'Студія у зручному місці в Празі. Затишне місце, куди хочеться повертатись знову.',
   },
 ]
 
