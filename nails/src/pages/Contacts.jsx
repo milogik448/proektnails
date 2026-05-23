@@ -16,39 +16,49 @@ function ContactCard({ Icon, label, value, href, note, schedule, delay }) {
       viewport={{ once: true, margin: '-20px' }}
       transition={{ duration: 0.65, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
       style={{
-        backgroundColor: 'rgba(255,255,255,0.72)',
-        border: '1px solid rgba(200,160,174,0.16)',
-        borderRadius: '20px',
-        padding: '26px 30px',
-        boxShadow: '0 4px 24px rgba(45,21,32,0.06), 0 1px 3px rgba(45,21,32,0.04)',
-        backdropFilter: 'blur(14px)',
+        backgroundColor: 'rgba(255,255,255,0.74)',
+        border: '1px solid rgba(200,160,174,0.18)',
+        borderRadius: '22px',
+        padding: '28px 30px',
+        boxShadow: '0 6px 28px rgba(45,21,32,0.07), 0 1px 4px rgba(45,21,32,0.04)',
+        backdropFilter: 'blur(16px)',
         transition: 'all 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
         display: 'flex',
         alignItems: 'flex-start',
         gap: 20,
+        position: 'relative',
+        overflow: 'hidden',
       }}
       onMouseEnter={e => {
         const el = e.currentTarget
-        el.style.transform = 'translateY(-4px)'
-        el.style.boxShadow = '0 24px 56px rgba(45,21,32,0.1), 0 4px 12px rgba(45,21,32,0.06), 0 0 0 1px rgba(200,160,174,0.28)'
-        el.style.borderColor = 'rgba(200,160,174,0.3)'
-        el.style.backgroundColor = 'rgba(255,255,255,0.92)'
+        el.style.transform = 'translateY(-5px)'
+        el.style.boxShadow = '0 28px 60px rgba(45,21,32,0.11), 0 4px 14px rgba(45,21,32,0.07), 0 0 0 1px rgba(200,160,174,0.3)'
+        el.style.borderColor = 'rgba(200,160,174,0.32)'
+        el.style.backgroundColor = 'rgba(255,255,255,0.94)'
       }}
       onMouseLeave={e => {
         const el = e.currentTarget
         el.style.transform = 'translateY(0)'
-        el.style.boxShadow = '0 4px 24px rgba(45,21,32,0.06), 0 1px 3px rgba(45,21,32,0.04)'
-        el.style.borderColor = 'rgba(200,160,174,0.16)'
-        el.style.backgroundColor = 'rgba(255,255,255,0.72)'
+        el.style.boxShadow = '0 6px 28px rgba(45,21,32,0.07), 0 1px 4px rgba(45,21,32,0.04)'
+        el.style.borderColor = 'rgba(200,160,174,0.18)'
+        el.style.backgroundColor = 'rgba(255,255,255,0.74)'
       }}
     >
+      {/* Top inner glow line */}
       <div style={{
-        width: 46, height: 46, borderRadius: '50%', flexShrink: 0,
-        background: 'linear-gradient(135deg, rgba(200,160,174,0.18) 0%, rgba(200,160,174,0.07) 100%)',
-        border: '1px solid rgba(200,160,174,0.22)',
+        position: 'absolute', top: 0, left: 0, right: 0, height: 1,
+        background: 'linear-gradient(90deg, transparent, rgba(200,160,174,0.3), transparent)',
+        pointerEvents: 'none',
+      }} />
+
+      <div style={{
+        width: 48, height: 48, borderRadius: '50%', flexShrink: 0,
+        background: 'linear-gradient(135deg, rgba(200,160,174,0.2) 0%, rgba(200,160,174,0.08) 100%)',
+        border: '1px solid rgba(200,160,174,0.24)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
+        boxShadow: '0 2px 12px rgba(200,160,174,0.12)',
       }}>
-        <Icon size={16} strokeWidth={1.4} style={{ color: '#B08090' }} />
+        <Icon size={17} strokeWidth={1.4} style={{ color: '#B08090' }} />
       </div>
 
       <div style={{ flex: 1, minWidth: 0 }}>
@@ -114,11 +124,11 @@ function BookingCard({ c }) {
       viewport={{ once: true, margin: '-20px' }}
       transition={{ duration: 0.75, delay: 0.18, ease: [0.25, 0.46, 0.45, 0.94] }}
       style={{
-        background: 'linear-gradient(150deg, #3D1E2A 0%, #2D1520 50%, #391723 100%)',
+        background: 'linear-gradient(150deg, #3E1F2B 0%, #2D1520 45%, #3A1724 100%)',
         borderRadius: 26,
         padding: '40px 36px',
-        border: '1px solid rgba(200,160,174,0.12)',
-        boxShadow: '0 40px 90px rgba(45,21,32,0.28), 0 8px 24px rgba(45,21,32,0.18), 0 0 0 1px rgba(200,160,174,0.08), inset 0 1px 0 rgba(255,255,255,0.07)',
+        border: '1px solid rgba(200,160,174,0.13)',
+        boxShadow: '0 48px 96px rgba(45,21,32,0.3), 0 10px 28px rgba(45,21,32,0.2), 0 0 0 1px rgba(200,160,174,0.09), inset 0 1px 0 rgba(255,255,255,0.08)',
         display: 'flex',
         flexDirection: 'column',
         gap: 0,
@@ -126,11 +136,24 @@ function BookingCard({ c }) {
         overflow: 'hidden',
       }}
     >
-      {/* Background glow */}
+      {/* Glow orb — top right */}
       <div style={{
-        position: 'absolute', top: -60, right: -60,
-        width: 200, height: 200, borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(200,160,174,0.12) 0%, transparent 70%)',
+        position: 'absolute', top: -70, right: -70,
+        width: 220, height: 220, borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(200,160,174,0.14) 0%, transparent 68%)',
+        pointerEvents: 'none',
+      }} />
+      {/* Glow orb — bottom left */}
+      <div style={{
+        position: 'absolute', bottom: -50, left: -50,
+        width: 160, height: 160, borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(200,160,174,0.08) 0%, transparent 65%)',
+        pointerEvents: 'none',
+      }} />
+      {/* Top shimmer line */}
+      <div style={{
+        position: 'absolute', top: 0, left: 0, right: 0, height: 1,
+        background: 'linear-gradient(90deg, transparent, rgba(200,160,174,0.4), transparent)',
         pointerEvents: 'none',
       }} />
 
@@ -171,8 +194,16 @@ function BookingCard({ c }) {
         <div style={{
           fontSize: '11.5px', color: 'rgba(200,160,174,0.5)',
           letterSpacing: '0.05em', fontFamily: 'Raleway, sans-serif', fontWeight: 300,
+          marginBottom: 10,
         }}>
           {c.ctaSubtitle}
+        </div>
+        <div style={{
+          fontSize: '11px', color: 'rgba(200,160,174,0.35)',
+          fontFamily: 'Raleway, sans-serif', fontWeight: 300, lineHeight: 1.65,
+          borderTop: '1px solid rgba(200,160,174,0.1)', paddingTop: 10,
+        }}>
+          Оберіть зручний спосіб запису — AI-чат або Instagram Direct.
         </div>
       </div>
 
@@ -195,19 +226,22 @@ function BookingCard({ c }) {
           backdropFilter: 'blur(8px)',
         }}
         onMouseEnter={e => {
-          e.currentTarget.style.background = 'rgba(200,160,174,0.24)'
-          e.currentTarget.style.borderColor = 'rgba(200,160,174,0.42)'
+          e.currentTarget.style.background = 'rgba(200,160,174,0.26)'
+          e.currentTarget.style.borderColor = 'rgba(200,160,174,0.48)'
+          e.currentTarget.style.boxShadow = '0 8px 28px rgba(200,160,174,0.12)'
         }}
         onMouseLeave={e => {
           e.currentTarget.style.background = 'rgba(200,160,174,0.16)'
           e.currentTarget.style.borderColor = 'rgba(200,160,174,0.28)'
+          e.currentTarget.style.boxShadow = 'none'
         }}
       >
         <div style={{
-          width: 38, height: 38, borderRadius: '50%', flexShrink: 0,
-          background: 'rgba(200,160,174,0.18)',
-          border: '1px solid rgba(200,160,174,0.25)',
+          width: 40, height: 40, borderRadius: '50%', flexShrink: 0,
+          background: 'rgba(200,160,174,0.2)',
+          border: '1px solid rgba(200,160,174,0.28)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
+          boxShadow: '0 2px 10px rgba(200,160,174,0.12)',
         }}>
           <Sparkles size={15} style={{ color: '#C8A0AE' }} />
         </div>
@@ -327,29 +361,37 @@ export default function Contacts({ t }) {
     >
       {/* Background depth glows */}
       <div aria-hidden style={{
-        position: 'absolute', top: 0, right: 0, width: 600, height: 600,
+        position: 'absolute', top: 0, right: 0, width: 640, height: 640,
         borderRadius: '50%', zIndex: 0, pointerEvents: 'none',
-        background: 'radial-gradient(circle, rgba(200,160,174,0.13) 0%, transparent 62%)',
-        transform: 'translate(25%, -30%)',
+        background: 'radial-gradient(circle, rgba(200,160,174,0.14) 0%, transparent 62%)',
+        transform: 'translate(26%, -32%)',
       }} />
       <div aria-hidden style={{
-        position: 'absolute', bottom: '10%', left: 0, width: 420, height: 420,
+        position: 'absolute', bottom: '8%', left: 0, width: 460, height: 460,
         borderRadius: '50%', zIndex: 0, pointerEvents: 'none',
-        background: 'radial-gradient(circle, rgba(200,160,174,0.09) 0%, transparent 68%)',
-        transform: 'translate(-40%, 0)',
+        background: 'radial-gradient(circle, rgba(200,160,174,0.1) 0%, transparent 68%)',
+        transform: 'translate(-42%, 0)',
       }} />
       <div aria-hidden style={{
-        position: 'absolute', top: '40%', left: '50%', width: 320, height: 320,
+        position: 'absolute', top: '38%', left: '50%', width: 340, height: 340,
         borderRadius: '50%', zIndex: 0, pointerEvents: 'none',
-        background: 'radial-gradient(circle, rgba(45,21,32,0.04) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(45,21,32,0.05) 0%, transparent 70%)',
         transform: 'translate(-50%, -50%)',
       }} />
-      {/* Subtle grain/noise overlay */}
+      {/* Extra bottom-right nude accent */}
       <div aria-hidden style={{
-        position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', opacity: 0.35,
-        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='512' height='512' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E")`,
-        backgroundSize: '260px 260px',
+        position: 'absolute', bottom: '18%', right: '5%', width: 280, height: 280,
+        borderRadius: '50%', zIndex: 0, pointerEvents: 'none',
+        background: 'radial-gradient(circle, rgba(200,160,174,0.08) 0%, transparent 65%)',
       }} />
+      {/* SVG grain/noise overlay */}
+      <svg aria-hidden style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 0, pointerEvents: 'none', opacity: 0.03 }}>
+        <filter id='ct-noise'>
+          <feTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch' />
+          <feColorMatrix type='saturate' values='0' />
+        </filter>
+        <rect width='100%' height='100%' filter='url(#ct-noise)' />
+      </svg>
 
       {/* Header — centered */}
       <div className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pt-16 pb-10" style={{ textAlign: 'center' }}>
@@ -382,10 +424,45 @@ export default function Contacts({ t }) {
           animate={{ scaleX: 1, opacity: 1 }}
           transition={{ duration: 0.9, delay: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
           style={{
-            height: 1, maxWidth: 200, margin: '20px auto 0',
+            height: 1, maxWidth: 200, margin: '20px auto 16px',
             background: 'linear-gradient(90deg, transparent 0%, rgba(200,160,174,0.55) 35%, rgba(200,160,174,0.55) 65%, transparent 100%)',
           }}
         />
+
+        {/* Mini location badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, delay: 0.32 }}
+          style={{ display: 'flex', justifyContent: 'center' }}
+        >
+          <div style={{
+            display: 'inline-flex', alignItems: 'center', gap: 8,
+            padding: '8px 18px',
+            background: 'rgba(255,255,255,0.6)',
+            border: '1px solid rgba(200,160,174,0.22)',
+            borderRadius: 100,
+            backdropFilter: 'blur(12px)',
+            boxShadow: '0 2px 14px rgba(45,21,32,0.06)',
+          }}>
+            <MapPin size={11} style={{ color: '#C8A0AE', strokeWidth: 1.5, flexShrink: 0 }} />
+            <span style={{
+              fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase',
+              color: '#8B6070', fontFamily: 'Raleway, sans-serif', fontWeight: 400,
+            }}>
+              VELOURA Prague
+            </span>
+            <span style={{
+              width: 3, height: 3, borderRadius: '50%',
+              background: 'rgba(200,160,174,0.4)', flexShrink: 0,
+            }} />
+            <span style={{
+              fontSize: '9.5px', letterSpacing: '0.1em',
+              color: 'rgba(160,120,136,0.6)', fontFamily: 'Raleway, sans-serif', fontWeight: 300,
+            }}>
+              Premium Nail Studio
+            </span>
+          </div>
+        </motion.div>
       </div>
 
       {/* Content — centered container */}
