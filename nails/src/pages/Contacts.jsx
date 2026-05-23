@@ -717,38 +717,6 @@ export default function Contacts({ t }) {
 
           </div>
 
-          {/* Bottom accent */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.1, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-            style={{ marginTop: 72, textAlign: 'center' }}
-          >
-            {/* Divider with diamond */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 14, marginBottom: 22 }}>
-              <div style={{ width: 80, height: 1, background: 'linear-gradient(90deg, transparent, rgba(200,160,174,0.3))' }} />
-              <div style={{ width: 5, height: 5, borderRadius: '50%', background: 'rgba(200,160,174,0.35)', flexShrink: 0 }} />
-              <div style={{ width: 80, height: 1, background: 'linear-gradient(90deg, rgba(200,160,174,0.3), transparent)' }} />
-            </div>
-
-            {/* Italic quote */}
-            <div style={{
-              fontSize: '14px', fontFamily: 'Playfair Display, serif', fontStyle: 'italic',
-              color: 'rgba(45,21,32,0.28)', fontWeight: 400, letterSpacing: '0.03em',
-              marginBottom: 10,
-            }}>
-              "Краса у деталях"
-            </div>
-
-            {/* Studio line */}
-            <div style={{
-              fontSize: '9px', letterSpacing: '0.44em', textTransform: 'uppercase',
-              color: 'rgba(160,112,128,0.32)', fontFamily: 'Raleway, sans-serif', fontWeight: 400,
-            }}>
-              VELOURA · Praha · Czech Republic
-            </div>
-          </motion.div>
 
       </div>
     </motion.div>
