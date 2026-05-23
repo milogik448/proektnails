@@ -345,150 +345,204 @@ function BookingCard({ c }) {
 function MiniMapCard() {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, x: 20 }}
+      whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.65, delay: 0.42, ease: [0.25, 0.46, 0.45, 0.94] }}
+      transition={{ duration: 0.7, delay: 0.34, ease: [0.25, 0.46, 0.45, 0.94] }}
       style={{
         background: 'rgba(255,255,255,0.72)',
         border: '1px solid rgba(200,160,174,0.2)',
-        borderRadius: 22,
+        borderRadius: 26,
         overflow: 'hidden',
         backdropFilter: 'blur(16px)',
-        boxShadow: '0 6px 28px rgba(45,21,32,0.07), 0 1px 4px rgba(45,21,32,0.04)',
+        boxShadow: '0 8px 36px rgba(45,21,32,0.09), 0 2px 8px rgba(45,21,32,0.05)',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
       }}
     >
       {/* Stylised map visual */}
       <div style={{
-        height: 130,
-        background: 'linear-gradient(145deg, #F5E8EE 0%, #EDE0E7 55%, #F0E5EA 100%)',
+        flex: 1,
+        minHeight: 220,
+        background: 'linear-gradient(145deg, #F6EAF0 0%, #EDE0E8 50%, #F1E5EB 100%)',
         position: 'relative',
         overflow: 'hidden',
       }}>
         {/* Grid lines */}
-        {[18, 36, 54, 72, 90].map(y => (
+        {[14, 28, 42, 56, 70, 84].map(y => (
           <div key={`h${y}`} style={{
             position: 'absolute', left: 0, right: 0, top: `${y}%`,
-            height: 1, background: 'rgba(200,160,174,0.18)',
+            height: 1, background: 'rgba(200,160,174,0.16)',
           }} />
         ))}
-        {[12, 28, 44, 60, 76, 92].map(x => (
+        {[10, 22, 34, 46, 58, 70, 82, 94].map(x => (
           <div key={`v${x}`} style={{
             position: 'absolute', top: 0, bottom: 0, left: `${x}%`,
-            width: 1, background: 'rgba(200,160,174,0.18)',
+            width: 1, background: 'rgba(200,160,174,0.16)',
           }} />
         ))}
-        {/* Horizontal road */}
+        {/* Main horizontal road */}
         <div style={{
-          position: 'absolute', top: '40%', left: 0, right: 0,
-          height: 7, background: 'rgba(255,255,255,0.52)',
-          borderTop: '1px solid rgba(200,160,174,0.14)',
-          borderBottom: '1px solid rgba(200,160,174,0.14)',
+          position: 'absolute', top: '44%', left: 0, right: 0,
+          height: 9, background: 'rgba(255,255,255,0.55)',
+          borderTop: '1px solid rgba(200,160,174,0.16)',
+          borderBottom: '1px solid rgba(200,160,174,0.16)',
         }} />
-        {/* Vertical road */}
+        {/* Secondary horizontal road */}
         <div style={{
-          position: 'absolute', top: 0, bottom: 0, left: '44%',
-          width: 9, background: 'rgba(255,255,255,0.42)',
-          borderLeft: '1px solid rgba(200,160,174,0.12)',
-          borderRight: '1px solid rgba(200,160,174,0.12)',
+          position: 'absolute', top: '68%', left: 0, right: '30%',
+          height: 5, background: 'rgba(255,255,255,0.38)',
+          borderTop: '1px solid rgba(200,160,174,0.12)',
         }} />
-        {/* Schematic blocks */}
+        {/* Main vertical road */}
+        <div style={{
+          position: 'absolute', top: 0, bottom: 0, left: '47%',
+          width: 10, background: 'rgba(255,255,255,0.48)',
+          borderLeft: '1px solid rgba(200,160,174,0.14)',
+          borderRight: '1px solid rgba(200,160,174,0.14)',
+        }} />
+        {/* Secondary vertical road */}
+        <div style={{
+          position: 'absolute', top: '28%', bottom: 0, left: '24%',
+          width: 6, background: 'rgba(255,255,255,0.32)',
+          borderLeft: '1px solid rgba(200,160,174,0.1)',
+        }} />
+        {/* Building blocks */}
         {[
-          { t: '14%', l: '16%', w: 28, h: 18 },
-          { t: '62%', l: '64%', w: 22, h: 14 },
-          { t: '18%', r: '12%', w: 18, h: 22 },
-          { t: '60%', l: '22%', w: 16, h: 12 },
+          { t: '10%', l: '12%', w: 36, h: 22 },
+          { t: '10%', l: '56%', w: 26, h: 18 },
+          { t: '10%', r: '6%',  w: 22, h: 28 },
+          { t: '56%', l: '58%', w: 30, h: 18 },
+          { t: '60%', l: '12%', w: 20, h: 16 },
+          { t: '74%', l: '72%', w: 18, h: 14 },
         ].map((b, i) => (
           <div key={i} style={{
             position: 'absolute', top: b.t, left: b.l, right: b.r,
-            width: b.w, height: b.h, borderRadius: 4,
-            background: 'rgba(200,160,174,0.18)',
-            border: '1px solid rgba(200,160,174,0.24)',
+            width: b.w, height: b.h, borderRadius: 5,
+            background: i % 2 === 0 ? 'rgba(200,160,174,0.2)' : 'rgba(200,160,174,0.14)',
+            border: '1px solid rgba(200,160,174,0.26)',
           }} />
         ))}
-        {/* Pin */}
+        {/* Location pin */}
         <div style={{
-          position: 'absolute', top: '50%', left: '50%',
-          transform: 'translate(-50%, -72%)',
+          position: 'absolute', top: '44%', left: '47%',
+          transform: 'translate(-50%, -100%)',
           display: 'flex', flexDirection: 'column', alignItems: 'center',
         }}>
           <div style={{
-            width: 22, height: 22,
+            width: 26, height: 26,
             borderRadius: '50% 50% 50% 0',
             transform: 'rotate(-45deg)',
-            background: 'linear-gradient(135deg, #3E1F2B, #2D1520)',
+            background: 'linear-gradient(135deg, #3E1F2B 0%, #2D1520 100%)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            boxShadow: '0 4px 14px rgba(45,21,32,0.45)',
+            boxShadow: '0 6px 18px rgba(45,21,32,0.5)',
           }}>
             <div style={{
-              width: 7, height: 7, borderRadius: '50%',
-              background: 'rgba(240,223,230,0.92)',
+              width: 9, height: 9, borderRadius: '50%',
+              background: 'rgba(240,223,230,0.95)',
               transform: 'rotate(45deg)',
             }} />
           </div>
           <div style={{
-            width: 8, height: 3, borderRadius: '50%',
-            background: 'rgba(45,21,32,0.2)', marginTop: 3,
+            width: 10, height: 4, borderRadius: '50%',
+            background: 'rgba(45,21,32,0.22)', marginTop: 3,
           }} />
         </div>
-        {/* Praha 5 label */}
+
+        {/* Studio label near pin */}
         <div style={{
-          position: 'absolute', bottom: 9, right: 12,
-          fontSize: '8px', letterSpacing: '0.28em', textTransform: 'uppercase',
-          color: 'rgba(45,21,32,0.3)', fontFamily: 'Raleway, sans-serif',
+          position: 'absolute', top: '22%', left: '52%',
+          background: 'rgba(255,255,255,0.88)',
+          border: '1px solid rgba(200,160,174,0.28)',
+          borderRadius: 8,
+          padding: '4px 9px',
+          backdropFilter: 'blur(8px)',
+          boxShadow: '0 2px 10px rgba(45,21,32,0.1)',
+        }}>
+          <div style={{
+            fontSize: '8.5px', fontWeight: 500, color: '#2D1520',
+            fontFamily: 'Raleway, sans-serif', letterSpacing: '0.1em',
+            whiteSpace: 'nowrap',
+          }}>
+            VELOURA
+          </div>
+          <div style={{
+            fontSize: '7.5px', color: '#A07888',
+            fontFamily: 'Raleway, sans-serif', letterSpacing: '0.08em',
+            whiteSpace: 'nowrap',
+          }}>
+            Zličín · Praha 5
+          </div>
+        </div>
+
+        {/* Corner labels */}
+        <div style={{
+          position: 'absolute', bottom: 10, right: 14,
+          fontSize: '7.5px', letterSpacing: '0.3em', textTransform: 'uppercase',
+          color: 'rgba(45,21,32,0.28)', fontFamily: 'Raleway, sans-serif',
         }}>
           Praha 5
         </div>
-        {/* Zličín label */}
         <div style={{
-          position: 'absolute', bottom: 9, left: 12,
-          fontSize: '8px', letterSpacing: '0.2em', textTransform: 'uppercase',
-          color: 'rgba(45,21,32,0.22)', fontFamily: 'Raleway, sans-serif',
+          position: 'absolute', bottom: 10, left: 14,
+          fontSize: '7.5px', letterSpacing: '0.22em', textTransform: 'uppercase',
+          color: 'rgba(45,21,32,0.2)', fontFamily: 'Raleway, sans-serif',
         }}>
           Zličín
         </div>
+
         {/* Vignette */}
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'radial-gradient(ellipse at 50% 50%, transparent 36%, rgba(242,222,228,0.32) 100%)',
+          background: 'radial-gradient(ellipse at 50% 44%, transparent 30%, rgba(242,222,228,0.28) 100%)',
           pointerEvents: 'none',
         }} />
         {/* Top shimmer */}
         <div style={{
           position: 'absolute', top: 0, left: 0, right: 0, height: 1,
-          background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent)',
+          background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent)',
           pointerEvents: 'none',
         }} />
       </div>
 
-      {/* Card info */}
+      {/* Card info footer */}
       <div style={{
-        padding: '16px 20px',
-        borderTop: '1px solid rgba(200,160,174,0.12)',
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12,
+        padding: '20px 24px',
+        borderTop: '1px solid rgba(200,160,174,0.13)',
+        background: 'rgba(255,255,255,0.5)',
       }}>
-        <div>
-          <div style={{
-            fontSize: '12.5px', fontWeight: 500, color: '#2D1520',
-            fontFamily: 'Raleway, sans-serif', letterSpacing: '0.03em',
-          }}>
-            VELOURA · Zličín
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
+          <div>
+            <div style={{
+              fontSize: '13px', fontWeight: 500, color: '#2D1520',
+              fontFamily: 'Raleway, sans-serif', letterSpacing: '0.04em', marginBottom: 5,
+            }}>
+              VELOURA · Zličín
+            </div>
+            <div style={{
+              fontSize: '11px', color: '#A07888',
+              fontFamily: 'Raleway, sans-serif', fontWeight: 300,
+              letterSpacing: '0.02em', lineHeight: 1.6,
+            }}>
+              Praha 5 · Czech Republic
+            </div>
+            <div style={{
+              fontSize: '10px', color: 'rgba(160,120,136,0.6)',
+              fontFamily: 'Raleway, sans-serif', fontWeight: 300,
+              letterSpacing: '0.02em', marginTop: 3,
+            }}>
+              Точна адреса — після запису
+            </div>
           </div>
           <div style={{
-            fontSize: '10.5px', color: '#A07888',
-            fontFamily: 'Raleway, sans-serif', marginTop: 4,
-            fontWeight: 300, letterSpacing: '0.01em',
+            width: 38, height: 38, borderRadius: '50%', flexShrink: 0,
+            background: 'linear-gradient(135deg, rgba(45,21,32,0.09), rgba(45,21,32,0.05))',
+            border: '1px solid rgba(45,21,32,0.1)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}>
-            Точна адреса — після запису
+            <MapPin size={14} style={{ color: '#2D1520', strokeWidth: 1.5 }} />
           </div>
-        </div>
-        <div style={{
-          width: 34, height: 34, borderRadius: '50%', flexShrink: 0,
-          background: 'linear-gradient(135deg, rgba(45,21,32,0.09), rgba(45,21,32,0.05))',
-          border: '1px solid rgba(45,21,32,0.1)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-        }}>
-          <MapPin size={13} style={{ color: '#2D1520', strokeWidth: 1.5 }} />
         </div>
       </div>
     </motion.div>
@@ -633,11 +687,11 @@ export default function Contacts({ t }) {
             {c.desc}
           </motion.p>
 
-          {/* Two columns */}
-          <div className="flex flex-col lg:flex-row gap-10 lg:gap-14 items-start">
+          {/* Three columns: contact cards | booking CTA | mini map */}
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-stretch">
 
             {/* Left — contact cards */}
-            <div style={{ flex: 1, maxWidth: 460, width: '100%' }}>
+            <div style={{ flex: 1, minWidth: 0, width: '100%' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 {INFO.map(({ Icon, label, value, href, note, schedule }, i) => (
                   <ContactCard
@@ -649,36 +703,40 @@ export default function Contacts({ t }) {
               </div>
             </div>
 
-            {/* Right — booking CTA + mini map */}
-            <div style={{ width: '100%', maxWidth: 400, flexShrink: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
+            {/* Center — booking CTA */}
+            <div style={{ width: '100%', maxWidth: 380, flexShrink: 0 }}>
               <BookingCard c={c} />
+            </div>
+
+            {/* Right — mini map */}
+            <div style={{ width: '100%', maxWidth: 360, flexShrink: 0 }}>
               <MiniMapCard />
             </div>
 
           </div>
 
-          {/* Bottom accent */}
+          {/* Bottom accent — subtle decorative detail */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.5 }}
-            style={{ marginTop: 72, textAlign: 'center' }}
+            transition={{ duration: 1.2, delay: 0.6 }}
+            style={{ marginTop: 64, textAlign: 'center' }}
           >
             <div style={{
-              height: 1, maxWidth: 320, margin: '0 auto 24px',
-              background: 'linear-gradient(90deg, transparent, rgba(200,160,174,0.35), transparent)',
+              height: 1, maxWidth: 200, margin: '0 auto 20px',
+              background: 'linear-gradient(90deg, transparent, rgba(200,160,174,0.22), transparent)',
             }} />
             <div style={{
-              fontSize: '8px', letterSpacing: '0.48em', textTransform: 'uppercase',
-              color: 'rgba(160,112,128,0.38)', fontFamily: 'Raleway, sans-serif', fontWeight: 400,
-              marginBottom: 10,
+              fontSize: '7px', letterSpacing: '0.52em', textTransform: 'uppercase',
+              color: 'rgba(160,112,128,0.22)', fontFamily: 'Raleway, sans-serif', fontWeight: 400,
+              marginBottom: 8,
             }}>
               VELOURA · Praha · Czech Republic
             </div>
             <div style={{
-              fontSize: '12.5px', fontFamily: 'Playfair Display, serif', fontStyle: 'italic',
-              color: 'rgba(45,21,32,0.22)', fontWeight: 400, letterSpacing: '0.02em',
+              fontSize: '11px', fontFamily: 'Playfair Display, serif', fontStyle: 'italic',
+              color: 'rgba(45,21,32,0.14)', fontWeight: 400, letterSpacing: '0.02em',
             }}>
               "Краса у деталях"
             </div>
