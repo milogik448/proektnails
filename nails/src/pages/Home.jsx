@@ -171,59 +171,6 @@ export default function Home({ onNavigate, t }) {
         </div>
       </section>
 
-      {/* ── Why choose me ────────────────────────────────────── */}
-      <section className="px-8 md:px-12 lg:px-16 xl:px-20 py-24">
-          <motion.div {...fadeUpView(0)} className="mb-14">
-            <span className="section-tag">Про майстра</span>
-            <h2
-              className="font-serif"
-              style={{
-                fontSize: 'clamp(28px, 3.8vw, 48px)',
-                fontWeight: 300,
-                color: '#2D1520',
-                lineHeight: 1.1,
-              }}
-            >
-              {h.whyTitle}
-            </h2>
-          </motion.div>
-
-          <div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px"
-            style={{ backgroundColor: 'rgba(200,160,174,0.18)' }}
-          >
-            {h.whyItems.map(({ num, title, desc }, i) => (
-              <motion.div
-                key={num}
-                initial={{ opacity: 0, y: 22 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.6, delay: i * 0.09 }}
-                className="flex flex-col p-8 lg:p-9"
-                style={{ backgroundColor: 'rgba(242,222,228,0.97)' }}
-              >
-                <span
-                  className="font-serif italic mb-6 block"
-                  style={{ fontSize: '26px', color: 'rgba(200,160,174,0.5)', fontWeight: 300 }}
-                >
-                  {num}
-                </span>
-                <div
-                  className="text-[13px] font-medium mb-2.5"
-                  style={{ color: '#2D1520', letterSpacing: '0.01em' }}
-                >
-                  {title}
-                </div>
-                <div
-                  className="text-[12px] font-light leading-[1.85]"
-                  style={{ color: '#A07888' }}
-                >
-                  {desc}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-      </section>
 
       {/* ── Gallery ──────────────────────────────────────────── */}
       <section className="px-8 md:px-12 lg:px-16 xl:px-20 pb-24">
