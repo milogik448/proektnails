@@ -72,7 +72,50 @@ export default function App() {
         style={{ zIndex: -1, backgroundColor: '#F2DEE4' }}
       />
 
-      <div className="flex min-h-screen" style={{ backgroundColor: 'rgba(242,222,228,0.97)' }}>
+      {/* Atmosphere: soft ambient gradient blobs */}
+      <div aria-hidden="true" className="fixed inset-0" style={{ zIndex: 0, pointerEvents: 'none', overflow: 'hidden' }}>
+        {/* Top-right blush bloom */}
+        <div style={{
+          position: 'absolute', top: '-12%', right: '-6%',
+          width: 700, height: 700, borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(200,160,174,0.13) 0%, transparent 62%)',
+        }} />
+        {/* Bottom-left soft glow */}
+        <div style={{
+          position: 'absolute', bottom: '4%', left: '-8%',
+          width: 560, height: 560, borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(200,160,174,0.09) 0%, transparent 66%)',
+        }} />
+        {/* Centre warm bloom */}
+        <div style={{
+          position: 'absolute', top: '35%', left: '40%',
+          width: 440, height: 440, borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(242,215,224,0.22) 0%, transparent 65%)',
+        }} />
+        {/* Bottom-right subtle burgundy accent */}
+        <div style={{
+          position: 'absolute', bottom: '18%', right: '6%',
+          width: 320, height: 320, borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(61,30,42,0.042) 0%, transparent 65%)',
+        }} />
+      </div>
+
+      {/* Atmosphere: barely-visible grain/noise — premium paper texture */}
+      <svg
+        aria-hidden="true"
+        style={{
+          position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
+          zIndex: 9, pointerEvents: 'none', opacity: 0.022,
+        }}
+      >
+        <filter id="app-grain">
+          <feTurbulence type="fractalNoise" baseFrequency="0.68" numOctaves="4" stitchTiles="stitch" />
+          <feColorMatrix type="saturate" values="0" />
+        </filter>
+        <rect width="100%" height="100%" filter="url(#app-grain)" />
+      </svg>
+
+      <div className="flex min-h-screen" style={{ backgroundColor: 'rgba(242,222,228,0.94)' }}>
         {/* Mobile backdrop */}
         <AnimatePresence>
           {menuOpen && (
