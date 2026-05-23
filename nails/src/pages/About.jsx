@@ -158,9 +158,10 @@ export default function About({ onNavigate, t }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.0, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="relative"
+          style={{ maxWidth: 380 }}
         >
           <div
-            className="aspect-[4/5] overflow-hidden"
+            className="aspect-[3/4] overflow-hidden"
             style={{
               borderRadius: '22px',
               boxShadow:
