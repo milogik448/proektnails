@@ -393,10 +393,10 @@ export default function Services({ t }) {
 
                 {/* Premium CTA */}
                 <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                  <a
-                    href="https://www.instagram.com/anjelikaa_nails"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    onClick={() => window.dispatchEvent(new CustomEvent('open-ai-chat', {
+                      detail: { service: active.name }
+                    }))}
                     className="inline-flex items-center gap-3 transition-all duration-300"
                     style={{
                       background: '#2D1520',
@@ -407,7 +407,8 @@ export default function Services({ t }) {
                       textTransform: 'uppercase',
                       fontWeight: 500,
                       borderRadius: '4px',
-                      textDecoration: 'none',
+                      border: 'none',
+                      cursor: 'pointer',
                     }}
                     onMouseEnter={e => {
                       e.currentTarget.style.background = '#4A2535'
@@ -422,10 +423,10 @@ export default function Services({ t }) {
                   >
                     {s.bookBtn} {active.name}
                     <ArrowRight size={13} strokeWidth={1.5} />
-                  </a>
+                  </button>
 
                   <span style={{ fontSize: '11px', color: '#C8A0AE', letterSpacing: '0.08em' }}>
-                    via Instagram Direct
+                    via AI-асистент
                   </span>
                 </div>
 

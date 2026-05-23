@@ -64,7 +64,16 @@ export default function ChatWidget() {
 
   // Відкривається з інших частин сайту через custom event
   useEffect(() => {
-    const handler = () => setIsOpen(true)
+    const handler = (event) => {
+      const service = event.detail?.service
+      if (service) {
+        setMessages([{
+          role: 'assistant',
+          content: `Ви хочете записатись на ${service.toLowerCase()} ✨\n\nРадо допоможу підібрати зручний час. Як вас звати?`,
+        }])
+      }
+      setIsOpen(true)
+    }
     window.addEventListener('open-ai-chat', handler)
     return () => window.removeEventListener('open-ai-chat', handler)
   }, [])
