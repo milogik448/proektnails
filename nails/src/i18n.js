@@ -18,10 +18,10 @@ export const translations = {
       ],
     },
     about: {
-      tag: '002', title: 'Про майстра', masterTag: 'Майстер', name: 'Анжеліка',
+      tag: '002', title: 'Про майстра', masterTag: 'VELOURA Studio', name: 'Ваш майстер у Празі',
       badge: 'Досвід', badgeVal: '1 рік',
       bio: [
-        'Привіт! Я — Анжеліка, майстер манікюру та педикюру у Празі. Для мене кожна процедура — це маленький ритуал турботи про себе.',
+        'VELOURA Studio — майстер манікюру та педикюру у Празі. Кожна процедура — це маленький ритуал турботи про себе.',
         'Слідкую за сучасними тенденціями, працюю лише з якісними матеріалами та приділяю увагу кожній деталі.',
       ],
       quote: 'Моя ціль — не просто зробити манікюр, а щоб ти почувалась доглянутою, впевненою та красивою.',
@@ -99,11 +99,11 @@ export const translations = {
       ],
     },
     about: {
-      tag: '002', title: 'About', masterTag: 'Master', name: 'Anjelika',
+      tag: '002', title: 'About', masterTag: 'VELOURA Studio', name: 'Your nail specialist in Prague',
       badge: 'Experience', badgeVal: '1 year',
       bio: [
-        'Hi! I\'m Anjelika, a manicure and pedicure specialist in Prague. For me, every procedure is a small ritual of self-care.',
-        'I follow modern trends, work only with quality materials and pay attention to every detail.',
+        'VELOURA Studio — manicure and pedicure specialist in Prague. Every procedure is a small ritual of self-care.',
+        'Following modern trends, working only with quality materials and paying attention to every detail.',
       ],
       quote: 'My goal is not just to do a manicure — but to make you feel groomed, confident and beautiful.',
       skillsLabel: 'Specialization',
@@ -180,10 +180,10 @@ export const translations = {
       ],
     },
     about: {
-      tag: '002', title: 'O mně', masterTag: 'Mistr', name: 'Angelika',
+      tag: '002', title: 'O mně', masterTag: 'VELOURA Studio', name: 'Váš nehtový specialista v Praze',
       badge: 'Zkušenosti', badgeVal: '1 rok',
       bio: [
-        'Ahoj! Jsem Angelika, specialistka na manikúru a pedikúru v Praze. Pro mě je každá procedura malým rituálem péče o sebe.',
+        'VELOURA Studio — specialistka na manikúru a pedikúru v Praze. Každá procedura je malým rituálem péče o sebe.',
         'Sleduji moderní trendy, pracuji pouze s kvalitními materiály a věnuji pozornost každému detailu.',
       ],
       quote: 'Mým cílem není jen udělat manikúru — ale aby ses cítila upravená, sebejistá a krásná.',

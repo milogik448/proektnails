@@ -254,7 +254,7 @@ export default function About({ onNavigate, t }) {
                 className="font-light"
                 style={{
                   fontSize: '14px',
-                  color: '#6B5060',
+                  color: '#3D2530',
                   lineHeight: '2.1',
                   letterSpacing: '0.012em',
                 }}
@@ -305,7 +305,7 @@ export default function About({ onNavigate, t }) {
           <motion.div {...fadeUp(0.28)}>
             <div
               className="text-[10px] tracking-[0.32em] uppercase mb-4"
-              style={{ color: '#A07888' }}
+              style={{ color: '#7A5868' }}
             >
               {a.skillsLabel}
             </div>
@@ -314,33 +314,34 @@ export default function About({ onNavigate, t }) {
             </div>
           </motion.div>
 
-          {/* Trust premium cards */}
-          <div className="grid grid-cols-2 gap-3">
-            {a.trust.map(({ label }, i) => (
-              <TrustCard
-                key={label}
-                label={label}
-                Icon={TRUST_ICONS[i]}
-                delay={0.35 + i * 0.07}
-              />
-            ))}
-          </div>
+          {/* Trust cards + CTA grouped together */}
+          <div className="flex flex-col gap-4">
+            <div className="grid grid-cols-2 gap-3">
+              {a.trust.map(({ label }, i) => (
+                <TrustCard
+                  key={label}
+                  label={label}
+                  Icon={TRUST_ICONS[i]}
+                  delay={0.35 + i * 0.07}
+                />
+              ))}
+            </div>
 
-          {/* CTA buttons */}
-          <motion.div {...fadeUp(0.44)} className="flex flex-col sm:flex-row gap-3 pt-1">
-            <button onClick={() => onNavigate('contacts')} className="btn-primary">
-              {a.bookBtn} <ArrowRight size={12} />
-            </button>
-            <button onClick={() => onNavigate('gallery')} className="btn-outline">
-              {a.galleryBtn}
-            </button>
-          </motion.div>
+            <motion.div {...fadeUp(0.44)} className="flex flex-col sm:flex-row gap-3">
+              <button onClick={() => onNavigate('contacts')} className="btn-primary">
+                {a.bookBtn} <ArrowRight size={12} />
+              </button>
+              <button onClick={() => onNavigate('gallery')} className="btn-outline">
+                {a.galleryBtn}
+              </button>
+            </motion.div>
+          </div>
         </div>
       </div>
       </div>
 
       {/* ── Why clients return ───────────────────────────────── */}
-      <section className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pb-28 pt-4">
+      <section className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pb-28 pt-20">
 
         {/* Header */}
         <motion.div

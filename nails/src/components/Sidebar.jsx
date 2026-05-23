@@ -112,7 +112,7 @@ function SidebarInner({ activePage, onNavigate, lang, setLang, t }) {
             onMouseLeave={e => e.currentTarget.style.color = TEXT_MUTED}
           >
             <Instagram size={11} />
-            @anjelikaa_nails
+            @veloura.prague
           </a>
         </motion.div>
 
