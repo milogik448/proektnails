@@ -601,7 +601,7 @@ export default function Contacts({ t }) {
       </svg>
 
       {/* Header */}
-      <div className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pt-16 pb-10">
+      <div className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pt-16 pb-14">
         <motion.span
           {...fadeUp(0)}
           className="section-tag"
@@ -631,27 +631,24 @@ export default function Contacts({ t }) {
           transition={{ duration: 0.9, delay: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="origin-left"
           style={{
-            height: 1, width: 56, marginTop: 20, marginBottom: 16,
+            height: 1, width: 56, marginTop: 20, marginBottom: 22,
             background: 'linear-gradient(90deg, rgba(200,160,174,0.55), transparent)',
           }}
         />
-
+        <motion.p
+          {...fadeUp(0.3)}
+          style={{
+            fontSize: '14px', color: '#6B5060', lineHeight: 2,
+            letterSpacing: '0.015em', fontFamily: 'Raleway, sans-serif',
+            fontWeight: 300, maxWidth: 620,
+          }}
+        >
+          {c.desc}
+        </motion.p>
       </div>
 
       {/* Content */}
       <div className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pb-20">
-
-          {/* Description */}
-          <motion.p
-            {...fadeUp(0.1)}
-            style={{
-              fontSize: '14px', color: '#6B5060', lineHeight: 2,
-              letterSpacing: '0.015em', fontFamily: 'Raleway, sans-serif',
-              fontWeight: 300, marginBottom: 40,
-            }}
-          >
-            {c.desc}
-          </motion.p>
 
           {/* Three columns: contact cards | booking CTA | mini map */}
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-stretch">
