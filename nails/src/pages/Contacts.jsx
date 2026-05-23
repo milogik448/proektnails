@@ -636,40 +636,6 @@ export default function Contacts({ t }) {
           }}
         />
 
-        {/* Mini location badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: 0.32 }}
-          style={{ display: 'flex', justifyContent: 'flex-start' }}
-        >
-          <div style={{
-            display: 'inline-flex', alignItems: 'center', gap: 8,
-            padding: '8px 18px',
-            background: 'rgba(255,255,255,0.6)',
-            border: '1px solid rgba(200,160,174,0.22)',
-            borderRadius: 100,
-            backdropFilter: 'blur(12px)',
-            boxShadow: '0 2px 14px rgba(45,21,32,0.06)',
-          }}>
-            <MapPin size={11} style={{ color: '#C8A0AE', strokeWidth: 1.5, flexShrink: 0 }} />
-            <span style={{
-              fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase',
-              color: '#8B6070', fontFamily: 'Raleway, sans-serif', fontWeight: 400,
-            }}>
-              VELOURA Prague
-            </span>
-            <span style={{
-              width: 3, height: 3, borderRadius: '50%',
-              background: 'rgba(200,160,174,0.4)', flexShrink: 0,
-            }} />
-            <span style={{
-              fontSize: '9.5px', letterSpacing: '0.1em',
-              color: 'rgba(160,120,136,0.6)', fontFamily: 'Raleway, sans-serif', fontWeight: 300,
-            }}>
-              Premium Nail Studio
-            </span>
-          </div>
-        </motion.div>
       </div>
 
       {/* Content */}
