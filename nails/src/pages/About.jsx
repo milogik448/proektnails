@@ -139,17 +139,20 @@ export default function About({ onNavigate, t }) {
 
       {/* Header */}
       <div className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pt-16 pb-12 border-b border-ghost">
-        <span className="section-tag">{a.tag}</span>
-        <h1
-          className="font-serif font-light leading-none"
-          style={{ fontSize: 'clamp(42px, 7vw, 88px)', color: '#2D1520' }}
-        >
-          {a.title}
-        </h1>
+        <div style={{ maxWidth: 1080, margin: '0 auto' }}>
+          <span className="section-tag">{a.tag}</span>
+          <h1
+            className="font-serif font-light leading-none"
+            style={{ fontSize: 'clamp(42px, 7vw, 88px)', color: '#2D1520' }}
+          >
+            {a.title}
+          </h1>
+        </div>
       </div>
 
       {/* Body */}
-      <div className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 py-16 lg:py-20 grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+      <div className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 py-16 lg:py-20">
+      <div style={{ maxWidth: 1080, margin: '0 auto' }} className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
 
         {/* LEFT — Photo */}
         <motion.div
@@ -335,9 +338,11 @@ export default function About({ onNavigate, t }) {
           </motion.div>
         </div>
       </div>
+      </div>
 
       {/* ── Why clients return ───────────────────────────────── */}
       <section className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pb-28 pt-4">
+        <div style={{ maxWidth: 1080, margin: '0 auto' }}>
 
         {/* Header */}
         <motion.div
@@ -420,6 +425,7 @@ export default function About({ onNavigate, t }) {
               </div>
             </motion.div>
           ))}
+        </div>
         </div>
       </section>
 

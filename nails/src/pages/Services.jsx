@@ -77,40 +77,42 @@ export default function Services({ t }) {
 
       {/* ── HEADER ── */}
       <div className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pt-12 pb-8">
-        <div className="flex items-center gap-4 mb-5">
-          <span
-            style={{
-              fontSize: '10px',
-              fontWeight: 500,
-              letterSpacing: '0.35em',
-              textTransform: 'uppercase',
-              color: '#B89AA8',
-            }}
+        <div style={{ maxWidth: 1080, margin: '0 auto' }}>
+          <div className="flex items-center gap-4 mb-5">
+            <span
+              style={{
+                fontSize: '10px',
+                fontWeight: 500,
+                letterSpacing: '0.35em',
+                textTransform: 'uppercase',
+                color: '#B89AA8',
+              }}
+            >
+              {s.tag}
+            </span>
+            <div style={{ height: '1px', width: '48px', background: 'rgba(160,112,128,0.3)', flexShrink: 0 }} />
+          </div>
+
+          <h1
+            className="font-serif font-light leading-none"
+            style={{ fontSize: 'clamp(40px, 6vw, 82px)', color: '#2D1520', letterSpacing: '-0.02em', marginBottom: '10px' }}
           >
-            {s.tag}
-          </span>
-          <div style={{ height: '1px', width: '48px', background: 'rgba(160,112,128,0.3)', flexShrink: 0 }} />
+            {s.title}
+          </h1>
+
+          <p
+            className="font-serif italic"
+            style={{ fontSize: 'clamp(13px, 1.4vw, 16px)', color: '#A07888', fontWeight: 300, letterSpacing: '0.02em' }}
+          >
+            {s.subtitle}
+          </p>
+
+          <div style={{
+            height: '1px',
+            background: 'linear-gradient(to right, rgba(160,112,128,0.25), rgba(160,112,128,0.08), transparent)',
+            marginTop: '24px',
+          }} />
         </div>
-
-        <h1
-          className="font-serif font-light leading-none"
-          style={{ fontSize: 'clamp(40px, 6vw, 82px)', color: '#2D1520', letterSpacing: '-0.02em', marginBottom: '10px' }}
-        >
-          {s.title}
-        </h1>
-
-        <p
-          className="font-serif italic"
-          style={{ fontSize: 'clamp(13px, 1.4vw, 16px)', color: '#A07888', fontWeight: 300, letterSpacing: '0.02em' }}
-        >
-          {s.subtitle}
-        </p>
-
-        <div style={{
-          height: '1px',
-          background: 'linear-gradient(to right, rgba(160,112,128,0.25), rgba(160,112,128,0.08), transparent)',
-          marginTop: '24px',
-        }} />
       </div>
 
       {/* ── MOBILE: horizontal category chips ── */}
@@ -459,6 +461,7 @@ export default function Services({ t }) {
       </div>
       {/* ── What's included ──────────────────────────────────── */}
       <section className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pt-6 pb-28">
+        <div style={{ maxWidth: 1080, margin: '0 auto' }}>
 
         {/* Decorative photo accent strip */}
         <motion.div
@@ -592,6 +595,7 @@ export default function Services({ t }) {
               </div>
             </motion.div>
           ))}
+        </div>
         </div>
       </section>
 
