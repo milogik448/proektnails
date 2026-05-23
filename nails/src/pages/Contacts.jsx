@@ -342,9 +342,14 @@ function BookingCard({ c }) {
   )
 }
 
+const MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=Zličín+Praha+5+Czech+Republic'
+
 function MiniMapCard() {
   return (
-    <motion.div
+    <motion.a
+      href={MAPS_URL}
+      target="_blank"
+      rel="noopener noreferrer"
       initial={{ opacity: 0, x: 20 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
@@ -359,6 +364,19 @@ function MiniMapCard() {
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
+        textDecoration: 'none',
+        cursor: 'pointer',
+        transition: 'box-shadow 0.32s ease, border-color 0.32s ease, transform 0.32s ease',
+      }}
+      onMouseEnter={e => {
+        e.currentTarget.style.boxShadow = '0 18px 56px rgba(45,21,32,0.14), 0 4px 14px rgba(45,21,32,0.08)'
+        e.currentTarget.style.borderColor = 'rgba(200,160,174,0.38)'
+        e.currentTarget.style.transform = 'translateY(-4px)'
+      }}
+      onMouseLeave={e => {
+        e.currentTarget.style.boxShadow = '0 8px 36px rgba(45,21,32,0.09), 0 2px 8px rgba(45,21,32,0.05)'
+        e.currentTarget.style.borderColor = 'rgba(200,160,174,0.2)'
+        e.currentTarget.style.transform = 'translateY(0)'
       }}
     >
       {/* Stylised map visual */}
@@ -535,17 +553,26 @@ function MiniMapCard() {
               Точна адреса — після запису
             </div>
           </div>
-          <div style={{
-            width: 38, height: 38, borderRadius: '50%', flexShrink: 0,
-            background: 'linear-gradient(135deg, rgba(45,21,32,0.09), rgba(45,21,32,0.05))',
-            border: '1px solid rgba(45,21,32,0.1)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}>
-            <MapPin size={14} style={{ color: '#2D1520', strokeWidth: 1.5 }} />
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 4, flexShrink: 0 }}>
+            <div style={{
+              width: 38, height: 38, borderRadius: '50%',
+              background: 'linear-gradient(135deg, rgba(45,21,32,0.09), rgba(45,21,32,0.05))',
+              border: '1px solid rgba(45,21,32,0.1)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}>
+              <MapPin size={14} style={{ color: '#2D1520', strokeWidth: 1.5 }} />
+            </div>
+            <div style={{
+              fontSize: '8.5px', letterSpacing: '0.16em', textTransform: 'uppercase',
+              color: 'rgba(160,120,136,0.55)', fontFamily: 'Raleway, sans-serif',
+              whiteSpace: 'nowrap',
+            }}>
+              Google Maps ↗
+            </div>
           </div>
         </div>
       </div>
-    </motion.div>
+    </motion.a>
   )
 }
 
