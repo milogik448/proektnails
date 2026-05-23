@@ -166,6 +166,7 @@ export default function App() {
             </button>
             <button
               onClick={() => setMenuOpen(v => !v)}
+              aria-label={menuOpen ? 'Закрити меню' : 'Відкрити меню'}
               className="w-9 h-9 flex items-center justify-center text-ink hover:text-ash transition-colors"
             >
               {menuOpen ? <X size={20} /> : <Menu size={20} />}

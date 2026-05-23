@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Instagram, Sparkles, Heart, Clock, BadgeCheck, MapPin } from 'lucide-react'
+import { Instagram, Sparkles, Heart, Clock, BadgeCheck, MapPin, Star } from 'lucide-react'
 
 const ALL_WORKS = [
   '/images/works/IMG_3143.PNG',
@@ -171,6 +171,52 @@ export default function Home({ onNavigate, t }) {
         </div>
       </section>
 
+      {/* ── Pricing ──────────────────────────────────────────── */}
+      <section className="px-8 md:px-12 lg:px-16 xl:px-20 py-20 border-b" style={{ borderColor: 'rgba(200,160,174,0.2)' }}>
+        <motion.div {...fadeUpView(0)} className="mb-10">
+          <span className="section-tag">{h.pricingTag}</span>
+          <h2
+            className="font-serif"
+            style={{ fontSize: 'clamp(28px, 3.8vw, 48px)', fontWeight: 300, color: '#2D1520', lineHeight: 1.1 }}
+          >
+            {h.pricingTitle}
+          </h2>
+        </motion.div>
+
+        <div style={{ maxWidth: 600 }}>
+          {h.pricingItems.map(({ name, duration, price }, i) => (
+            <motion.div
+              key={name}
+              initial={{ opacity: 0, x: -14 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-30px' }}
+              transition={{ duration: 0.5, delay: i * 0.07 }}
+              style={{
+                display: 'flex', alignItems: 'center',
+                paddingTop: 15, paddingBottom: 15,
+                borderBottom: i < h.pricingItems.length - 1 ? '1px solid rgba(200,160,174,0.2)' : 'none',
+              }}
+            >
+              <div style={{ flex: 1, fontSize: 13, fontWeight: 400, color: '#2D1520', fontFamily: 'Raleway, sans-serif' }}>
+                {name}
+              </div>
+              <div style={{ fontSize: 11, color: '#A07888', fontFamily: 'Raleway, sans-serif', marginRight: 20, letterSpacing: '0.04em' }}>
+                {duration}
+              </div>
+              <div style={{ fontSize: 13, fontWeight: 500, color: '#3D2530', fontFamily: 'Raleway, sans-serif', minWidth: 72, textAlign: 'right' }}>
+                {price} Kč
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div {...fadeUpView(0.25)} style={{ marginTop: 32 }}>
+          <button onClick={() => onNavigate('services')} className="btn-outline">
+            {h.pricingBtn}
+          </button>
+        </motion.div>
+      </section>
+
       {/* ── Why choose me ────────────────────────────────────── */}
       <section className="px-8 md:px-12 lg:px-16 xl:px-20 py-24">
           <motion.div {...fadeUpView(0)} className="mb-14">
@@ -304,6 +350,68 @@ export default function Home({ onNavigate, t }) {
               {h.instagramBtn}
             </a>
           </motion.div>
+      </section>
+
+      {/* ── Reviews strip ────────────────────────────────────── */}
+      <section className="px-8 md:px-12 lg:px-16 xl:px-20 py-20 border-t" style={{ borderColor: 'rgba(200,160,174,0.2)' }}>
+        <motion.div {...fadeUpView(0)} className="flex items-end justify-between mb-10">
+          <div>
+            <span className="section-tag">{h.reviewsTag}</span>
+            <h2
+              className="font-serif"
+              style={{ fontSize: 'clamp(26px, 3.5vw, 42px)', fontWeight: 300, color: '#2D1520' }}
+            >
+              {h.reviewsTitle}
+            </h2>
+          </div>
+        </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {t.reviews.items.slice(0, 3).map(({ name, city, date, stars, text }, i) => (
+            <motion.div
+              key={name}
+              initial={{ opacity: 0, y: 22 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              style={{
+                background: 'rgba(255,255,255,0.68)',
+                border: '1px solid rgba(200,160,174,0.18)',
+                borderRadius: 16,
+                padding: '24px 22px',
+                backdropFilter: 'blur(12px)',
+              }}
+            >
+              <div style={{ display: 'flex', gap: 3, marginBottom: 12 }}>
+                {Array.from({ length: stars }).map((_, si) => (
+                  <Star key={si} size={11} style={{ color: '#C8A0AE', fill: '#C8A0AE' }} />
+                ))}
+              </div>
+              <p style={{ fontSize: 12.5, lineHeight: 1.85, color: '#5A3A48', fontStyle: 'italic', marginBottom: 16 }}>
+                "{text}"
+              </p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <div style={{
+                  width: 28, height: 28, borderRadius: '50%',
+                  background: 'rgba(200,160,174,0.22)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                }}>
+                  <span style={{ fontSize: 10.5, fontWeight: 500, color: '#8B6070' }}>{name.charAt(0)}</span>
+                </div>
+                <div>
+                  <div style={{ fontSize: 11, fontWeight: 500, color: '#2D1520' }}>{name}</div>
+                  <div style={{ fontSize: 10, color: '#A07888', letterSpacing: '0.04em' }}>{city} · {date}</div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div {...fadeUpView(0.2)} style={{ marginTop: 32 }}>
+          <button onClick={() => onNavigate('reviews')} className="btn-outline">
+            {h.reviewsBtn}
+          </button>
+        </motion.div>
       </section>
 
       {/* ── Why VELOURA ──────────────────────────────────────── */}
