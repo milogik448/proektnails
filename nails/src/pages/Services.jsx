@@ -77,7 +77,6 @@ export default function Services({ t }) {
 
       {/* ── HEADER ── */}
       <div className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pt-12 pb-8">
-        <div style={{ maxWidth: 1080, margin: '0 auto' }}>
           <div className="flex items-center gap-4 mb-5">
             <span
               style={{
@@ -112,7 +111,6 @@ export default function Services({ t }) {
             background: 'linear-gradient(to right, rgba(160,112,128,0.25), rgba(160,112,128,0.08), transparent)',
             marginTop: '24px',
           }} />
-        </div>
       </div>
 
       {/* ── MOBILE: horizontal category chips ── */}
@@ -461,7 +459,6 @@ export default function Services({ t }) {
       </div>
       {/* ── What's included ──────────────────────────────────── */}
       <section className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pt-6 pb-28">
-        <div style={{ maxWidth: 1080, margin: '0 auto' }}>
 
         {/* Decorative photo accent strip */}
         <motion.div
@@ -496,9 +493,9 @@ export default function Services({ t }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-40px' }}
           transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-          style={{ textAlign: 'center', marginBottom: 52 }}
+          style={{ marginBottom: 52 }}
         >
-          <span className="section-tag" style={{ display: 'block', textAlign: 'center' }}>
+          <span className="section-tag">
             VELOURA Studio
           </span>
           <h2
@@ -511,8 +508,8 @@ export default function Services({ t }) {
             Що входить у послугу
           </h2>
           <div style={{
-            height: 1, maxWidth: 140, margin: '18px auto 0',
-            background: 'linear-gradient(90deg, transparent, rgba(200,160,174,0.55), transparent)',
+            height: 1, width: 56, marginTop: 18,
+            background: 'linear-gradient(90deg, rgba(200,160,174,0.55), transparent)',
           }} />
         </motion.div>
 
@@ -595,7 +592,6 @@ export default function Services({ t }) {
               </div>
             </motion.div>
           ))}
-        </div>
         </div>
       </section>
 

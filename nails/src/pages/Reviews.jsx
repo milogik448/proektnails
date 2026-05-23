@@ -381,11 +381,11 @@ export default function Reviews({ t }) {
       </div>
 
       {/* ── Header ────────────────────────────────────────────── */}
-      <div className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pt-16 pb-10" style={{ textAlign: 'center' }}>
+      <div className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pt-16 pb-10">
         <motion.span
           initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="section-tag" style={{ display: 'block', textAlign: 'center' }}
+          className="section-tag"
         >
           {r.tag}
         </motion.span>
@@ -412,7 +412,7 @@ export default function Reviews({ t }) {
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.18 }}
-          style={{ display: 'flex', justifyContent: 'center', gap: 5, marginTop: 14 }}
+          style={{ display: 'flex', justifyContent: 'flex-start', gap: 5, marginTop: 14 }}
         >
           {Array.from({ length: 5 }).map((_, i) => (
             <Star key={i} size={12} fill="rgba(200,160,174,0.5)" stroke="rgba(200,160,174,0.5)" strokeWidth={1.2} />
@@ -422,16 +422,16 @@ export default function Reviews({ t }) {
         <motion.div
           initial={{ scaleX: 0, opacity: 0 }} animate={{ scaleX: 1, opacity: 1 }}
           transition={{ duration: 0.9, delay: 0.24 }}
+          className="origin-left"
           style={{
-            height: 1, maxWidth: 200, margin: '18px auto 0',
-            background: 'linear-gradient(90deg, transparent, rgba(200,160,174,0.55), transparent)',
+            height: 1, width: 56, marginTop: 18,
+            background: 'linear-gradient(90deg, rgba(200,160,174,0.55), transparent)',
           }}
         />
       </div>
 
       {/* ── Content ───────────────────────────────────────────── */}
       <div className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pb-20">
-        <div style={{ maxWidth: 1020, margin: '0 auto' }}>
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-14 items-start">
 
             {/* Left — featured + grid */}
@@ -473,7 +473,6 @@ export default function Reviews({ t }) {
             </div>
 
           </div>
-        </div>
       </div>
 
       {/* ── Bottom decorative tagline ─────────────────────────── */}

@@ -393,12 +393,11 @@ export default function Contacts({ t }) {
         <rect width='100%' height='100%' filter='url(#ct-noise)' />
       </svg>
 
-      {/* Header — centered */}
-      <div className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pt-16 pb-10" style={{ textAlign: 'center' }}>
+      {/* Header */}
+      <div className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pt-16 pb-10">
         <motion.span
           {...fadeUp(0)}
           className="section-tag"
-          style={{ display: 'block', textAlign: 'center' }}
         >
           {c.tag}
         </motion.span>
@@ -423,9 +422,10 @@ export default function Contacts({ t }) {
           initial={{ scaleX: 0, opacity: 0 }}
           animate={{ scaleX: 1, opacity: 1 }}
           transition={{ duration: 0.9, delay: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="origin-left"
           style={{
-            height: 1, maxWidth: 200, margin: '20px auto 16px',
-            background: 'linear-gradient(90deg, transparent 0%, rgba(200,160,174,0.55) 35%, rgba(200,160,174,0.55) 65%, transparent 100%)',
+            height: 1, width: 56, marginTop: 20, marginBottom: 16,
+            background: 'linear-gradient(90deg, rgba(200,160,174,0.55), transparent)',
           }}
         />
 
@@ -433,7 +433,7 @@ export default function Contacts({ t }) {
         <motion.div
           initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, delay: 0.32 }}
-          style={{ display: 'flex', justifyContent: 'center' }}
+          style={{ display: 'flex', justifyContent: 'flex-start' }}
         >
           <div style={{
             display: 'inline-flex', alignItems: 'center', gap: 8,
@@ -465,25 +465,23 @@ export default function Contacts({ t }) {
         </motion.div>
       </div>
 
-      {/* Content — centered container */}
+      {/* Content */}
       <div className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pb-20">
-        <div style={{ maxWidth: 960, margin: '0 auto' }}>
 
-          {/* Description — centered */}
+          {/* Description */}
           <motion.p
             {...fadeUp(0.1)}
             style={{
               fontSize: '14px', color: '#6B5060', lineHeight: 2,
               letterSpacing: '0.015em', fontFamily: 'Raleway, sans-serif',
               fontWeight: 300, marginBottom: 40,
-              textAlign: 'center', maxWidth: 540, margin: '0 auto 40px',
             }}
           >
             {c.desc}
           </motion.p>
 
-          {/* Two columns — centered as a unit */}
-          <div className="flex flex-col lg:flex-row gap-10 lg:gap-14 items-start justify-center">
+          {/* Two columns */}
+          <div className="flex flex-col lg:flex-row gap-10 lg:gap-14 items-start">
 
             {/* Left — contact cards */}
             <div style={{ flex: 1, maxWidth: 460, width: '100%' }}>
@@ -532,7 +530,6 @@ export default function Contacts({ t }) {
             </div>
           </motion.div>
 
-        </div>
       </div>
     </motion.div>
   )

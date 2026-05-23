@@ -139,7 +139,6 @@ export default function About({ onNavigate, t }) {
 
       {/* Header */}
       <div className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pt-16 pb-12 border-b border-ghost">
-        <div style={{ maxWidth: 1080, margin: '0 auto' }}>
           <span className="section-tag">{a.tag}</span>
           <h1
             className="font-serif font-light leading-none"
@@ -147,12 +146,11 @@ export default function About({ onNavigate, t }) {
           >
             {a.title}
           </h1>
-        </div>
       </div>
 
       {/* Body */}
       <div className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 py-16 lg:py-20">
-      <div style={{ maxWidth: 1080, margin: '0 auto' }} className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+      <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
 
         {/* LEFT — Photo */}
         <motion.div
@@ -342,7 +340,6 @@ export default function About({ onNavigate, t }) {
 
       {/* ── Why clients return ───────────────────────────────── */}
       <section className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pb-28 pt-4">
-        <div style={{ maxWidth: 1080, margin: '0 auto' }}>
 
         {/* Header */}
         <motion.div
@@ -350,9 +347,9 @@ export default function About({ onNavigate, t }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-40px' }}
           transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-          style={{ textAlign: 'center', marginBottom: 52 }}
+          style={{ marginBottom: 52 }}
         >
-          <span className="section-tag" style={{ display: 'block', textAlign: 'center' }}>
+          <span className="section-tag">
             VELOURA Studio
           </span>
           <h2
@@ -365,8 +362,8 @@ export default function About({ onNavigate, t }) {
             Чому клієнти повертаються
           </h2>
           <div style={{
-            height: 1, maxWidth: 140, margin: '18px auto 0',
-            background: 'linear-gradient(90deg, transparent, rgba(200,160,174,0.55), transparent)',
+            height: 1, width: 56, marginTop: 18,
+            background: 'linear-gradient(90deg, rgba(200,160,174,0.55), transparent)',
           }} />
         </motion.div>
 
@@ -425,7 +422,6 @@ export default function About({ onNavigate, t }) {
               </div>
             </motion.div>
           ))}
-        </div>
         </div>
       </section>
 
