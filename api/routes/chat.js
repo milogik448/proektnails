@@ -6,14 +6,14 @@ const router = Router()
 // POST /api/chat
 // Body: { messages: [{ role: 'user'|'assistant', content: string }] }
 router.post('/', async (req, res) => {
-  const { messages } = req.body
+  const { messages, lang = 'uk' } = req.body
 
   if (!Array.isArray(messages) || messages.length === 0) {
     return res.status(400).json({ error: 'messages required' })
   }
 
   try {
-    const reply = await chat(messages)
+    const reply = await chat(messages, lang)
     res.json({ reply })
   } catch (err) {
     console.error('Chat error:', err?.message ?? err)

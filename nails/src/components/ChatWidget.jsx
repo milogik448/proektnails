@@ -5,10 +5,13 @@ import { X, Send, MessageCircle, Loader, Sparkles } from 'lucide-react'
 const API_URL = import.meta.env.VITE_API_URL
   || (import.meta.env.DEV ? 'http://localhost:3001/api/chat' : 'https://anjelika-nails-api.vercel.app/api/chat')
 
-const WELCOME = {
-  role: 'assistant',
-  content: 'Привіт! 💅 Я AI-асистент VELOURA Studio. Допоможу вам записатись на манікюр або педикюр. Як вас звати?',
+const WELCOME_TEXT = {
+  uk: 'Привіт! 💅 Я AI-асистент VELOURA Studio. Допоможу вам записатись на манікюр або педикюр. Як вас звати?',
+  en: 'Hi! 💅 I\'m the VELOURA Studio AI assistant. I\'ll help you book a manicure or pedicure. What\'s your name?',
+  cs: 'Ahoj! 💅 Jsem AI asistent VELOURA Studio. Pomohu vám objednat manikúru nebo pedikúru. Jak se jmenujete?',
 }
+
+const makeWelcome = (lang) => ({ role: 'assistant', content: WELCOME_TEXT[lang] ?? WELCOME_TEXT.uk })
 
 function TypingDots() {
   return (
@@ -45,9 +48,9 @@ function Message({ role, content }) {
   )
 }
 
-export default function ChatWidget({ menuOpen = false }) {
+export default function ChatWidget({ menuOpen = false, lang = 'uk' }) {
   const [isOpen, setIsOpen]     = useState(false)
-  const [messages, setMessages] = useState([WELCOME])
+  const [messages, setMessages] = useState(() => [makeWelcome(lang)])
   const [input, setInput]       = useState('')
   const [loading, setLoading]   = useState(false)
   const bottomRef               = useRef(null)
@@ -61,6 +64,16 @@ export default function ChatWidget({ menuOpen = false }) {
   useEffect(() => {
     if (isOpen) setTimeout(() => inputRef.current?.focus(), 300)
   }, [isOpen])
+
+  // Оновлює welcome message при зміні мови (тільки якщо розмова ще не почалась)
+  useEffect(() => {
+    setMessages(prev => {
+      if (prev.length === 1 && prev[0].role === 'assistant') {
+        return [makeWelcome(lang)]
+      }
+      return prev
+    })
+  }, [lang])
 
   // Відкривається з інших частин сайту через custom event
   useEffect(() => {
@@ -108,7 +121,7 @@ export default function ChatWidget({ menuOpen = false }) {
       const res = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: apiMessages }),
+        body: JSON.stringify({ messages: apiMessages, lang }),
       })
       if (!res.ok) throw new Error(`Server ${res.status}: ${await res.text()}`)
       const data = await res.json()

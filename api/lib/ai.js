@@ -3,15 +3,18 @@ import { getAvailableSlots, checkSlot, createBooking, SERVICE_DURATIONS } from '
 
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
 
-function getSystemPrompt() {
+const LANG_NAMES = { uk: 'українська', en: 'англійська', cs: 'чеська' }
+
+function getSystemPrompt(lang = 'uk') {
   const now = new Date()
   const todayISO = now.toISOString().split('T')[0]
   const weekdays = ['неділя', 'понеділок', 'вівторок', 'середа', 'четвер', 'п\'ятниця', 'субота']
   const todayName = weekdays[now.getDay()]
+  const langName = LANG_NAMES[lang] ?? 'українська'
 
   return `Ти — AI-асистент Анжеліки, майстра манікюру та педикюру у Празі (Instagram: @anjelikaa_nails).
 Твоя задача — записати клієнта на процедуру. Спілкуйся тепло, коротко та по-діловому.
-Відповідай мовою клієнта (українська, чеська або англійська).
+ВАЖЛИВО: відповідай ВИКЛЮЧНО мовою інтерфейсу — ${langName}. Не змінюй мову навіть якщо клієнт пише іншою мовою.
 
 СЬОГОДНІ: ${todayISO} (${todayName}). Використовуй цю дату коли клієнт каже "сьогодні", "завтра", "в п'ятницю" тощо.
 
@@ -107,10 +110,9 @@ async function runTool(name, input) {
 }
 
 // messages: [{ role: 'user'|'assistant', content: string }]
-export async function chat(messages) {
-  // System prompt іде першим повідомленням у OpenAI (не окремий параметр)
+export async function chat(messages, lang = 'uk') {
   const fullMessages = [
-    { role: 'system', content: getSystemPrompt() },
+    { role: 'system', content: getSystemPrompt(lang) },
     ...messages,
   ]
 

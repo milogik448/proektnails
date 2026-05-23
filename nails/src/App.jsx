@@ -140,7 +140,7 @@ export default function App() {
           </div>
         </div>
       </div>
-      <ChatWidget menuOpen={menuOpen} />
+      <ChatWidget menuOpen={menuOpen} lang={lang} />
     </>
   )
 }
