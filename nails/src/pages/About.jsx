@@ -1,7 +1,30 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, ShieldCheck, Sparkles, Heart, Feather } from 'lucide-react'
+import { ArrowRight, ShieldCheck, Sparkles, Heart, Feather, Target, Clock, User, Wand2 } from 'lucide-react'
 
 const TRUST_ICONS = [ShieldCheck, Sparkles, Heart, Feather]
+
+const RETURN_CARDS = [
+  {
+    Icon: Target,
+    title: 'Акуратність у деталях',
+    desc: 'Рівні краї, бездоганне покриття та ідеальна форма — результат, який ви помітите одразу.',
+  },
+  {
+    Icon: Clock,
+    title: 'Довготривалий результат',
+    desc: 'Покриття тримається тижнями без сколів та втрати блиску — робота, яка говорить сама за себе.',
+  },
+  {
+    Icon: User,
+    title: 'Індивідуальний підхід',
+    desc: 'Враховую форму нігтів, стиль та бажання кожної клієнтки. Ваш результат — унікальний.',
+  },
+  {
+    Icon: Wand2,
+    title: 'Сучасні техніки',
+    desc: 'Постійно слідкую за трендами та вдосконалюю майстерність — актуальні технології та стилі.',
+  },
+]
 
 const fadeUp = (delay = 0) => ({
   initial:     { opacity: 0, y: 26 },
@@ -312,6 +335,94 @@ export default function About({ onNavigate, t }) {
           </motion.div>
         </div>
       </div>
+
+      {/* ── Why clients return ───────────────────────────────── */}
+      <section className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pb-28 pt-4">
+
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+          style={{ textAlign: 'center', marginBottom: 52 }}
+        >
+          <span className="section-tag" style={{ display: 'block', textAlign: 'center' }}>
+            VELOURA Studio
+          </span>
+          <h2
+            className="font-serif"
+            style={{
+              fontSize: 'clamp(26px, 3.5vw, 44px)',
+              fontWeight: 300, color: '#2D1520', lineHeight: 1.1,
+            }}
+          >
+            Чому клієнти повертаються
+          </h2>
+          <div style={{
+            height: 1, maxWidth: 140, margin: '18px auto 0',
+            background: 'linear-gradient(90deg, transparent, rgba(200,160,174,0.55), transparent)',
+          }} />
+        </motion.div>
+
+        {/* Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {RETURN_CARDS.map(({ Icon, title, desc }, i) => (
+            <motion.div
+              key={title}
+              initial={{ opacity: 0, y: 26 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.65, delay: i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+              style={{
+                background: 'rgba(255,255,255,0.68)',
+                border: '1px solid rgba(200,160,174,0.18)',
+                borderRadius: 20,
+                padding: '32px 28px',
+                backdropFilter: 'blur(12px)',
+                boxShadow: '0 4px 24px rgba(45,21,32,0.06), 0 1px 4px rgba(45,21,32,0.03)',
+                transition: 'all 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                cursor: 'default',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.transform = 'translateY(-6px)'
+                e.currentTarget.style.boxShadow = '0 22px 52px rgba(45,21,32,0.1), 0 4px 16px rgba(45,21,32,0.06)'
+                e.currentTarget.style.borderColor = 'rgba(200,160,174,0.38)'
+                e.currentTarget.style.background = 'rgba(255,255,255,0.88)'
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.transform = 'translateY(0)'
+                e.currentTarget.style.boxShadow = '0 4px 24px rgba(45,21,32,0.06), 0 1px 4px rgba(45,21,32,0.03)'
+                e.currentTarget.style.borderColor = 'rgba(200,160,174,0.18)'
+                e.currentTarget.style.background = 'rgba(255,255,255,0.68)'
+              }}
+            >
+              <div style={{
+                width: 46, height: 46, borderRadius: 14,
+                background: 'linear-gradient(135deg, rgba(200,160,174,0.18), rgba(200,160,174,0.07))',
+                border: '1px solid rgba(200,160,174,0.22)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                marginBottom: 22,
+              }}>
+                <Icon size={18} style={{ color: '#B08898', strokeWidth: 1.5 }} />
+              </div>
+              <div style={{
+                fontSize: 13, fontWeight: 500, color: '#2D1520',
+                fontFamily: 'Raleway, sans-serif', letterSpacing: '0.02em', marginBottom: 10,
+              }}>
+                {title}
+              </div>
+              <div style={{
+                fontSize: 12, fontWeight: 300, color: '#A07888',
+                fontFamily: 'Raleway, sans-serif', lineHeight: 1.85,
+              }}>
+                {desc}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
     </motion.div>
   )
 }
