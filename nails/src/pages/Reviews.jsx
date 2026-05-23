@@ -477,29 +477,36 @@ export default function Reviews({ t }) {
 
       {/* ── Bottom decorative tagline ─────────────────────────── */}
       <motion.div
-        initial={{ opacity: 0, y: 16 }}
+        initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+        transition={{ duration: 1.1, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
         className="relative z-10 pb-16"
-        style={{ textAlign: 'center' }}
+        style={{ textAlign: 'center', marginTop: 48 }}
       >
+        {/* Divider with diamond */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 14, marginBottom: 22 }}>
+          <div style={{ width: 80, height: 1, background: 'linear-gradient(90deg, transparent, rgba(200,160,174,0.3))' }} />
+          <div style={{ width: 5, height: 5, borderRadius: '50%', background: 'rgba(200,160,174,0.35)', flexShrink: 0 }} />
+          <div style={{ width: 80, height: 1, background: 'linear-gradient(90deg, rgba(200,160,174,0.3), transparent)' }} />
+        </div>
+
+        {/* Italic quote */}
         <div style={{
-          height: 1, maxWidth: 280, margin: '0 auto 22px',
-          background: 'linear-gradient(90deg, transparent, rgba(200,160,174,0.35), transparent)',
-        }} />
-        <p style={{
-          fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase',
-          color: 'rgba(160,120,136,0.45)', fontFamily: 'Raleway, sans-serif', fontWeight: 300,
+          fontSize: '14px', fontFamily: 'Playfair Display, serif', fontStyle: 'italic',
+          color: 'rgba(45,21,32,0.28)', fontWeight: 400, letterSpacing: '0.03em',
+          marginBottom: 10,
+        }}>
+          "Краса у деталях"
+        </div>
+
+        {/* Studio line */}
+        <div style={{
+          fontSize: '9px', letterSpacing: '0.44em', textTransform: 'uppercase',
+          color: 'rgba(160,112,128,0.32)', fontFamily: 'Raleway, sans-serif', fontWeight: 400,
         }}>
           VELOURA · Praha · Czech Republic
-        </p>
-        <p style={{
-          fontFamily: 'Playfair Display, serif', fontStyle: 'italic', fontWeight: 300,
-          fontSize: '13px', color: 'rgba(45,21,32,0.3)', marginTop: 6, letterSpacing: '0.04em',
-        }}>
-          Краса у деталях
-        </p>
+        </div>
       </motion.div>
 
     </motion.div>
