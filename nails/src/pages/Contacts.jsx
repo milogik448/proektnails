@@ -134,6 +134,18 @@ function BookingCard({ c }) {
         gap: 0,
         position: 'relative',
         overflow: 'hidden',
+        transition: 'box-shadow 0.32s ease, border-color 0.32s ease, transform 0.32s ease',
+        cursor: 'default',
+      }}
+      onMouseEnter={e => {
+        e.currentTarget.style.transform = 'translateY(-4px)'
+        e.currentTarget.style.boxShadow = '0 60px 110px rgba(45,21,32,0.38), 0 16px 40px rgba(45,21,32,0.26), 0 0 0 1px rgba(200,160,174,0.18), inset 0 1px 0 rgba(255,255,255,0.1)'
+        e.currentTarget.style.borderColor = 'rgba(200,160,174,0.24)'
+      }}
+      onMouseLeave={e => {
+        e.currentTarget.style.transform = 'translateY(0)'
+        e.currentTarget.style.boxShadow = '0 48px 96px rgba(45,21,32,0.3), 0 10px 28px rgba(45,21,32,0.2), 0 0 0 1px rgba(200,160,174,0.09), inset 0 1px 0 rgba(255,255,255,0.08)'
+        e.currentTarget.style.borderColor = 'rgba(200,160,174,0.13)'
       }}
     >
       {/* Glow orb — top right */}
