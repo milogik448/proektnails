@@ -11,6 +11,8 @@ const WELCOME_TEXT = {
   cs: 'Ahoj! 💅 Jsem AI asistent VELOURA Studio. Pomohu vám objednat manikúru nebo pedikúru. Jak se jmenujete?',
 }
 
+const AI_LABEL = { uk: 'AI запис', en: 'AI booking', cs: 'AI rezervace' }
+
 const makeWelcome = (lang) => ({ role: 'assistant', content: WELCOME_TEXT[lang] ?? WELCOME_TEXT.uk })
 
 function TypingDots() {
@@ -177,7 +179,7 @@ export default function ChatWidget({ menuOpen = false, lang = 'uk' }) {
             }}
           >
             <Sparkles size={12} style={{ color: '#C8A0AE', flexShrink: 0 }} />
-            AI запис
+            {AI_LABEL[lang] ?? AI_LABEL.uk}
           </motion.div>
         )}
       </AnimatePresence>
