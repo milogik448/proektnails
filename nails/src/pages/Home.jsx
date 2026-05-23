@@ -77,7 +77,6 @@ export default function Home({ onNavigate, t }) {
           >V</span>
         </div>
 
-        <div style={{ maxWidth: 1080, marginLeft: 'auto', marginRight: 'auto', width: '100%', display: 'flex', flexDirection: 'column' }}>
           {/* Tag */}
           <motion.span {...fadeUp(0.05)} className="section-tag">Praha · Czech Republic</motion.span>
 
@@ -135,7 +134,6 @@ export default function Home({ onNavigate, t }) {
               </button>
             </div>
           </motion.div>
-        </div>
       </section>
 
       {/* ── Stats ───────────────────────────────────────────── */}
@@ -175,7 +173,6 @@ export default function Home({ onNavigate, t }) {
 
       {/* ── Why choose me ────────────────────────────────────── */}
       <section className="px-8 md:px-12 lg:px-16 xl:px-20 py-24">
-        <div style={{ maxWidth: 1080, margin: '0 auto' }}>
           <motion.div {...fadeUpView(0)} className="mb-14">
             <span className="section-tag">Про майстра</span>
             <h2
@@ -226,12 +223,10 @@ export default function Home({ onNavigate, t }) {
               </motion.div>
             ))}
           </div>
-        </div>
       </section>
 
       {/* ── Gallery ──────────────────────────────────────────── */}
       <section className="px-8 md:px-12 lg:px-16 xl:px-20 pb-24">
-        <div style={{ maxWidth: 1080, margin: '0 auto' }}>
           <motion.div {...fadeUpView(0)} className="flex items-end justify-between mb-10">
             <div>
               <span className="section-tag">{h.worksTag}</span>
@@ -309,12 +304,10 @@ export default function Home({ onNavigate, t }) {
               {h.instagramBtn}
             </a>
           </motion.div>
-        </div>
       </section>
 
       {/* ── Why VELOURA ──────────────────────────────────────── */}
       <section className="px-8 md:px-12 lg:px-16 xl:px-20 pb-28">
-        <div style={{ maxWidth: 1080, margin: '0 auto' }}>
 
         {/* Section header */}
         <motion.div {...fadeUpView(0)} style={{ textAlign: 'center', marginBottom: 52 }}>
@@ -394,7 +387,6 @@ export default function Home({ onNavigate, t }) {
               </div>
             </motion.div>
           ))}
-        </div>
         </div>
       </section>
 
