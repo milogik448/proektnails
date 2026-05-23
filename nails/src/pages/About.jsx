@@ -219,7 +219,7 @@ export default function About({ onNavigate, t }) {
         </motion.div>
 
         {/* RIGHT — Content */}
-        <div className="flex flex-col gap-8 pt-2">
+        <div className="flex flex-col gap-8">
 
           {/* Name block */}
           <motion.div {...fadeUp(0.06)}>
