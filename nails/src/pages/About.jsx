@@ -150,15 +150,15 @@ export default function About({ onNavigate, t }) {
 
       {/* Body */}
       <div className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 py-16 lg:py-20">
-      <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+      <div className="flex flex-col lg:flex-row items-start" style={{ gap: '72px' }}>
 
         {/* LEFT — Photo */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.0, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="relative"
-          style={{ maxWidth: 380 }}
+          className="relative w-full"
+          style={{ maxWidth: 400, flexShrink: 0 }}
         >
           <div
             className="aspect-[3/4] overflow-hidden"
@@ -219,7 +219,7 @@ export default function About({ onNavigate, t }) {
         </motion.div>
 
         {/* RIGHT — Content */}
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-8" style={{ flex: 1, maxWidth: 620 }}>
 
           {/* Name block */}
           <motion.div {...fadeUp(0.06)}>
