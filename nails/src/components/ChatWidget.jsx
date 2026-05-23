@@ -45,7 +45,7 @@ function Message({ role, content }) {
   )
 }
 
-export default function ChatWidget() {
+export default function ChatWidget({ menuOpen = false }) {
   const [isOpen, setIsOpen]     = useState(false)
   const [messages, setMessages] = useState([WELCOME])
   const [input, setInput]       = useState('')
@@ -132,6 +132,9 @@ export default function ChatWidget() {
     <div ref={containerRef} style={{
       position: 'fixed', bottom: 24, right: 24, zIndex: 200,
       display: 'flex', alignItems: 'flex-end', flexDirection: 'row', gap: 12,
+      opacity: menuOpen ? 0 : 1,
+      pointerEvents: menuOpen ? 'none' : 'auto',
+      transition: 'opacity 0.2s ease',
     }}>
 
       {/* AI label — показується коли чат закритий */}
