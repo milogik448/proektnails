@@ -19,28 +19,7 @@ const ALL_WORKS = [
   '/images/works/images (3).jpg',
 ]
 
-const WHY_CARDS = [
-  {
-    Icon: Heart,
-    title: 'Індивідуальний підхід',
-    desc: 'Враховую форму нігтів, стиль та побажання. Кожна клієнтка отримує рішення саме для неї.',
-  },
-  {
-    Icon: Clock,
-    title: 'Тривалий результат',
-    desc: 'Покриття тримається тижнями без сколів та втрати блиску — якість, що говорить сама за себе.',
-  },
-  {
-    Icon: BadgeCheck,
-    title: 'Чесні ціни',
-    desc: 'Повна вартість обговорюється заздалегідь. Ніяких прихованих доплат та сюрпризів.',
-  },
-  {
-    Icon: MapPin,
-    title: 'Praha, Czech Republic',
-    desc: 'Студія у зручному місці в Празі. Затишне місце, куди хочеться повертатись знову.',
-  },
-]
+const WHY_ICONS = [Heart, Clock, BadgeCheck, MapPin]
 
 const fadeUp = (delay = 0) => ({
   initial:    { opacity: 0, y: 30 },
@@ -427,7 +406,9 @@ export default function Home({ onNavigate, t }) {
 
         {/* Cards grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {WHY_CARDS.map(({ Icon, title, desc }, i) => (
+          {h.whyItems.map(({ title, desc }, i) => {
+            const Icon = WHY_ICONS[i]
+            return (
             <motion.div
               key={title}
               initial={{ opacity: 0, y: 26 }}
@@ -479,7 +460,8 @@ export default function Home({ onNavigate, t }) {
                 {desc}
               </div>
             </motion.div>
-          ))}
+            )
+          })}
         </div>
       </section>
 
