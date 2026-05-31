@@ -180,7 +180,7 @@ export default function App() {
                 <Page key={activePage} onNavigate={navigate} lang={lang} t={t} />
               </AnimatePresence>
             </div>
-            <Footer t={t} />
+            <Footer />
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-export default function Footer({ t = {} }) {
+export default function Footer() {
   return (
     <footer style={{
       background: 'rgba(242,222,228,0.97)',
@@ -23,7 +23,7 @@ export default function Footer({ t = {} }) {
         letterSpacing: '0.03em',
         marginBottom: 10,
       }}>
-        "{t.footerTagline}"
+        "Краса у деталях"
       </div>
 
       {/* Studio name */}
@@ -36,7 +36,7 @@ export default function Footer({ t = {} }) {
         fontWeight: 400,
         marginBottom: 22,
       }}>
-        {t.footerLocation}
+        VELOURA · Praha · Czech Republic
       </div>
 
       {/* Thin separator */}
@@ -54,7 +54,7 @@ export default function Footer({ t = {} }) {
         fontFamily: 'Raleway, sans-serif',
         fontWeight: 300,
       }}>
-        {t.footerCopyright}
+        2026 by Milogo
       </span>
     </footer>
   )
