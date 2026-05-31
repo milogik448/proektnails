@@ -57,9 +57,11 @@ const fadeUpView = (delay = 0) => ({
 
 function AutoScrollGallery({ images, onImageClick }) {
   const [isPaused, setIsPaused] = useState(false)
+  const [isPageScrolling, setIsPageScrolling] = useState(false)
   const scrollControls = useAnimation()
   const containerRef = useRef(null)
   const [scrollDistance, setScrollDistance] = useState(0)
+  const scrollTimeoutRef = useRef(null)
 
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
   const duplicatedImages = isMobile
@@ -73,13 +75,29 @@ function AutoScrollGallery({ images, onImageClick }) {
   }, [])
 
   useEffect(() => {
+    const handlePageScroll = () => {
+      setIsPageScrolling(true)
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current)
+      scrollTimeoutRef.current = setTimeout(() => {
+        setIsPageScrolling(false)
+      }, 1500)
+    }
+
+    window.addEventListener('scroll', handlePageScroll)
+    return () => {
+      window.removeEventListener('scroll', handlePageScroll)
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current)
+    }
+  }, [])
+
+  useEffect(() => {
     if (scrollDistance === 0) return
 
     let isActive = true
     const animate = async () => {
       while (isActive) {
         const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
-        const duration = isPaused ? 600 : (isMobile ? 35 : 25)
+        const duration = isPaused || isPageScrolling ? 600 : (isMobile ? 35 : 25)
         await scrollControls.start({
           x: scrollDistance,
           transition: { duration, ease: 'linear' },
