@@ -1,7 +1,4 @@
-import { translations } from '../i18n'
-
-export default function Footer({ lang = 'uk' }) {
-  const t = translations[lang].home
+export default function Footer() {
   return (
     <footer style={{
       background: 'rgba(242,222,228,0.97)',
@@ -26,7 +23,7 @@ export default function Footer({ lang = 'uk' }) {
         letterSpacing: '0.03em',
         marginBottom: 10,
       }}>
-        "{t.footerTagline}"
+        "Краса у деталях"
       </div>
 
       {/* Studio name */}
@@ -39,7 +36,7 @@ export default function Footer({ lang = 'uk' }) {
         fontWeight: 400,
         marginBottom: 22,
       }}>
-        {t.footerLocation}
+        VELOURA · Praha · Czech Republic
       </div>
 
       {/* Thin separator */}
@@ -57,7 +54,7 @@ export default function Footer({ lang = 'uk' }) {
         fontFamily: 'Raleway, sans-serif',
         fontWeight: 300,
       }}>
-        {t.footerCopyright}
+        2026 by Milogo
       </span>
     </footer>
   )
