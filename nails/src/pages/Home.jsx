@@ -395,8 +395,8 @@ export default function Home({ onNavigate, t }) {
       {/* ── Gallery & Outro ───────────────────────────────────────────── */}
       <section style={{ paddingBottom: '3rem', paddingTop: '3rem', overflow: 'hidden' }}>
         <motion.div {...fadeUpView(0)} className="px-5 sm:px-8 md:px-12 lg:px-16 xl:px-20" style={{ marginBottom: '2.5rem' }}>
-          <span className="section-tag">Роботи майстра</span>
-          <h2 className="font-serif" style={{ fontSize: 'clamp(24px, 3.5vw, 42px)', fontWeight: 300, color: '#2D1520' }}>Вибрані роботи</h2>
+          <span className="section-tag">{h.galleryTitle}</span>
+          <h2 className="font-serif" style={{ fontSize: 'clamp(24px, 3.5vw, 42px)', fontWeight: 300, color: '#2D1520' }}>{h.selectedWorksTitle}</h2>
           <div style={{ height: 1, maxWidth: 80, marginTop: 12, background: 'linear-gradient(90deg, rgba(200,160,174,0.55), transparent)' }} />
         </motion.div>
 
@@ -417,7 +417,7 @@ export default function Home({ onNavigate, t }) {
               fontWeight: 300, color: '#2D1520', lineHeight: 1.1,
             }}
           >
-            Чому обирають VELOURA
+            {h.whyVelouraTitle}
           </h2>
           <div style={{
             height: 1, maxWidth: 140, margin: '18px auto 0',
