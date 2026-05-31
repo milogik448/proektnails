@@ -29,7 +29,7 @@ export default function App() {
     setActivePage(page)
     setMenuOpen(false)
     window.location.hash = page === 'home' ? '' : page
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    window.scrollTo(0, 0)
   }
 
   useEffect(() => {
@@ -175,8 +175,8 @@ export default function App() {
 
           {/* Page content */}
           <div className="flex-1 pt-[57px] lg:pt-0 flex flex-col overflow-hidden">
-            <div className="flex-1 overflow-y-auto overflow-x-hidden">
-              <AnimatePresence mode="wait">
+            <div className="flex-1 overflow-y-auto overflow-x-hidden" style={{ position: 'relative' }}>
+              <AnimatePresence mode="popLayout">
                 <Page key={activePage} onNavigate={navigate} lang={lang} t={t} />
               </AnimatePresence>
             </div>
