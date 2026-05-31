@@ -380,13 +380,6 @@ export default function Reviews({ t }) {
 
       {/* ── Header ────────────────────────────────────────────── */}
       <div className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pt-16 pb-10">
-        <motion.span
-          initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="section-tag"
-        >
-          {r.tag}
-        </motion.span>
         <motion.h1
           initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.06 }}

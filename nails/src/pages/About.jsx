@@ -138,7 +138,6 @@ export default function About({ onNavigate, t }) {
 
       {/* Header */}
       <div className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pt-16 pb-12 border-b border-ghost">
-          <span className="section-tag">{a.tag}</span>
           <h1
             className="font-serif font-light leading-none"
             style={{ fontSize: 'clamp(42px, 7vw, 88px)', color: '#2D1520' }}
