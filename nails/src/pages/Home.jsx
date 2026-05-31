@@ -345,7 +345,7 @@ export default function Home({ onNavigate, t }) {
                 minWidth: isMobileView ? 'auto' : 126,
               }}
             >
-              {[{ num: '200+', label: 'клієнтів' }, { num: '5.0 ★', label: 'рейтинг' }].map(({ num, label }, i) => (
+              {h.heroStats.map(({ num, label }, i) => (
                 <div key={label}>
                   {i > 0 && <div style={{ height: 1, background: 'rgba(200,160,174,0.22)', margin: isMobileView ? '4px 0' : '8px 0' }} />}
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: isMobileView ? 3 : 6 }}>
@@ -357,7 +357,7 @@ export default function Home({ onNavigate, t }) {
               <div style={{ height: 1, background: 'rgba(200,160,174,0.22)', margin: isMobileView ? '4px 0' : '8px 0' }} />
               <div style={{ display: 'flex', alignItems: 'center', gap: isMobileView ? 2.5 : 5 }}>
                 <span style={{ width: isMobileView ? 2.5 : 5, height: isMobileView ? 2.5 : 5, borderRadius: '50%', background: '#7ED9A5', boxShadow: '0 0 6px rgba(126,217,165,0.7)', flexShrink: 0, display: 'inline-block' }} />
-                <span style={{ fontFamily: 'Raleway, sans-serif', fontSize: isMobileView ? 3.5 : 7.5, fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#A07888' }}>AI запис</span>
+                <span style={{ fontFamily: 'Raleway, sans-serif', fontSize: isMobileView ? 3.5 : 7.5, fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#A07888' }}>{h.aiBooking}</span>
               </div>
             </motion.div>
 
