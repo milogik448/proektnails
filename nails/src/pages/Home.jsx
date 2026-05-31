@@ -59,32 +59,65 @@ function AutoScrollGallery({ images, onImageClick }) {
   const [isPaused, setIsPaused] = useState(false)
   const scrollControls = useAnimation()
   const containerRef = useRef(null)
+  const [scrollDistance, setScrollDistance] = useState(0)
 
-  const duplicatedImages = [...images, ...images]
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+  const duplicatedImages = isMobile
+    ? [...images, ...images]
+    : [...images, ...images, ...images]
 
   useEffect(() => {
-    if (isPaused) return
+    if (!containerRef.current) return
+    const width = containerRef.current.scrollWidth / 2
+    setScrollDistance(-width)
+  }, [])
 
-    const startScroll = async () => {
-      await scrollControls.start({
-        x: -5000,
-        transition: { duration: 45, ease: 'linear', repeat: Infinity, repeatType: 'loop' },
-      })
+  useEffect(() => {
+    if (scrollDistance === 0) return
+
+    const animate = async () => {
+      while (true) {
+        const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+        const duration = isPaused ? 600 : (isMobile ? 35 : 25)
+        await scrollControls.start({
+          x: scrollDistance,
+          transition: { duration, ease: 'linear' },
+        })
+        if (!isPaused) {
+          await scrollControls.start({
+            x: 0,
+            transition: { duration: 0.6, ease: 'easeInOut' },
+          })
+        } else {
+          break
+        }
+      }
     }
-    startScroll()
-  }, [isPaused, scrollControls])
+    animate()
+  }, [scrollControls, scrollDistance])
 
   const handleMouseEnter = () => {
     setIsPaused(true)
-    scrollControls.stop()
   }
 
   const handleMouseLeave = () => {
     setIsPaused(false)
   }
 
+  useEffect(() => {
+    if (containerRef.current) {
+      const width = containerRef.current.scrollWidth / 2
+      setScrollDistance(-width)
+    }
+  }, [])
+
   return (
-    <div style={{ overflow: 'hidden', paddingBottom: 24 }}>
+    <div style={{
+      overflow: 'hidden',
+      paddingBottom: 24,
+      contain: 'layout style paint',
+      isolation: 'isolate',
+    }}>
       <motion.div
         ref={containerRef}
         onMouseEnter={handleMouseEnter}
@@ -95,6 +128,8 @@ function AutoScrollGallery({ images, onImageClick }) {
           gap: 14,
           paddingLeft: 'clamp(32px, 5vw, 80px)',
           paddingRight: 'clamp(32px, 5vw, 80px)',
+          willChange: 'transform',
+          backfaceVisibility: 'hidden',
         }}
       >
         {duplicatedImages.map((src, i) => (
@@ -124,7 +159,7 @@ function AutoScrollGallery({ images, onImageClick }) {
               if (img) img.style.transform = 'scale(1)'
             }}
           >
-            <img src={src} alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.7s ease', display: 'block' }} />
+            <img src={src} alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.7s ease', display: 'block', backfaceVisibility: 'hidden' }} />
           </motion.div>
         ))}
       </motion.div>
