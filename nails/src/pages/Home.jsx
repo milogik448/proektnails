@@ -314,10 +314,10 @@ export default function Home({ onNavigate, t }) {
               transition={{ duration: 0.8, delay: 0.7 }}
               style={{
                 position: 'absolute',
-                top: isMobileView ? 'auto' : 18,
-                bottom: isMobileView ? 12 : 'auto',
-                left: isMobileView ? 'auto' : 18,
-                right: isMobileView ? 12 : 'auto',
+                top: 'auto',
+                bottom: 12,
+                left: 'auto',
+                right: 12,
                 zIndex: 3,
                 background: 'rgba(255,255,255,0.95)',
                 border: '1px solid rgba(200,160,174,0.28)',
