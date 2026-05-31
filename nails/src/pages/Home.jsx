@@ -177,6 +177,15 @@ export default function Home({ onNavigate, t }) {
   const h = t.home
   const [selectedImage, setSelectedImage] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isMobileView, setIsMobileView] = useState(typeof window !== 'undefined' && window.innerWidth < 1024)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth < 1024)
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -304,9 +313,9 @@ export default function Home({ onNavigate, t }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
               style={{
-                position: typeof window !== 'undefined' && window.innerWidth < 1024 ? 'static' : 'absolute',
-                top: typeof window !== 'undefined' && window.innerWidth < 1024 ? 'auto' : 18,
-                left: typeof window !== 'undefined' && window.innerWidth < 1024 ? 'auto' : 18,
+                position: isMobileView ? 'static' : 'absolute',
+                top: isMobileView ? 'auto' : 18,
+                left: isMobileView ? 'auto' : 18,
                 zIndex: 3,
                 background: 'rgba(255,255,255,0.95)',
                 border: '1px solid rgba(200,160,174,0.28)',
@@ -314,7 +323,7 @@ export default function Home({ onNavigate, t }) {
                 padding: '12px 16px',
                 boxShadow: '0 8px 28px rgba(45,21,32,0.12)',
                 minWidth: 126,
-                marginTop: typeof window !== 'undefined' && window.innerWidth < 1024 ? 16 : 0,
+                marginTop: isMobileView ? 16 : 0,
               }}
             >
               {[{ num: '200+', label: 'клієнтів' }, { num: '5.0 ★', label: 'рейтинг' }].map(({ num, label }, i) => (
