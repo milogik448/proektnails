@@ -45,13 +45,25 @@ export default function Services({ t }) {
       </div>
 
       {/* ── CATEGORY CHIPS (all screens) ── */}
-      <div className="relative z-10 px-8 md:px-12 lg:px-16 xl:px-20 pb-6">
-        <div className="flex gap-2 flex-wrap">
+      <div className="relative z-10 pb-6">
+        <div
+          className="flex gap-2 lg:flex-wrap lg:px-8 md:lg:px-12"
+          style={{
+            overflowX: 'auto',
+            overflowY: 'hidden',
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+            WebkitOverflowScrolling: 'touch',
+            paddingLeft: 'clamp(24px, 5vw, 80px)',
+            paddingRight: 'clamp(24px, 5vw, 80px)',
+            flexWrap: 'nowrap',
+          }}
+        >
           {s.list.map((svc, i) => (
             <button
               key={svc.id}
               onClick={() => setSelected(svc.id)}
-              className="flex items-center gap-2 transition-all duration-300"
+              className="flex items-center gap-2 transition-all duration-300 shrink-0"
               style={{
                 padding: '9px 18px',
                 borderRadius: '100px',

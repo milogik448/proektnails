@@ -90,7 +90,7 @@ function FeaturedReview({ review }) {
 
       {/* Decorative quote */}
       <div style={{
-        fontSize: 120, fontFamily: 'Playfair Display, serif', fontStyle: 'italic',
+        fontSize: 120, fontFamily: 'DM Serif Display, serif', fontStyle: 'italic',
         color: 'rgba(200,160,174,0.16)', lineHeight: 0.72, fontWeight: 300,
         marginBottom: 12, userSelect: 'none',
       }}>
@@ -99,7 +99,7 @@ function FeaturedReview({ review }) {
 
       <p style={{
         fontSize: 'clamp(15px, 1.9vw, 20px)',
-        color: '#2D1520', fontFamily: 'Playfair Display, serif', fontWeight: 400,
+        color: '#2D1520', fontFamily: 'DM Serif Display, serif', fontWeight: 400,
         lineHeight: 1.88, marginBottom: 34,
       }}>
         {review.text}
@@ -114,7 +114,7 @@ function FeaturedReview({ review }) {
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             boxShadow: '0 4px 16px rgba(45,21,32,0.22)',
           }}>
-            <span style={{ fontFamily: 'Playfair Display, serif', fontSize: 17, color: '#F6EBF0', fontWeight: 300 }}>
+            <span style={{ fontFamily: 'DM Serif Display, serif', fontSize: 17, color: '#F6EBF0', fontWeight: 300 }}>
               {review.name[0]}
             </span>
           </div>
@@ -246,7 +246,7 @@ function TrustCard({ t }) {
       {/* Title */}
       <div style={{
         fontSize: 20, color: '#F0DFE6',
-        fontFamily: 'Playfair Display, serif', fontWeight: 400, marginBottom: 6,
+        fontFamily: 'DM Serif Display, serif', fontWeight: 400, marginBottom: 6,
       }}>
         Довіра клієнтів
       </div>
@@ -271,7 +271,7 @@ function TrustCard({ t }) {
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, paddingTop: 15, paddingBottom: 15 }}>
               <div style={{
                 fontSize: 28, color: '#F0DFE6',
-                fontFamily: 'Playfair Display, serif', fontWeight: 400, lineHeight: 1,
+                fontFamily: 'DM Serif Display, serif', fontWeight: 400, lineHeight: 1,
               }}>
                 {value}
               </div>
@@ -301,7 +301,7 @@ function TrustCard({ t }) {
         }} />
         <p style={{
           fontSize: 12.5, color: 'rgba(240,223,230,0.52)',
-          fontFamily: 'Playfair Display, serif', fontStyle: 'italic',
+          fontFamily: 'DM Serif Display, serif', fontStyle: 'italic',
           lineHeight: 1.85, fontWeight: 300,
         }}>
           Кожен відгук — це результат акуратної роботи, комфорту та уваги до деталей.
@@ -354,7 +354,7 @@ export default function Reviews({ t }) {
         <div style={{
           position: 'absolute', top: '4%', left: '50%', transform: 'translateX(-50%)',
           fontSize: 'clamp(200px, 28vw, 360px)',
-          fontFamily: 'Playfair Display, serif', fontStyle: 'italic', fontWeight: 300,
+          fontFamily: 'DM Serif Display, serif', fontStyle: 'italic', fontWeight: 300,
           color: 'rgba(200,160,174,0.055)', lineHeight: 1, userSelect: 'none',
           letterSpacing: '-0.04em',
         }}>

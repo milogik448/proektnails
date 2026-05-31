@@ -29,7 +29,7 @@ const RETURN_CARDS = [
 const fadeUp = (delay = 0) => ({
   initial:     { opacity: 0, y: 26 },
   whileInView: { opacity: 1, y: 0 },
-  viewport:    { once: true, margin: '-40px' },
+  viewport:    { once: true, margin: '-100px' },
   transition:  { duration: 0.75, delay, ease: [0.25, 0.46, 0.45, 0.94] },
 })
 
@@ -66,7 +66,7 @@ function TrustCard({ label, Icon, delay }) {
     <motion.div
       initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-20px' }}
+      viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.6, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
       className="flex flex-col gap-4 p-5 cursor-default transition-all duration-300"
       style={{
@@ -109,6 +109,7 @@ export default function About({ onNavigate, t }) {
       exit={{ opacity: 0, x: -18 }}
       transition={{ duration: 0.38 }}
       className="min-h-screen relative"
+      style={{ contain: 'layout style' }}
     >
       {/* Subtle background glow — depth without noise */}
       <div
@@ -169,10 +170,14 @@ export default function About({ onNavigate, t }) {
             <img
               src="/images/master.jpg"
               alt={a.name}
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
               className="w-full h-full object-cover"
               style={{
                 filter: 'brightness(1.05) contrast(1.01) saturate(0.78) sepia(0.06)',
                 transform: 'scale(1.01)',
+                willChange: 'transform',
               }}
             />
             {/* Cinematic vignette */}

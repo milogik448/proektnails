@@ -211,6 +211,19 @@ export default function Home({ onNavigate, t }) {
 
         {/* LEFT — text column */}
         <div className="flex flex-col justify-center px-5 sm:px-8 md:px-12 lg:px-16 xl:px-20 pt-8 pb-8 sm:pt-14 sm:pb-14 lg:pt-20 lg:pb-20 relative z-10">
+          <div aria-hidden style={{ position: 'absolute', bottom: '28%', right: '-3%', pointerEvents: 'none', zIndex: 0, lineHeight: 1, overflow: 'hidden' }}>
+            <span style={{
+              fontFamily: 'DM Serif Display, serif',
+              fontSize: 'clamp(160px, 20vw, 260px)',
+              fontWeight: 400,
+              color: 'rgba(200,150,168,0.07)',
+              letterSpacing: '-0.04em',
+              userSelect: 'none',
+              display: 'block',
+              fontStyle: 'italic',
+            }}>V</span>
+          </div>
+          {/* Decorative V watermark */}
 
           {/* Tag */}
           <motion.span {...fadeUp(0.05)} className="section-tag">Praha · Czech Republic</motion.span>
@@ -219,7 +232,7 @@ export default function Home({ onNavigate, t }) {
           <motion.h1
             {...fadeUp(0.12)}
             style={{
-              fontFamily: 'Playfair Display, serif',
+              fontFamily: 'DM Serif Display, serif',
               fontSize: 'clamp(44px, 6.8vw, 96px)',
               fontWeight: 400,
               lineHeight: 0.9,
@@ -328,7 +341,7 @@ export default function Home({ onNavigate, t }) {
                 <div key={label}>
                   {i > 0 && <div style={{ height: 1, background: 'rgba(200,160,174,0.22)', margin: isMobileView ? '4px 0' : '8px 0' }} />}
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: isMobileView ? 3 : 6 }}>
-                    <span style={{ fontFamily: 'Playfair Display, serif', fontSize: isMobileView ? 11 : 19, fontWeight: 300, color: '#2D1520' }}>{num}</span>
+                    <span style={{ fontFamily: 'DM Serif Display, serif', fontSize: isMobileView ? 11 : 19, fontWeight: 300, color: '#2D1520' }}>{num}</span>
                     <span style={{ fontFamily: 'Raleway, sans-serif', fontSize: isMobileView ? 3.5 : 7.5, fontWeight: 500, color: '#A07888', letterSpacing: '0.18em', textTransform: 'uppercase' }}>{label}</span>
                   </div>
                 </div>

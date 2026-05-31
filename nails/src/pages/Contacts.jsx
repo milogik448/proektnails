@@ -46,7 +46,7 @@ function BookingPanel({ c }) {
         </span>
       </div>
 
-      <div style={{ fontSize: '22px', color: '#F0DFE6', fontFamily: 'Playfair Display, serif', fontWeight: 400, lineHeight: 1.25, marginBottom: 6 }}>
+      <div style={{ fontSize: '22px', color: '#F0DFE6', fontFamily: 'DM Serif Display, serif', fontWeight: 400, lineHeight: 1.25, marginBottom: 6 }}>
         {c.ctaTitle}
       </div>
       <div style={{ fontSize: '11.5px', color: 'rgba(200,160,174,0.5)', letterSpacing: '0.05em', fontFamily: 'Raleway, sans-serif', fontWeight: 300, marginBottom: 10 }}>
@@ -212,7 +212,7 @@ export default function Contacts({ t }) {
           <motion.h1
             {...fadeUp(0.1)}
             style={{
-              fontFamily: 'Playfair Display, serif',
+              fontFamily: 'DM Serif Display, serif',
               fontSize: 'clamp(40px, 6vw, 80px)',
               fontWeight: 400, lineHeight: 0.92,
               color: '#2D1520', letterSpacing: '-0.01em',
@@ -301,7 +301,7 @@ export default function Contacts({ t }) {
 
             <div style={{ fontSize: '9px', letterSpacing: '0.38em', textTransform: 'uppercase', color: '#C8A0AE', fontFamily: 'Raleway, sans-serif' }}>VELOURA Studio</div>
 
-            <div style={{ fontSize: '24px', fontFamily: 'Playfair Display, serif', fontWeight: 300, color: '#2D1520', lineHeight: 1.2 }}>
+            <div style={{ fontSize: '24px', fontFamily: 'DM Serif Display, serif', fontWeight: 300, color: '#2D1520', lineHeight: 1.2 }}>
               Zličín, Praha
             </div>
 

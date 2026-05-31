@@ -16,7 +16,7 @@ export default {
         sidebar:  '#0C0C0C',
       },
       fontFamily: {
-        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        serif: ['"DM Serif Display"', 'Georgia', 'serif'],
         sans:  ['Raleway', 'system-ui', 'sans-serif'],
       },
       transitionDuration: {

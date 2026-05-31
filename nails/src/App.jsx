@@ -124,7 +124,7 @@ export default function App() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
+              transition={{ duration: 0.4 }}
               onClick={() => setMenuOpen(false)}
               className="fixed inset-0 bg-black/70 z-40 lg:hidden"
             />
@@ -176,7 +176,7 @@ export default function App() {
           {/* Page content */}
           <div className="flex-1 pt-[57px] lg:pt-0 flex flex-col overflow-hidden">
             <div className="flex-1 overflow-y-auto overflow-x-hidden" style={{ position: 'relative' }}>
-              <AnimatePresence mode="popLayout">
+              <AnimatePresence mode="wait">
                 <Page key={activePage} onNavigate={navigate} lang={lang} t={t} />
               </AnimatePresence>
             </div>
