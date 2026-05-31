@@ -118,7 +118,7 @@ function AutoScrollGallery({ images, onImageClick }) {
       isActive = false
       scrollControls.stop()
     }
-  }, [scrollControls, scrollDistance])
+  }, [scrollControls, scrollDistance, isPaused, isPageScrolling])
 
   const handleMouseEnter = () => {
     setIsPaused(true)
