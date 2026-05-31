@@ -144,7 +144,7 @@ export default function App() {
         {/* Main */}
         <div
           className="flex-1 lg:ml-[64px] flex flex-col min-h-screen"
-          style={{ backgroundColor: 'rgba(242,222,228,0.97)' }}
+          style={{ backgroundColor: 'rgba(242,222,228,0.97)', overflow: 'hidden' }}
         >
           {/* Mobile top bar */}
           <div className="lg:hidden fixed top-0 left-0 right-0 z-30 flex items-center justify-between px-5 py-4 border-b border-ghost"
@@ -174,8 +174,8 @@ export default function App() {
           </div>
 
           {/* Page content */}
-          <div className="flex-1 pt-[57px] lg:pt-0 flex flex-col">
-            <div className="flex-1">
+          <div className="flex-1 pt-[57px] lg:pt-0 flex flex-col overflow-hidden">
+            <div className="flex-1 overflow-y-auto overflow-x-hidden">
               <AnimatePresence mode="wait">
                 <Page key={activePage} onNavigate={navigate} lang={lang} t={t} />
               </AnimatePresence>

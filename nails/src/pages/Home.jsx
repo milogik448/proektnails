@@ -1,5 +1,7 @@
-import { motion } from 'framer-motion'
+import { motion, useAnimation } from 'framer-motion'
 import { Instagram, Sparkles, Heart, Clock, BadgeCheck, MapPin } from 'lucide-react'
+import { useState, useRef, useEffect } from 'react'
+import ImageModal from '../components/ImageModal'
 
 const ALL_WORKS = [
   '/images/works/IMG_3143.PNG',
@@ -9,6 +11,12 @@ const ALL_WORKS = [
   '/images/works/IMG_3148.PNG',
   '/images/works/IMG_3149.PNG',
   '/images/works/IMG_3150.PNG',
+  '/images/works/завантаження.jpg',
+  '/images/works/завантаження (1).jpg',
+  '/images/works/images.jpg',
+  '/images/works/images (1).jpg',
+  '/images/works/images (2).jpg',
+  '/images/works/images (3).jpg',
 ]
 
 const WHY_CARDS = [
@@ -47,8 +55,87 @@ const fadeUpView = (delay = 0) => ({
   transition:  { duration: 0.75, delay, ease: [0.25, 0.46, 0.45, 0.94] },
 })
 
+function AutoScrollGallery({ images, onImageClick }) {
+  const [isPaused, setIsPaused] = useState(false)
+  const scrollControls = useAnimation()
+  const containerRef = useRef(null)
+
+  const duplicatedImages = [...images, ...images]
+
+  useEffect(() => {
+    if (isPaused) return
+
+    const startScroll = async () => {
+      await scrollControls.start({
+        x: -5000,
+        transition: { duration: 45, ease: 'linear', repeat: Infinity, repeatType: 'loop' },
+      })
+    }
+    startScroll()
+  }, [isPaused, scrollControls])
+
+  const handleMouseEnter = () => {
+    setIsPaused(true)
+    scrollControls.stop()
+  }
+
+  const handleMouseLeave = () => {
+    setIsPaused(false)
+  }
+
+  return (
+    <div style={{ overflow: 'hidden', paddingBottom: 24 }}>
+      <motion.div
+        ref={containerRef}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        animate={scrollControls}
+        style={{
+          display: 'flex',
+          gap: 14,
+          paddingLeft: 'clamp(32px, 5vw, 80px)',
+          paddingRight: 'clamp(32px, 5vw, 80px)',
+        }}
+      >
+        {duplicatedImages.map((src, i) => (
+          <motion.div
+            key={`${src}-${i}`}
+            onClick={() => onImageClick(src)}
+            style={{
+              flexShrink: 0,
+              width: 'clamp(200px, 21vw, 270px)',
+              height: 'clamp(260px, 27vw, 340px)',
+              borderRadius: 20,
+              overflow: 'hidden',
+              boxShadow: '0 12px 40px rgba(45,21,32,0.1), 0 2px 8px rgba(45,21,32,0.06)',
+              border: '1px solid rgba(200,160,174,0.15)',
+              position: 'relative',
+              cursor: 'pointer',
+              transition: 'box-shadow 0.3s ease',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.boxShadow = '0 32px 80px rgba(45,21,32,0.15), 0 4px 16px rgba(45,21,32,0.08)'
+              const img = e.currentTarget.querySelector('img')
+              if (img) img.style.transform = 'scale(1.05)'
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.boxShadow = '0 12px 40px rgba(45,21,32,0.1), 0 2px 8px rgba(45,21,32,0.06)'
+              const img = e.currentTarget.querySelector('img')
+              if (img) img.style.transform = 'scale(1)'
+            }}
+          >
+            <img src={src} alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.7s ease', display: 'block' }} />
+          </motion.div>
+        ))}
+      </motion.div>
+    </div>
+  )
+}
+
 export default function Home({ onNavigate, t }) {
   const h = t.home
+  const [selectedImage, setSelectedImage] = useState(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -56,6 +143,7 @@ export default function Home({ onNavigate, t }) {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.35 }}
       className="min-h-screen"
+      style={{ overflow: 'hidden', width: '100%' }}
     >
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section
@@ -240,74 +328,9 @@ export default function Home({ onNavigate, t }) {
           <div style={{ height: 1, maxWidth: 80, marginTop: 12, background: 'linear-gradient(90deg, rgba(200,160,174,0.55), transparent)' }} />
         </motion.div>
 
-        {/* ── Horizontal Gallery ── */}
-        <div style={{ paddingLeft: 'clamp(32px, 5vw, 80px)', paddingRight: 'clamp(32px, 5vw, 80px)', paddingBottom: 24, overflow: 'hidden' }}>
-          <div style={{ display: 'flex', gap: 14, overflowX: 'auto', overflowY: 'hidden', scrollbarWidth: 'none', msOverflowStyle: 'none' }} onMouseEnter={() => {}} onMouseLeave={() => {}}>
-            {[...Array(7)].map((_, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: 28 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: '80px' }}
-                transition={{ duration: 0.65, delay: Math.min(i * 0.06, 0.32) }}
-                style={{
-                  flexShrink: 0, width: 'clamp(200px, 21vw, 270px)', height: 'clamp(260px, 27vw, 340px)',
-                  borderRadius: 20, overflow: 'hidden',
-                  boxShadow: '0 12px 40px rgba(45,21,32,0.1), 0 2px 8px rgba(45,21,32,0.06)',
-                  border: '1px solid rgba(200,160,174,0.15)',
-                  position: 'relative',
-                }}
-                onMouseEnter={e => {
-                  const img = e.currentTarget.querySelector('img')
-                  if (img) img.style.transform = 'scale(1.08)'
-                }}
-                onMouseLeave={e => {
-                  const img = e.currentTarget.querySelector('img')
-                  if (img) img.style.transform = 'scale(1)'
-                }}
-              >
-                <img src={`/images/works/IMG_${3143 + i}.PNG`} alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.7s ease', display: 'block' }} />
-              </motion.div>
-            ))}
-          </div>
-        </div>
+        {/* ── Auto-Scroll Gallery ── */}
+        <AutoScrollGallery images={ALL_WORKS} onImageClick={(src) => { setSelectedImage(src); setIsModalOpen(true); }} />
       </section>
-
-      {/* ── Stats ───────────────────────────────────────────── */}
-      <section className="border-t border-b" style={{ borderColor: 'rgba(200,160,174,0.28)' }}>
-        <div className="grid grid-cols-3">
-          {h.stats.map(({ num, label }, i) => (
-            <motion.div
-              key={label}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className={`flex flex-col items-center justify-center py-10 sm:py-14 px-4 text-center ${i < 2 ? 'border-r' : ''}`}
-              style={{ borderColor: 'rgba(200,160,174,0.28)' }}
-            >
-              <div
-                className="font-serif"
-                style={{
-                  fontSize: 'clamp(36px, 5.5vw, 68px)',
-                  fontWeight: 300,
-                  color: '#2D1520',
-                  lineHeight: 1,
-                }}
-              >
-                {num}
-              </div>
-              <div
-                className="font-light tracking-[0.22em] uppercase mt-2.5"
-                style={{ fontSize: '8.5px', color: '#A07888' }}
-              >
-                {label}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
 
       {/* ── Why VELOURA ──────────────────────────────────────── */}
       <section className="px-8 md:px-12 lg:px-16 xl:px-20 py-24">
@@ -388,87 +411,7 @@ export default function Home({ onNavigate, t }) {
         </div>
       </section>
 
-      {/* ── Gallery ──────────────────────────────────────────── */}
-      <section className="px-8 md:px-12 lg:px-16 xl:px-20 pb-24">
-          <motion.div {...fadeUpView(0)} className="flex items-end justify-between mb-10">
-            <div>
-              <span className="section-tag">{h.worksTag}</span>
-              <h2
-                className="font-serif"
-                style={{
-                  fontSize: 'clamp(26px, 3.5vw, 42px)',
-                  fontWeight: 300,
-                  color: '#2D1520',
-                }}
-              >
-                {h.worksTitle}
-              </h2>
-            </div>
-          </motion.div>
-
-          <div
-            className="grid grid-cols-2 sm:grid-cols-3 gap-3"
-            style={{ gridAutoRows: '230px' }}
-          >
-            {ALL_WORKS.map((src, i) => (
-              <motion.div
-                key={src}
-                initial={{ opacity: 0, scale: 0.96 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.65, delay: i * 0.06 }}
-                className={`relative overflow-hidden group ${i === 1 || i === 4 ? 'row-span-2' : ''}`}
-                style={{ borderRadius: '16px' }}
-              >
-                <img
-                  src={src}
-                  alt={`${h.worksTitle} ${i + 1}`}
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                />
-                <div
-                  className="absolute inset-0 transition-opacity duration-500 opacity-0 group-hover:opacity-100"
-                  style={{
-                    background: 'linear-gradient(to top, rgba(45,21,32,0.38) 0%, transparent 60%)',
-                  }}
-                />
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Instagram button */}
-          <motion.div {...fadeUpView(0.1)} className="mt-12 flex justify-center">
-            <a
-              href="https://www.instagram.com/anjelikaa_nails"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-10 py-4 border transition-all duration-300"
-              style={{
-                fontSize: '10px',
-                fontFamily: 'Raleway, sans-serif',
-                fontWeight: 500,
-                letterSpacing: '0.28em',
-                textTransform: 'uppercase',
-                borderColor: 'rgba(200,160,174,0.55)',
-                color: '#8B6070',
-                borderRadius: '0',
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.borderColor = '#2D1520'
-                e.currentTarget.style.color = '#2D1520'
-                e.currentTarget.style.transform = 'translateY(-1px)'
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.borderColor = 'rgba(200,160,174,0.55)'
-                e.currentTarget.style.color = '#8B6070'
-                e.currentTarget.style.transform = 'translateY(0)'
-              }}
-            >
-              <Instagram size={13} />
-              {h.instagramBtn}
-            </a>
-          </motion.div>
-      </section>
-
+      <ImageModal isOpen={isModalOpen} image={selectedImage} onClose={() => setIsModalOpen(false)} />
     </motion.div>
   )
 }
