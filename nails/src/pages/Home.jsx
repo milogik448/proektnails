@@ -75,25 +75,31 @@ function AutoScrollGallery({ images, onImageClick }) {
   useEffect(() => {
     if (scrollDistance === 0) return
 
+    let isActive = true
     const animate = async () => {
-      while (true) {
+      while (isActive) {
         const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
         const duration = isPaused ? 600 : (isMobile ? 35 : 25)
         await scrollControls.start({
           x: scrollDistance,
           transition: { duration, ease: 'linear' },
         })
-        if (!isPaused) {
+        if (!isPaused && isActive) {
           await scrollControls.start({
             x: 0,
             transition: { duration: 0.6, ease: 'easeInOut' },
           })
-        } else {
+        } else if (isPaused) {
           break
         }
       }
     }
     animate()
+
+    return () => {
+      isActive = false
+      scrollControls.stop()
+    }
   }, [scrollControls, scrollDistance])
 
   const handleMouseEnter = () => {
