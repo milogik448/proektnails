@@ -313,9 +313,10 @@ export default function Home({ onNavigate, t }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
               style={{
-                position: isMobileView ? 'static' : 'absolute',
+                position: 'absolute',
                 top: isMobileView ? 'auto' : 18,
-                left: isMobileView ? 'auto' : 18,
+                bottom: isMobileView ? -80 : 'auto',
+                left: 18,
                 zIndex: 3,
                 background: 'rgba(255,255,255,0.95)',
                 border: '1px solid rgba(200,160,174,0.28)',
@@ -323,7 +324,6 @@ export default function Home({ onNavigate, t }) {
                 padding: '12px 16px',
                 boxShadow: '0 8px 28px rgba(45,21,32,0.12)',
                 minWidth: 126,
-                marginTop: isMobileView ? 16 : 0,
               }}
             >
               {[{ num: '200+', label: 'клієнтів' }, { num: '5.0 ★', label: 'рейтинг' }].map(({ num, label }, i) => (
