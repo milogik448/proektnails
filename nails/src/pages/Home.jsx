@@ -329,17 +329,17 @@ export default function Home({ onNavigate, t }) {
             >
               {[{ num: '200+', label: 'клієнтів' }, { num: '5.0 ★', label: 'рейтинг' }].map(({ num, label }, i) => (
                 <div key={label}>
-                  {i > 0 && <div style={{ height: 1, background: 'rgba(200,160,174,0.22)', margin: '8px 0' }} />}
-                  <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
-                    <span style={{ fontFamily: 'Playfair Display, serif', fontSize: 19, fontWeight: 300, color: '#2D1520' }}>{num}</span>
-                    <span style={{ fontFamily: 'Raleway, sans-serif', fontSize: 7.5, fontWeight: 500, color: '#A07888', letterSpacing: '0.18em', textTransform: 'uppercase' }}>{label}</span>
+                  {i > 0 && <div style={{ height: 1, background: 'rgba(200,160,174,0.22)', margin: isMobileView ? '4px 0' : '8px 0' }} />}
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: isMobileView ? 3 : 6 }}>
+                    <span style={{ fontFamily: 'Playfair Display, serif', fontSize: isMobileView ? 11 : 19, fontWeight: 300, color: '#2D1520' }}>{num}</span>
+                    <span style={{ fontFamily: 'Raleway, sans-serif', fontSize: isMobileView ? 3.5 : 7.5, fontWeight: 500, color: '#A07888', letterSpacing: '0.18em', textTransform: 'uppercase' }}>{label}</span>
                   </div>
                 </div>
               ))}
-              <div style={{ height: 1, background: 'rgba(200,160,174,0.22)', margin: '8px 0' }} />
-              <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-                <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#7ED9A5', boxShadow: '0 0 6px rgba(126,217,165,0.7)', flexShrink: 0, display: 'inline-block' }} />
-                <span style={{ fontFamily: 'Raleway, sans-serif', fontSize: 7.5, fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#A07888' }}>AI запис</span>
+              <div style={{ height: 1, background: 'rgba(200,160,174,0.22)', margin: isMobileView ? '4px 0' : '8px 0' }} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: isMobileView ? 2.5 : 5 }}>
+                <span style={{ width: isMobileView ? 2.5 : 5, height: isMobileView ? 2.5 : 5, borderRadius: '50%', background: '#7ED9A5', boxShadow: '0 0 6px rgba(126,217,165,0.7)', flexShrink: 0, display: 'inline-block' }} />
+                <span style={{ fontFamily: 'Raleway, sans-serif', fontSize: isMobileView ? 3.5 : 7.5, fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#A07888' }}>AI запис</span>
               </div>
             </motion.div>
 
