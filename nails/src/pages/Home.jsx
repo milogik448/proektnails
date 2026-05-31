@@ -315,15 +315,16 @@ export default function Home({ onNavigate, t }) {
               style={{
                 position: 'absolute',
                 top: isMobileView ? 'auto' : 18,
-                bottom: isMobileView ? -80 : 'auto',
-                left: 18,
+                bottom: isMobileView ? 12 : 'auto',
+                left: isMobileView ? 'auto' : 18,
+                right: isMobileView ? 12 : 'auto',
                 zIndex: 3,
                 background: 'rgba(255,255,255,0.95)',
                 border: '1px solid rgba(200,160,174,0.28)',
                 borderRadius: 14,
-                padding: '12px 16px',
+                padding: isMobileView ? '8px 12px' : '12px 16px',
                 boxShadow: '0 8px 28px rgba(45,21,32,0.12)',
-                minWidth: 126,
+                minWidth: isMobileView ? 'auto' : 126,
               }}
             >
               {[{ num: '200+', label: 'клієнтів' }, { num: '5.0 ★', label: 'рейтинг' }].map(({ num, label }, i) => (
