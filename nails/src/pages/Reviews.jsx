@@ -74,12 +74,11 @@ function FeaturedReview({ review }) {
       exit={{ opacity: 0, y: -10 }}
       transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
       style={{
-        backgroundColor: 'rgba(255,255,255,0.78)',
-        border: '1px solid rgba(200,160,174,0.18)',
-        borderRadius: 24,
-        padding: '36px 38px 32px',
-        boxShadow: '0 12px 48px rgba(45,21,32,0.09), 0 2px 8px rgba(45,21,32,0.05)',
-        backdropFilter: 'blur(16px)',
+        backgroundColor: 'rgba(255,255,255,0.82)',
+        border: '1px solid rgba(200,160,174,0.2)',
+        borderRadius: 26,
+        padding: '42px 44px 38px',
+        boxShadow: '0 16px 56px rgba(45,21,32,0.1), 0 3px 10px rgba(45,21,32,0.06)',
         position: 'relative', overflow: 'hidden',
       }}
     >
@@ -91,17 +90,17 @@ function FeaturedReview({ review }) {
 
       {/* Decorative quote */}
       <div style={{
-        fontSize: 96, fontFamily: 'Playfair Display, serif', fontStyle: 'italic',
-        color: 'rgba(200,160,174,0.15)', lineHeight: 0.75, fontWeight: 300,
-        marginBottom: 8, userSelect: 'none',
+        fontSize: 120, fontFamily: 'Playfair Display, serif', fontStyle: 'italic',
+        color: 'rgba(200,160,174,0.16)', lineHeight: 0.72, fontWeight: 300,
+        marginBottom: 12, userSelect: 'none',
       }}>
         "
       </div>
 
       <p style={{
-        fontSize: 'clamp(15px, 1.8vw, 19px)',
+        fontSize: 'clamp(15px, 1.9vw, 20px)',
         color: '#2D1520', fontFamily: 'Playfair Display, serif', fontWeight: 400,
-        lineHeight: 1.82, marginBottom: 30,
+        lineHeight: 1.88, marginBottom: 34,
       }}>
         {review.text}
       </p>
@@ -144,14 +143,13 @@ function ReviewCard({ review, isActive, onClick, delay }) {
       transition={{ delay, duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
       onClick={onClick}
       style={{
-        backgroundColor: isActive ? 'rgba(255,255,255,0.94)' : 'rgba(255,255,255,0.64)',
-        border: `1px solid ${isActive ? 'rgba(200,160,174,0.45)' : 'rgba(200,160,174,0.16)'}`,
-        borderRadius: 20,
-        padding: '24px 26px',
+        backgroundColor: isActive ? 'rgba(255,255,255,0.96)' : 'rgba(255,255,255,0.68)',
+        border: `1px solid ${isActive ? 'rgba(200,160,174,0.48)' : 'rgba(200,160,174,0.18)'}`,
+        borderRadius: 22,
+        padding: '28px 28px',
         boxShadow: isActive
-          ? '0 18px 48px rgba(45,21,32,0.11), 0 2px 8px rgba(45,21,32,0.06)'
-          : '0 2px 12px rgba(45,21,32,0.04)',
-        backdropFilter: 'blur(12px)',
+          ? '0 22px 56px rgba(45,21,32,0.12), 0 3px 10px rgba(45,21,32,0.07)'
+          : '0 3px 14px rgba(45,21,32,0.05)',
         textAlign: 'left', width: '100%', cursor: 'pointer',
         transition: 'all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
         transform: isActive ? 'translateY(-4px)' : 'translateY(0)',
@@ -184,9 +182,9 @@ function ReviewCard({ review, isActive, onClick, delay }) {
 
       <Stars count={review.stars} />
       <p style={{
-        fontSize: 12.5, color: '#6B5060', lineHeight: 1.9,
+        fontSize: 13, color: '#6B5060', lineHeight: 1.95,
         fontFamily: 'Raleway, sans-serif', fontWeight: 300,
-        marginTop: 12, marginBottom: 12,
+        marginTop: 14, marginBottom: 14,
         display: '-webkit-box', WebkitLineClamp: 3,
         WebkitBoxOrient: 'vertical', overflow: 'hidden',
       }}>

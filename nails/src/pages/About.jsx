@@ -74,7 +74,6 @@ function TrustCard({ label, Icon, delay }) {
         border: '1px solid rgba(200,160,174,0.2)',
         borderRadius: '14px',
         boxShadow: '0 2px 14px rgba(45,21,32,0.05)',
-        backdropFilter: 'blur(4px)',
       }}
       onMouseEnter={e => {
         const el = e.currentTarget
@@ -331,9 +330,6 @@ export default function About({ onNavigate, t }) {
               <button onClick={() => onNavigate('contacts')} className="btn-primary">
                 {a.bookBtn} <ArrowRight size={12} />
               </button>
-              <button onClick={() => onNavigate('gallery')} className="btn-outline">
-                {a.galleryBtn}
-              </button>
             </motion.div>
           </div>
         </div>
@@ -383,7 +379,6 @@ export default function About({ onNavigate, t }) {
                 border: '1px solid rgba(200,160,174,0.18)',
                 borderRadius: 20,
                 padding: '32px 28px',
-                backdropFilter: 'blur(12px)',
                 boxShadow: '0 4px 24px rgba(45,21,32,0.06), 0 1px 4px rgba(45,21,32,0.03)',
                 transition: 'all 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                 cursor: 'default',

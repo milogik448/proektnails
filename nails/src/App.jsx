@@ -143,12 +143,12 @@ export default function App() {
 
         {/* Main */}
         <div
-          className="flex-1 lg:ml-[260px] flex flex-col min-h-screen"
+          className="flex-1 lg:ml-[64px] flex flex-col min-h-screen"
           style={{ backgroundColor: 'rgba(242,222,228,0.97)' }}
         >
           {/* Mobile top bar */}
           <div className="lg:hidden fixed top-0 left-0 right-0 z-30 flex items-center justify-between px-5 py-4 border-b border-ghost"
-               style={{ backgroundColor: 'rgba(242,222,228,0.97)', backdropFilter: 'blur(12px)' }}>
+               style={{ backgroundColor: 'rgba(242,222,228,0.97)' }}>
             <button
               onClick={() => navigate('home')}
               style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 10 }}

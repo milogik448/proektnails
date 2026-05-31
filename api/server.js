@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 3001
 const ALLOWED_ORIGINS = [
   'http://localhost:5173',
   'http://localhost:5174',
+  'https://nails-bay-phi.vercel.app',
   process.env.FRONTEND_URL,
 ].filter(Boolean)
 
@@ -19,6 +20,10 @@ app.use('/api/chat', chatRouter)
 
 app.get('/api/health', (_req, res) => res.json({ ok: true }))
 
-app.listen(PORT, () => {
-  console.log(`API running on http://localhost:${PORT}`)
-})
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`API running on http://localhost:${PORT}`)
+  })
+}
+
+export default app

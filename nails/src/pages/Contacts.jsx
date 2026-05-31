@@ -21,7 +21,6 @@ function ContactCard({ Icon, label, value, href, note, schedule, delay }) {
         borderRadius: '22px',
         padding: '28px 30px',
         boxShadow: '0 6px 28px rgba(45,21,32,0.07), 0 1px 4px rgba(45,21,32,0.04)',
-        backdropFilter: 'blur(16px)',
         transition: 'all 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
         display: 'flex',
         alignItems: 'flex-start',
@@ -235,7 +234,6 @@ function BookingCard({ c }) {
           textAlign: 'left',
           marginBottom: 12,
           transition: 'all 0.25s ease',
-          backdropFilter: 'blur(8px)',
         }}
         onMouseEnter={e => {
           e.currentTarget.style.background = 'rgba(200,160,174,0.26)'
@@ -371,7 +369,6 @@ function MiniMapCard() {
         border: '1px solid rgba(200,160,174,0.2)',
         borderRadius: 26,
         overflow: 'hidden',
-        backdropFilter: 'blur(16px)',
         boxShadow: '0 8px 36px rgba(45,21,32,0.09), 0 2px 8px rgba(45,21,32,0.05)',
         height: '100%',
         display: 'flex',
@@ -487,7 +484,6 @@ function MiniMapCard() {
           border: '1px solid rgba(200,160,174,0.28)',
           borderRadius: 8,
           padding: '4px 9px',
-          backdropFilter: 'blur(8px)',
           boxShadow: '0 2px 10px rgba(45,21,32,0.1)',
         }}>
           <div style={{
@@ -695,6 +691,51 @@ export default function Contacts({ t }) {
             {/* Left — contact cards */}
             <div style={{ flex: 1, minWidth: 0, width: '100%' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+
+                {/* Studio Identity Card */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-20px' }}
+                  transition={{ duration: 0.65, delay: 0.05, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(45,21,32,0.055) 0%, rgba(200,160,174,0.1) 100%)',
+                    border: '1px solid rgba(200,160,174,0.24)',
+                    borderRadius: 22,
+                    padding: '26px 30px',
+                    position: 'relative',
+                    overflow: 'hidden',
+                  }}
+                >
+                  <div style={{
+                    position: 'absolute', top: 0, left: 0, right: 0, height: 1,
+                    background: 'linear-gradient(90deg, transparent, rgba(200,160,174,0.38), transparent)',
+                  }} />
+                  <div style={{
+                    fontSize: 9, letterSpacing: '0.38em', textTransform: 'uppercase',
+                    color: '#C8A0AE', fontFamily: 'Raleway, sans-serif', marginBottom: 10,
+                  }}>
+                    VELOURA Studio
+                  </div>
+                  <div style={{
+                    fontSize: 22, fontFamily: 'Playfair Display, serif', fontWeight: 300,
+                    color: '#2D1520', lineHeight: 1.2, marginBottom: 16,
+                  }}>
+                    Zličín, Praha
+                  </div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                    {['Premium Nail Studio', 'By appointment only'].map(label => (
+                      <span key={label} style={{
+                        fontSize: '9px', letterSpacing: '0.16em', textTransform: 'uppercase',
+                        color: '#7A5060', fontFamily: 'Raleway, sans-serif', fontWeight: 500,
+                        padding: '5px 13px', borderRadius: 100,
+                        background: 'rgba(255,255,255,0.62)',
+                        border: '1px solid rgba(200,160,174,0.28)',
+                      }}>{label}</span>
+                    ))}
+                  </div>
+                </motion.div>
+
                 {INFO.map(({ Icon, label, value, href, note, schedule }, i) => (
                   <ContactCard
                     key={label} Icon={Icon} label={label} value={value}

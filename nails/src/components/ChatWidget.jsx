@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { X, Send, MessageCircle, Loader, Sparkles } from 'lucide-react'
 
 const API_URL = import.meta.env.VITE_API_URL
-  || (import.meta.env.DEV ? 'http://localhost:3001/api/chat' : 'https://anjelika-nails-api.vercel.app/api/chat')
+  || (import.meta.env.DEV ? 'http://localhost:3001/api/chat' : 'https://api-red-nine-21.vercel.app/api/chat')
 
 const WELCOME_TEXT = {
   uk: 'Привіт! 💅 Я AI-асистент VELOURA Studio. Допоможу вам записатись на манікюр або педикюр. Як вас звати?',
@@ -11,8 +11,15 @@ const WELCOME_TEXT = {
   cs: 'Ahoj! 💅 Jsem AI asistent VELOURA Studio. Pomohu vám objednat manikúru nebo pedikúru. Jak se jmenujete?',
 }
 
-const AI_LABEL = { uk: 'AI запис', en: 'AI booking', cs: 'AI rezervace' }
+const AI_LABEL       = { uk: 'AI запис',               en: 'AI booking',                    cs: 'AI rezervace' }
+const PLACEHOLDER    = { uk: 'Напишіть повідомлення…', en: 'Type a message…',                 cs: 'Napište zprávu…' }
+const ERROR_MSG      = {
+  uk: 'Вибачте, сталася помилка. Спробуйте ще раз або напишіть у Instagram @anjelikaa_nails.',
+  en: 'Sorry, an error occurred. Try again or message us on Instagram @anjelikaa_nails.',
+  cs: 'Omlouváme se, došlo k chybě. Zkuste to znovu nebo nám napište na Instagram @anjelikaa_nails.',
+}
 
+const WELCOME_VALUES = new Set(Object.values(WELCOME_TEXT))
 const makeWelcome = (lang) => ({ role: 'assistant', content: WELCOME_TEXT[lang] ?? WELCOME_TEXT.uk })
 
 function TypingDots() {
@@ -55,9 +62,16 @@ export default function ChatWidget({ menuOpen = false, lang = 'uk' }) {
   const [messages, setMessages] = useState(() => [makeWelcome(lang)])
   const [input, setInput]       = useState('')
   const [loading, setLoading]   = useState(false)
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 1024)
   const bottomRef               = useRef(null)
   const inputRef                = useRef(null)
   const containerRef            = useRef(null)
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 1024)
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -67,14 +81,9 @@ export default function ChatWidget({ menuOpen = false, lang = 'uk' }) {
     if (isOpen) setTimeout(() => inputRef.current?.focus(), 300)
   }, [isOpen])
 
-  // Оновлює welcome message при зміні мови (тільки якщо розмова ще не почалась)
+  // При зміні мови — завжди скидаємо до welcome в новій мові
   useEffect(() => {
-    setMessages(prev => {
-      if (prev.length === 1 && prev[0].role === 'assistant') {
-        return [makeWelcome(lang)]
-      }
-      return prev
-    })
+    setMessages([makeWelcome(lang)])
   }, [lang])
 
   // Відкривається з інших частин сайту через custom event
@@ -117,6 +126,7 @@ export default function ChatWidget({ menuOpen = false, lang = 'uk' }) {
     setLoading(true)
 
     const apiMessages = updatedMessages
+      .filter((msg, i) => !(i === 0 && msg.role === 'assistant' && WELCOME_VALUES.has(msg.content)))
       .map(({ role, content }) => ({ role, content }))
 
     try {
@@ -132,7 +142,7 @@ export default function ChatWidget({ menuOpen = false, lang = 'uk' }) {
       console.error('[ChatWidget]', err)
       setMessages(prev => [...prev, {
         role: 'assistant',
-        content: 'Вибачте, сталася помилка. Спробуйте ще раз або напишіть у Instagram @anjelikaa_nails.',
+        content: ERROR_MSG[lang] ?? ERROR_MSG.uk,
       }])
     } finally {
       setLoading(false)
@@ -145,241 +155,203 @@ export default function ChatWidget({ menuOpen = false, lang = 'uk' }) {
 
   return (
     <div ref={containerRef} style={{
-      position: 'fixed', bottom: 24, right: 24, zIndex: 200,
-      display: 'flex', alignItems: 'flex-end', flexDirection: 'row', gap: 12,
+      position: 'fixed',
+      bottom: isMobile ? 20 : 24, top: 'auto',
+      right: 16, zIndex: 200,
+      display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 8,
       opacity: menuOpen ? 0 : 1,
       pointerEvents: menuOpen ? 'none' : 'auto',
       transition: 'opacity 0.2s ease',
     }}>
 
-      {/* AI label — показується коли чат закритий */}
-      <AnimatePresence>
+      {/* Toggle pill button */}
+      <motion.button
+        onClick={() => setIsOpen(v => !v)}
+        whileHover={{ scale: 1.04, y: -1 }}
+        whileTap={{ scale: 0.96 }}
+        style={{
+          display: 'flex', alignItems: 'center', gap: 8,
+          padding: isOpen ? '10px 16px' : '10px 18px 10px 14px',
+          borderRadius: 100,
+          background: isOpen ? '#3D1E2A' : '#2D1520',
+          border: '1px solid rgba(200,160,174,0.18)',
+          boxShadow: isOpen
+            ? '0 4px 16px rgba(45,21,32,0.25)'
+            : '0 6px 24px rgba(45,21,32,0.32), 0 2px 8px rgba(45,21,32,0.18)',
+          cursor: 'pointer',
+          transition: 'all 0.25s ease',
+        }}
+        onMouseEnter={e => { e.currentTarget.style.background = '#3D1E2A' }}
+        onMouseLeave={e => { e.currentTarget.style.background = isOpen ? '#3D1E2A' : '#2D1520' }}
+      >
+        <AnimatePresence mode="wait">
+          {isOpen
+            ? <motion.span key="x" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.16 }} style={{ lineHeight: 0, color: '#C8A0AE' }}>
+                <X size={14} />
+              </motion.span>
+            : <motion.span key="spark" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.16 }} style={{ lineHeight: 0, color: '#C8A0AE' }}>
+                <Sparkles size={13} />
+              </motion.span>
+          }
+        </AnimatePresence>
+
+        <span style={{
+          fontFamily: 'Raleway, sans-serif',
+          fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase',
+          fontWeight: 500, color: '#F0DFE6', whiteSpace: 'nowrap',
+        }}>
+          {isOpen ? 'Закрити' : AI_LABEL[lang] ?? AI_LABEL.uk}
+        </span>
+
+        {/* Pulse dot when closed */}
         {!isOpen && (
+          <span style={{ position: 'relative', width: 7, height: 7, flexShrink: 0 }}>
+            <span style={{ display: 'block', width: 7, height: 7, borderRadius: '50%', background: '#E8AABF' }} />
+            <motion.span
+              style={{ position: 'absolute', inset: -2, borderRadius: '50%', background: 'rgba(232,170,191,0.5)' }}
+              animate={{ scale: [1, 2.4, 1], opacity: [0.7, 0, 0.7] }}
+              transition={{ duration: 2.4, repeat: Infinity }}
+            />
+          </span>
+        )}
+      </motion.button>
+
+      {/* Chat panel — opens upward */}
+      <AnimatePresence>
+        {isOpen && (
           <motion.div
-            initial={{ opacity: 0, x: 12, scale: 0.88 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            exit={{ opacity: 0, x: 12, scale: 0.88 }}
-            transition={{ duration: 0.35, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-            onClick={() => setIsOpen(true)}
+            initial={{ opacity: 0, y: 16, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 16, scale: 0.97 }}
+            transition={{ duration: 0.22, ease: [0.25, 0.46, 0.45, 0.94] }}
             style={{
-              background: 'rgba(45,21,32,0.82)',
-              backdropFilter: 'blur(14px)',
-              color: 'rgba(240,223,230,0.9)',
-              padding: '7px 14px 7px 10px',
-              borderRadius: '20px',
-              fontSize: '10.5px',
-              letterSpacing: '0.07em',
-              whiteSpace: 'nowrap',
-              fontFamily: 'Raleway, sans-serif',
-              fontWeight: 300,
-              boxShadow: '0 4px 16px rgba(45,21,32,0.18), 0 0 0 1px rgba(200,160,174,0.1)',
-              cursor: 'pointer',
-              display: 'flex', alignItems: 'center', gap: 7,
-              marginBottom: 8,
+              width: 340, maxWidth: 'calc(100vw - 32px)',
+              borderRadius: 20, overflow: 'hidden',
+              boxShadow: '0 12px 48px rgba(45,21,32,0.16), 0 2px 12px rgba(45,21,32,0.08), 0 0 0 1px rgba(160,100,120,0.14)',
+              display: 'flex', flexDirection: 'column',
+              background: '#FDF5F7',
+              order: -1,
             }}
           >
-            <Sparkles size={12} style={{ color: '#C8A0AE', flexShrink: 0 }} />
-            {AI_LABEL[lang] ?? AI_LABEL.uk}
+            {/* Header */}
+            <div style={{
+              padding: '14px 18px',
+              background: '#F0D8DF',
+              borderBottom: '1px solid rgba(160,100,120,0.14)',
+              display: 'flex', alignItems: 'center', gap: 10,
+            }}>
+              <div style={{
+                width: 36, height: 36, borderRadius: '50%', flexShrink: 0,
+                background: 'rgba(45,21,32,0.08)',
+                border: '1px solid rgba(160,100,120,0.2)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                <svg width="18" height="18" viewBox="0 0 40 40" fill="none">
+                  <line x1="9.5" y1="12" x2="14.5" y2="12" stroke="#2D1520" strokeWidth="1.3"/>
+                  <line x1="25.5" y1="12" x2="30.5" y2="12" stroke="#2D1520" strokeWidth="1.3"/>
+                  <polyline points="11.5,12 20,28.5 28.5,12" stroke="#2D1520" strokeWidth="1.3" fill="none" strokeLinejoin="miter"/>
+                  <circle cx="20" cy="28.5" r="1.4" fill="rgba(200,160,174,0.9)"/>
+                </svg>
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{
+                  fontSize: 11.5, fontWeight: 600, color: '#2D1520',
+                  letterSpacing: '0.18em', fontFamily: 'Raleway, sans-serif',
+                }}>
+                  VELOURA
+                </div>
+                <div style={{
+                  fontSize: 9.5, color: '#A07888',
+                  letterSpacing: '0.08em', fontFamily: 'Raleway, sans-serif',
+                  display: 'flex', alignItems: 'center', gap: 5, marginTop: 2,
+                }}>
+                  <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#A8D8A8', display: 'inline-block' }} />
+                  AI асистент · Prague
+                </div>
+              </div>
+              <button
+                onClick={() => setIsOpen(false)}
+                style={{ color: '#A07888', cursor: 'pointer', lineHeight: 0, padding: 4, background: 'none', border: 'none' }}
+                onMouseEnter={e => e.currentTarget.style.color = '#2D1520'}
+                onMouseLeave={e => e.currentTarget.style.color = '#A07888'}
+              >
+                <X size={15} />
+              </button>
+            </div>
+
+            {/* Messages */}
+            <div style={{
+              flex: 1, overflowY: 'auto',
+              padding: '14px 14px 8px',
+              maxHeight: 320, minHeight: 180,
+              background: 'rgba(242,222,228,0.18)',
+            }}>
+              {messages.map((msg, i) => (
+                <Message key={i} role={msg.role} content={msg.content} />
+              ))}
+              {loading && (
+                <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+                  <div style={{
+                    background: 'rgba(255,255,255,0.88)',
+                    border: '1px solid rgba(200,160,174,0.2)',
+                    borderRadius: '18px 18px 18px 4px',
+                  }}>
+                    <TypingDots />
+                  </div>
+                </div>
+              )}
+              <div ref={bottomRef} />
+            </div>
+
+            {/* Input */}
+            <div style={{
+              padding: '10px 12px',
+              borderTop: '1px solid rgba(160,100,120,0.14)',
+              background: '#FDF5F7',
+              display: 'flex', gap: 8, alignItems: 'flex-end',
+            }}>
+              <textarea
+                ref={inputRef}
+                value={input}
+                onChange={e => setInput(e.target.value)}
+                onKeyDown={onKeyDown}
+                placeholder={PLACEHOLDER[lang] ?? PLACEHOLDER.uk}
+                rows={1}
+                style={{
+                  flex: 1, resize: 'none',
+                  border: '1px solid rgba(200,160,174,0.3)',
+                  borderRadius: 12, padding: '8px 12px',
+                  fontSize: 13, fontFamily: 'Raleway, sans-serif',
+                  color: '#2D1520', background: 'rgba(255,255,255,0.85)',
+                  outline: 'none', lineHeight: 1.5,
+                  maxHeight: 88, overflowY: 'auto',
+                  transition: 'border-color 0.2s',
+                }}
+                onFocus={e => { e.target.style.borderColor = 'rgba(160,112,128,0.55)' }}
+                onBlur={e => { e.target.style.borderColor = 'rgba(200,160,174,0.3)' }}
+              />
+              <button
+                onClick={sendMessage}
+                disabled={!input.trim() || loading}
+                style={{
+                  width: 36, height: 36, borderRadius: '50%',
+                  background: input.trim() && !loading ? '#2D1520' : 'rgba(200,160,174,0.25)',
+                  color: '#F0DFE6',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  cursor: input.trim() && !loading ? 'pointer' : 'default',
+                  transition: 'all 0.2s', flexShrink: 0, border: 'none',
+                  boxShadow: input.trim() && !loading ? '0 3px 10px rgba(45,21,32,0.22)' : 'none',
+                }}
+              >
+                {loading
+                  ? <Loader size={14} style={{ animation: 'spin 1s linear infinite' }} />
+                  : <Send size={14} />
+                }
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Button + chat panel */}
-      <div style={{ position: 'relative' }}>
-
-        {/* Chat panel */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: 16, scale: 0.96 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 16, scale: 0.96 }}
-              transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
-              style={{
-                position: 'absolute', bottom: 74, right: 0,
-                width: 360, maxWidth: 'calc(100vw - 32px)',
-                borderRadius: 22, overflow: 'hidden',
-                boxShadow: '0 24px 64px rgba(45,21,32,0.2), 0 4px 20px rgba(45,21,32,0.12), 0 0 0 1px rgba(200,160,174,0.1)',
-                display: 'flex', flexDirection: 'column',
-                background: '#FDF5F7',
-              }}
-            >
-              {/* Header */}
-              <div style={{
-                padding: '16px 20px',
-                background: 'linear-gradient(135deg, #3A1A26 0%, #2D1520 70%)',
-                display: 'flex', alignItems: 'center', gap: 12,
-                borderBottom: '1px solid rgba(200,160,174,0.1)',
-              }}>
-                <div style={{
-                  width: 40, height: 40, borderRadius: '50%',
-                  background: 'rgba(200,160,174,0.15)',
-                  border: '1px solid rgba(200,160,174,0.28)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  flexShrink: 0,
-                }}>
-                  <svg width="22" height="22" viewBox="0 0 40 40" fill="none">
-                    <line x1="9.5" y1="12" x2="14.5" y2="12" stroke="#F0DFE6" strokeWidth="1.3"/>
-                    <line x1="25.5" y1="12" x2="30.5" y2="12" stroke="#F0DFE6" strokeWidth="1.3"/>
-                    <polyline points="11.5,12 20,28.5 28.5,12" stroke="#F0DFE6" strokeWidth="1.3" fill="none" strokeLinejoin="miter"/>
-                    <circle cx="20" cy="28.5" r="1.4" fill="rgba(200,160,174,0.8)"/>
-                  </svg>
-                </div>
-                <div style={{ flex: 1 }}>
-                  <div style={{
-                    fontSize: 12.5, fontWeight: 600, color: '#F0DFE6',
-                    letterSpacing: '0.18em', fontFamily: 'Raleway, sans-serif',
-                  }}>
-                    VELOURA
-                  </div>
-                  <div style={{
-                    fontSize: 10, color: 'rgba(200,160,174,0.65)',
-                    letterSpacing: '0.09em', fontFamily: 'Raleway, sans-serif',
-                    display: 'flex', alignItems: 'center', gap: 5, marginTop: 3,
-                  }}>
-                    <span style={{
-                      width: 5, height: 5, borderRadius: '50%',
-                      background: '#A8D8A8', display: 'inline-block',
-                    }} />
-                    Premium Nail Studio · Prague
-                  </div>
-                </div>
-                <button
-                  onClick={() => setIsOpen(false)}
-                  style={{ color: 'rgba(200,160,174,0.6)', cursor: 'pointer', lineHeight: 0, padding: 4 }}
-                >
-                  <X size={17} />
-                </button>
-              </div>
-
-              {/* Messages */}
-              <div style={{
-                flex: 1, overflowY: 'auto',
-                padding: '16px 16px 8px',
-                maxHeight: 340, minHeight: 200,
-                background: 'rgba(242,222,228,0.22)',
-              }}>
-                {messages.map((msg, i) => (
-                  <Message key={i} role={msg.role} content={msg.content} />
-                ))}
-                {loading && (
-                  <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                    <div style={{
-                      background: 'rgba(255,255,255,0.88)',
-                      border: '1px solid rgba(200,160,174,0.2)',
-                      borderRadius: '18px 18px 18px 4px',
-                    }}>
-                      <TypingDots />
-                    </div>
-                  </div>
-                )}
-                <div ref={bottomRef} />
-              </div>
-
-              {/* Input */}
-              <div style={{
-                padding: '12px 14px',
-                borderTop: '1px solid rgba(200,160,174,0.16)',
-                background: '#FDF5F7',
-                display: 'flex', gap: 10, alignItems: 'flex-end',
-              }}>
-                <textarea
-                  ref={inputRef}
-                  value={input}
-                  onChange={e => setInput(e.target.value)}
-                  onKeyDown={onKeyDown}
-                  placeholder="Напишіть повідомлення..."
-                  rows={1}
-                  style={{
-                    flex: 1, resize: 'none',
-                    border: '1px solid rgba(200,160,174,0.28)',
-                    borderRadius: 12, padding: '9px 14px',
-                    fontSize: 13.5, fontFamily: 'Raleway, sans-serif',
-                    color: '#2D1520', background: 'rgba(255,255,255,0.82)',
-                    outline: 'none', lineHeight: 1.5,
-                    maxHeight: 96, overflowY: 'auto',
-                    transition: 'border-color 0.2s',
-                  }}
-                  onFocus={e => { e.target.style.borderColor = 'rgba(160,112,128,0.5)' }}
-                  onBlur={e => { e.target.style.borderColor = 'rgba(200,160,174,0.28)' }}
-                />
-                <button
-                  onClick={sendMessage}
-                  disabled={!input.trim() || loading}
-                  style={{
-                    width: 40, height: 40, borderRadius: '50%',
-                    background: input.trim() && !loading
-                      ? 'linear-gradient(135deg, #3A1A26, #2D1520)'
-                      : 'rgba(200,160,174,0.28)',
-                    color: '#F0DFE6',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    cursor: input.trim() && !loading ? 'pointer' : 'default',
-                    transition: 'all 0.2s', flexShrink: 0,
-                    boxShadow: input.trim() && !loading ? '0 4px 12px rgba(45,21,32,0.2)' : 'none',
-                  }}
-                >
-                  {loading
-                    ? <Loader size={16} style={{ animation: 'spin 1s linear infinite' }} />
-                    : <Send size={16} />
-                  }
-                </button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Toggle button */}
-        <motion.div
-          animate={!isOpen ? { y: [0, -5, 0] } : { y: 0 }}
-          transition={!isOpen
-            ? { duration: 3.5, repeat: Infinity, ease: 'easeInOut' }
-            : { duration: 0.2 }
-          }
-        >
-          <motion.button
-            onClick={() => setIsOpen(v => !v)}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            style={{
-              width: 54, height: 54, borderRadius: '50%',
-              background: 'linear-gradient(145deg, #3D1E2A 0%, #2D1520 55%, #3A1825 100%)',
-              color: '#F0DFE6',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              boxShadow: isOpen
-                ? '0 4px 14px rgba(45,21,32,0.22)'
-                : '0 8px 28px rgba(45,21,32,0.3), 0 2px 8px rgba(45,21,32,0.14), 0 0 0 1px rgba(200,160,174,0.12), inset 0 1px 0 rgba(255,255,255,0.07)',
-              cursor: 'pointer', position: 'relative',
-              border: '1px solid rgba(200,160,174,0.12)',
-              transition: 'box-shadow 0.3s',
-            }}
-          >
-            <AnimatePresence mode="wait">
-              {isOpen
-                ? <motion.span key="x"   initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.18 }}><X size={18} /></motion.span>
-                : <motion.span key="msg" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.18 }}><MessageCircle size={18} /></motion.span>
-              }
-            </AnimatePresence>
-
-            {!isOpen && (
-              <span style={{
-                position: 'absolute', top: 8, right: 8,
-                width: 12, height: 12, borderRadius: '50%',
-                background: 'linear-gradient(135deg, #E8AABF, #C8A0AE)',
-                border: '2px solid #2D1520',
-              }}>
-                <motion.span
-                  style={{
-                    position: 'absolute', inset: -3, borderRadius: '50%',
-                    background: 'rgba(200,160,174,0.4)',
-                  }}
-                  animate={{ scale: [1, 2.4, 1], opacity: [0.55, 0, 0.55] }}
-                  transition={{ duration: 2.8, repeat: Infinity }}
-                />
-              </span>
-            )}
-          </motion.button>
-        </motion.div>
-      </div>
 
       <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
     </div>
