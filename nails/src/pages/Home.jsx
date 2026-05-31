@@ -298,9 +298,8 @@ export default function Home({ onNavigate, t }) {
               background: 'linear-gradient(to bottom, transparent 60%, rgba(45,21,32,0.14) 100%)',
               zIndex: 2,
             }} />
-            {/* Stats overlay — desktop only */}
+            {/* Stats overlay */}
             <motion.div
-              className="hidden lg:block"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
