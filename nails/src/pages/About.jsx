@@ -27,10 +27,9 @@ const RETURN_CARDS = [
 ]
 
 const fadeUp = (delay = 0) => ({
-  initial:     { opacity: 0, y: 26 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport:    { once: true, margin: '-100px' },
-  transition:  { duration: 0.75, delay, ease: [0.25, 0.46, 0.45, 0.94] },
+  initial:    { opacity: 0, y: 20 },
+  animate:    { opacity: 1, y: 0 },
+  transition: { duration: 0.55, delay, ease: [0.25, 0.46, 0.45, 0.94] },
 })
 
 function SkillTag({ label }) {
@@ -65,9 +64,8 @@ function TrustCard({ label, Icon, delay }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 0.6, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
       className="flex flex-col gap-4 p-5 cursor-default transition-all duration-300"
       style={{
         backgroundColor: 'rgba(255,255,255,0.62)',
@@ -240,8 +238,7 @@ export default function About({ onNavigate, t }) {
             </h2>
             <motion.div
               initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
+              animate={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.18, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="h-px w-12 origin-left"
               style={{ backgroundColor: '#C8A0AE' }}
