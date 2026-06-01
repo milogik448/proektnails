@@ -109,7 +109,6 @@ export default function About({ onNavigate, t }) {
       exit={{ opacity: 0, x: -18 }}
       transition={{ duration: 0.38 }}
       className="min-h-screen relative"
-      style={{ contain: 'layout style' }}
     >
       {/* Subtle background glow — depth without noise */}
       <div

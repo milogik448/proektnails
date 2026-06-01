@@ -35,11 +35,11 @@ const fadeUpView = (delay = 0) => ({
 })
 
 function AutoScrollGallery({ images, onImageClick }) {
-  const [isPaused, setIsPaused] = useState(false)
-  const [isPageScrolling, setIsPageScrolling] = useState(false)
   const scrollControls = useAnimation()
   const containerRef = useRef(null)
   const [scrollDistance, setScrollDistance] = useState(0)
+  const isPausedRef = useRef(false)
+  const isScrollingRef = useRef(false)
   const scrollTimeoutRef = useRef(null)
 
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
@@ -55,14 +55,13 @@ function AutoScrollGallery({ images, onImageClick }) {
 
   useEffect(() => {
     const handlePageScroll = () => {
-      setIsPageScrolling(true)
+      isScrollingRef.current = true
       if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current)
       scrollTimeoutRef.current = setTimeout(() => {
-        setIsPageScrolling(false)
-      }, 1500)
+        isScrollingRef.current = false
+      }, 1000)
     }
-
-    window.addEventListener('scroll', handlePageScroll)
+    window.addEventListener('scroll', handlePageScroll, { passive: true })
     return () => {
       window.removeEventListener('scroll', handlePageScroll)
       if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current)
@@ -73,46 +72,43 @@ function AutoScrollGallery({ images, onImageClick }) {
     if (scrollDistance === 0) return
 
     let isActive = true
-    const animate = async () => {
+
+    const run = async () => {
       while (isActive) {
-        const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
-        const duration = isPaused || isPageScrolling ? 600 : (isMobile ? 35 : 25)
+        if (isPausedRef.current || isScrollingRef.current) {
+          await new Promise(r => setTimeout(r, 150))
+          continue
+        }
+        const mobile = typeof window !== 'undefined' && window.innerWidth < 768
         await scrollControls.start({
           x: scrollDistance,
-          transition: { duration, ease: 'linear' },
+          transition: { duration: mobile ? 35 : 25, ease: 'linear' },
         })
-        if (!isPaused && isActive) {
+        if (!isActive) break
+        if (!isPausedRef.current && !isScrollingRef.current) {
           await scrollControls.start({
             x: 0,
             transition: { duration: 0.6, ease: 'easeInOut' },
           })
-        } else if (isPaused) {
-          break
         }
       }
     }
-    animate()
+    run()
 
     return () => {
       isActive = false
       scrollControls.stop()
     }
-  }, [scrollControls, scrollDistance, isPaused, isPageScrolling])
+  }, [scrollControls, scrollDistance])
 
   const handleMouseEnter = () => {
-    setIsPaused(true)
+    isPausedRef.current = true
+    scrollControls.stop()
   }
 
   const handleMouseLeave = () => {
-    setIsPaused(false)
+    isPausedRef.current = false
   }
-
-  useEffect(() => {
-    if (containerRef.current) {
-      const width = containerRef.current.scrollWidth / 2
-      setScrollDistance(-width)
-    }
-  }, [])
 
   return (
     <div style={{
