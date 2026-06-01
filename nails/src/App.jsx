@@ -181,7 +181,7 @@ export default function App() {
                 <Page key={activePage} onNavigate={navigate} lang={lang} t={t} />
               </AnimatePresence>
             </div>
-            <Footer />
+            <Footer onNavigate={navigate} />
           </div>
         </div>
       </div>

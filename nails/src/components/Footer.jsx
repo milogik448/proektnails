@@ -1,41 +1,115 @@
-export default function Footer() {
+const NAV_LINKS = [
+  { label: 'Головна',     page: 'home' },
+  { label: 'Про майстра', page: 'about' },
+  { label: 'Послуги',     page: 'services' },
+  { label: 'Відгуки',     page: 'reviews' },
+  { label: 'Контакти',    page: 'contacts' },
+]
+
+const SERVICES = [
+  'Манікюр', 'Педикюр', 'Гель-лак', 'Укріплення', 'Дизайн нігтів',
+]
+
+function FooterLink({ onClick, href, children }) {
+  const style = {
+    fontSize: '12px', letterSpacing: '0.02em',
+    color: '#4A2D3A', fontFamily: 'Raleway, sans-serif',
+    fontWeight: 400, textDecoration: 'none',
+    background: 'none', border: 'none', padding: 0, cursor: 'pointer',
+    textAlign: 'left', display: 'block', marginBottom: 7,
+    transition: 'color 0.2s ease',
+  }
+  const hover = e => { e.currentTarget.style.color = '#2D1520' }
+  const leave = e => { e.currentTarget.style.color = '#4A2D3A' }
+
+  if (href) return <a href={href} target="_blank" rel="noopener noreferrer" style={style} onMouseEnter={hover} onMouseLeave={leave}>{children}</a>
+  return <button style={style} onClick={onClick} onMouseEnter={hover} onMouseLeave={leave}>{children}</button>
+}
+
+import { motion } from 'framer-motion'
+
+export default function Footer({ onNavigate }) {
   return (
-    <footer style={{
-      background: 'rgba(242,222,228,0.97)',
-      paddingTop: 48,
-      paddingBottom: 28,
-      textAlign: 'center',
-    }}>
-      {/* Studio name */}
-      <div style={{
-        fontSize: '9px',
-        letterSpacing: '0.44em',
-        textTransform: 'uppercase',
-        color: 'rgba(160,112,128,0.32)',
-        fontFamily: 'Raleway, sans-serif',
-        fontWeight: 400,
-        marginBottom: 22,
+    <motion.footer
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.55, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+      style={{
+        position: 'relative',
+        background: 'rgba(45,21,32,0.025)',
+        borderTop: '1px solid rgba(200,160,174,0.18)',
+        marginTop: 24,
       }}>
-        VELOURA · Praha · Czech Republic
+
+
+      {/* Columns */}
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
+        gap: '20px 20px',
+        padding: '32px 48px 0',
+        marginBottom: 28,
+        maxWidth: 1400, marginLeft: 'auto', marginRight: 'auto',
+      }}>
+
+        {/* Brand */}
+        <div>
+          <div style={{ fontFamily: 'DM Serif Display, serif', fontSize: '15px', fontWeight: 400, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#2D1520', marginBottom: 5 }}>
+            VELOURA STUDIO
+          </div>
+          <div style={{ fontFamily: 'DM Serif Display, serif', fontStyle: 'italic', fontSize: '12px', color: '#7A5060', marginBottom: 8 }}>
+            "Краса у деталях"
+          </div>
+          <div style={{ fontSize: '10px', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#7A5060', fontFamily: 'Raleway, sans-serif', fontWeight: 300, lineHeight: 1.9 }}>
+            Praha, Czech Republic<br />Premium Nail Studio
+          </div>
+        </div>
+
+        {/* Navigation */}
+        <div>
+          <div style={{ fontSize: '9px', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#2D1520', fontFamily: 'Raleway, sans-serif', fontWeight: 600, marginBottom: 12 }}>
+            Навігація
+          </div>
+          {NAV_LINKS.map(({ label, page }) => (
+            <FooterLink key={page} onClick={() => onNavigate?.(page)}>{label}</FooterLink>
+          ))}
+        </div>
+
+        {/* Services */}
+        <div>
+          <div style={{ fontSize: '9px', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#2D1520', fontFamily: 'Raleway, sans-serif', fontWeight: 600, marginBottom: 12 }}>
+            Послуги
+          </div>
+          {SERVICES.map(s => (
+            <FooterLink key={s} onClick={() => onNavigate?.('services')}>{s}</FooterLink>
+          ))}
+        </div>
+
+        {/* Contact */}
+        <div>
+          <div style={{ fontSize: '9px', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#2D1520', fontFamily: 'Raleway, sans-serif', fontWeight: 600, marginBottom: 12 }}>
+            Зв'язатись
+          </div>
+          <FooterLink onClick={() => onNavigate?.('contacts')}>Записатись онлайн</FooterLink>
+          <FooterLink href="https://www.instagram.com/anjelikaa_nails">@anjelikaa_nails</FooterLink>
+          <div style={{ fontSize: '11px', color: '#7A5060', fontFamily: 'Raleway, sans-serif', fontWeight: 300, lineHeight: 1.8, marginTop: 2 }}>
+            Praha · Прийом за записом
+          </div>
+        </div>
+
       </div>
 
-      {/* Thin separator */}
-      <div style={{
-        width: 48, height: 1, margin: '0 auto 18px',
-        background: 'rgba(200,160,174,0.2)',
-      }} />
+      {/* Bottom bar */}
+      <div style={{ margin: '0 auto', maxWidth: 1400, height: 1, marginBottom: 14, background: 'linear-gradient(90deg, transparent, rgba(200,160,174,0.25), transparent)' }} />
+      <div style={{ maxWidth: 1400, margin: '0 auto', padding: '0 48px 24px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: 6 }}>
+        <span style={{ fontSize: '10px', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#7A5060', fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
+          © 2026 VELOURA Studio · All rights reserved
+        </span>
+        <span style={{ fontSize: '8.5px', letterSpacing: '0.16em', textTransform: 'uppercase', color: '#A07888', fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
+          Design by Milogo
+        </span>
+      </div>
 
-      {/* Copyright */}
-      <span style={{
-        fontSize: '9px',
-        letterSpacing: '0.28em',
-        textTransform: 'uppercase',
-        color: 'rgba(160,112,128,0.38)',
-        fontFamily: 'Raleway, sans-serif',
-        fontWeight: 300,
-      }}>
-        2026 by Milogo
-      </span>
-    </footer>
+    </motion.footer>
   )
 }

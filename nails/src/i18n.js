@@ -37,7 +37,7 @@ export const translations = {
       reviewsTag: 'Відгуки', reviewsTitle: 'Що кажуть клієнтки', reviewsBtn: 'Всі відгуки',
     },
     about: {
-      tag: '002', title: 'Про майстра', masterTag: 'VELOURA Studio', name: 'Ваш майстер у Празі',
+      tag: '002', title: 'Про майстра', masterTag: 'VELOURA Studio', name: 'Знайомтесь з VELOURA',
       badge: 'Досвід', badgeVal: '1 рік',
       bio: [
         'VELOURA Studio — майстер манікюру та педикюру у Празі. Кожна процедура — це маленький ритуал турботи про себе.',
