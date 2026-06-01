@@ -85,8 +85,31 @@ export default function About({ onNavigate, t }) {
           <motion.div
             initial={{ scaleX: 0 }} animate={{ scaleX: 1 }}
             transition={{ duration: 1, delay: 0.24, ease: [0.22, 1, 0.36, 1] }}
-            style={{ height: 1, width: 56, backgroundColor: '#C8A0AE', marginBottom: '2.2rem', transformOrigin: 'left' }}
+            style={{ height: 1, width: 56, backgroundColor: '#C8A0AE', marginBottom: '2rem', transformOrigin: 'left' }}
           />
+
+          {/* Mobile-only photo */}
+          <motion.div
+            className="block lg:hidden"
+            initial={{ opacity: 0, scale: 1.03 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            style={{ borderRadius: 20, overflow: 'hidden', marginBottom: '2rem', height: 340, position: 'relative' }}
+          >
+            <img
+              src="/images/master.jpg"
+              alt={a.name}
+              loading="eager"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 8%' }}
+            />
+            <div aria-hidden style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 55%, rgba(45,21,32,0.2) 100%)' }} />
+            <div style={{ position: 'absolute', bottom: 14, right: 14 }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '6px 12px', borderRadius: 100, background: 'rgba(45,21,32,0.72)', backdropFilter: 'blur(8px)', fontSize: '8px', fontFamily: 'Raleway, sans-serif', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(246,235,240,0.9)' }}>
+                <span style={{ width: 4, height: 4, borderRadius: '50%', background: '#7ED9A5', boxShadow: '0 0 5px rgba(126,217,165,0.9)', display: 'inline-block' }} />
+                Nail Master
+              </div>
+            </div>
+          </motion.div>
 
           {/* Bio */}
           <motion.div {...fadeUp(0.3)} style={{ marginBottom: '2rem' }}>
@@ -220,6 +243,7 @@ export default function About({ onNavigate, t }) {
             borderRadius: 28,
             overflow: 'hidden',
             cursor: 'default',
+            minHeight: 320,
             boxShadow: photoHovered
               ? '0 0 80px rgba(200,160,174,0.38), 0 32px 64px rgba(45,21,32,0.18)'
               : '0 0 50px rgba(200,160,174,0.2), 0 20px 48px rgba(45,21,32,0.12)',
@@ -270,7 +294,7 @@ export default function About({ onNavigate, t }) {
         </motion.div>
 
         {/* ══ COL 3: STATS + LUXURY CARD ══ */}
-        <div className="hidden lg:flex flex-col justify-between" style={{ paddingTop: 8, paddingBottom: 0 }}>
+        <div className="flex flex-col justify-between" style={{ paddingTop: 8, paddingBottom: 0 }}>
 
         </div>
 

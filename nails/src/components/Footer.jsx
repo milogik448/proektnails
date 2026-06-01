@@ -36,17 +36,14 @@ export default function Footer({ onNavigate }) {
       transition={{ duration: 0.55, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
       style={{
         position: 'relative',
-        background: 'rgba(45,21,32,0.025)',
-        borderTop: '1px solid rgba(200,160,174,0.18)',
-        marginTop: 24,
+        borderTop: '1px solid rgba(200,160,174,0.45)',
+        marginTop: 32,
       }}>
 
 
       {/* Columns */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
-        gap: '20px 20px',
+      <div className="grid grid-cols-2 md:grid-cols-4" style={{
+        gap: '24px 20px',
         padding: '32px 48px 0',
         marginBottom: 28,
         maxWidth: 1400, marginLeft: 'auto', marginRight: 'auto',
@@ -54,10 +51,10 @@ export default function Footer({ onNavigate }) {
 
         {/* Brand */}
         <div>
-          <div style={{ fontFamily: 'DM Serif Display, serif', fontSize: '15px', fontWeight: 400, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#2D1520', marginBottom: 5 }}>
+          <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '22px', fontWeight: 300, letterSpacing: '0.32em', textTransform: 'uppercase', color: '#2D1520', marginBottom: 5 }}>
             VELOURA STUDIO
           </div>
-          <div style={{ fontFamily: 'DM Serif Display, serif', fontStyle: 'italic', fontSize: '12px', color: '#7A5060', marginBottom: 8 }}>
+          <div style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: '13.5px', fontWeight: 400, color: '#7A5060', marginBottom: 8 }}>
             "Краса у деталях"
           </div>
           <div style={{ fontSize: '10px', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#7A5060', fontFamily: 'Raleway, sans-serif', fontWeight: 300, lineHeight: 1.9 }}>
@@ -101,7 +98,7 @@ export default function Footer({ onNavigate }) {
 
       {/* Bottom bar */}
       <div style={{ margin: '0 auto', maxWidth: 1400, height: 1, marginBottom: 14, background: 'linear-gradient(90deg, transparent, rgba(200,160,174,0.25), transparent)' }} />
-      <div style={{ maxWidth: 1400, margin: '0 auto', padding: '0 48px 24px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: 6 }}>
+      <div style={{ maxWidth: 1400, margin: '0 auto', padding: '0 48px 24px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: 8 }}>
         <span style={{ fontSize: '10px', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#7A5060', fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
           © 2026 VELOURA Studio · All rights reserved
         </span>
