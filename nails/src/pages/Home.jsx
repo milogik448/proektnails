@@ -425,11 +425,10 @@ export default function Home({ onNavigate, t }) {
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.65, delay: i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
               style={{
-                background: 'rgba(255,255,255,0.68)',
+                background: 'rgba(255,255,255,0.82)',
                 border: '1px solid rgba(200,160,174,0.18)',
                 borderRadius: 20,
                 padding: '32px 28px',
-                backdropFilter: 'blur(12px)',
                 boxShadow: '0 4px 24px rgba(45,21,32,0.06), 0 1px 4px rgba(45,21,32,0.03)',
                 transition: 'all 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                 cursor: 'default',

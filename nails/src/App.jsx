@@ -60,7 +60,8 @@ export default function App() {
           className="w-full h-full object-cover"
           style={{
             filter: 'blur(32px) brightness(0.14) saturate(0.5)',
-            transform: 'scale(1.1)',
+            transform: 'scale(1.1) translateZ(0)',
+            willChange: 'transform',
           }}
         />
       </div>
