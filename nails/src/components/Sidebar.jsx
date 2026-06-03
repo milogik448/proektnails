@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Home, User, Sparkles, Star, Phone, Instagram } from 'lucide-react'
+import { Home, User, Gem, Star, Phone, Instagram } from 'lucide-react'
 
 const NAV_IDS = [
   { id: 'home',     Icon: Home },
   { id: 'about',    Icon: User },
-  { id: 'services', Icon: Sparkles },
+  { id: 'services', Icon: Gem },
   { id: 'reviews',  Icon: Star },
   { id: 'contacts', Icon: Phone },
 ]
@@ -33,7 +33,7 @@ const itemVariants = {
 /* Inner content is always 260px wide — the aside clips it via overflow:hidden */
 function SidebarInner({ activePage, onNavigate, lang, setLang, t, isExpanded = true, isMobile = false }) {
   return (
-    <div style={{ width: 260, display: 'flex', flexDirection: 'column', height: '100%', overflowY: 'auto', overflowX: 'hidden' }}>
+    <div style={{ width: 260, display: 'flex', flexDirection: 'column', height: '100%', overflowY: 'auto', overflowX: 'hidden', position: 'relative' }}>
 
       {/* ── Logo ── */}
       <motion.div
@@ -132,11 +132,56 @@ function SidebarInner({ activePage, onNavigate, lang, setLang, t, isExpanded = t
         })}
       </nav>
 
-      {/* ── Bottom block ── */}
+      {/* ── Collapsed bottom (icon-only) ── */}
+      <AnimatePresence>
+        {!isExpanded && !isMobile && (
+          <motion.div
+            key="collapsed-bottom"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            style={{ marginTop: 'auto', paddingBottom: 24, flexShrink: 0 }}
+          >
+            {/* Instagram icon */}
+            <a
+              href="https://www.instagram.com/anjelikaa_nails"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ display: 'flex', justifyContent: 'center', width: ICON_W, marginBottom: 14, textDecoration: 'none', transition: 'opacity 0.25s' }}
+              onMouseEnter={e => e.currentTarget.style.opacity = '0.6'}
+              onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+            >
+              <Instagram size={13} style={{ color: TEXT_MUTED }} />
+            </a>
+            {/* Language — active code only */}
+            {LANGS.map(({ code, label }) => (
+              <button
+                key={code}
+                onClick={() => setLang(code)}
+                style={{
+                  display: 'flex', justifyContent: 'center', alignItems: 'center',
+                  width: ICON_W, height: 20,
+                  fontSize: '7.5px', letterSpacing: '0.18em', textTransform: 'uppercase',
+                  color: lang === code ? TEXT_ACTIVE : TEXT_MUTED,
+                  fontWeight: lang === code ? 600 : 300,
+                  fontFamily: 'Raleway, sans-serif',
+                  background: 'none', border: 'none', cursor: 'pointer',
+                  transition: 'color 0.2s',
+                }}
+              >
+                {label}
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ── Bottom block (expanded) ── */}
       <motion.div
         animate={{ opacity: isExpanded ? 1 : 0, x: isExpanded ? 0 : -10 }}
         transition={{ duration: 0.25, delay: isExpanded ? 0.12 : 0, ease: 'easeOut' }}
-        style={{ marginTop: 'auto', paddingBottom: isMobile ? 24 : 24, flexShrink: 0, pointerEvents: isExpanded ? 'auto' : 'none' }}
+        style={{ marginTop: isMobile ? 'auto' : 0, paddingBottom: 24, flexShrink: 0, pointerEvents: isExpanded ? 'auto' : 'none', position: isMobile ? 'relative' : 'absolute', bottom: isMobile ? 'auto' : 0, left: 0, width: '100%' }}
       >
 
         {/* Instagram */}
