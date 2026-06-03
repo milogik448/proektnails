@@ -31,7 +31,7 @@ const itemVariants = {
 }
 
 /* Inner content is always 260px wide — the aside clips it via overflow:hidden */
-function SidebarInner({ activePage, onNavigate, lang, setLang, t }) {
+function SidebarInner({ activePage, onNavigate, lang, setLang, t, isExpanded = true, isMobile = false }) {
   return (
     <div style={{ width: 260, display: 'flex', flexDirection: 'column', height: '100%', overflowY: 'auto', overflowX: 'hidden' }}>
 
@@ -40,7 +40,7 @@ function SidebarInner({ activePage, onNavigate, lang, setLang, t }) {
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.02, ease: 'easeOut' }}
-        style={{ paddingTop: 28, paddingBottom: 22, flexShrink: 0 }}
+        style={{ paddingTop: 32, paddingBottom: 26, flexShrink: 0 }}
       >
         <button
           onClick={() => onNavigate('home')}
@@ -48,7 +48,7 @@ function SidebarInner({ activePage, onNavigate, lang, setLang, t }) {
         >
           {/* Icon zone — always 64px, centered */}
           <div style={{ width: ICON_W, display: 'flex', justifyContent: 'center', alignItems: 'center', flexShrink: 0 }}>
-            <svg width="34" height="34" viewBox="0 0 40 40" fill="none">
+            <svg width="38" height="38" viewBox="0 0 40 40" fill="none">
               <circle cx="20" cy="20" r="18.5" stroke="rgba(200,160,174,0.48)" strokeWidth="0.72"/>
               <line x1="9.5" y1="12.5" x2="14.5" y2="12.5" stroke={TEXT_ACTIVE} strokeWidth="1.15"/>
               <line x1="25.5" y1="12.5" x2="30.5" y2="12.5" stroke={TEXT_ACTIVE} strokeWidth="1.15"/>
@@ -56,23 +56,26 @@ function SidebarInner({ activePage, onNavigate, lang, setLang, t }) {
               <circle cx="20" cy="28.5" r="1.25" fill="rgba(200,160,174,0.72)"/>
             </svg>
           </div>
-          {/* Text zone — visible only when expanded */}
-          <div style={{ textAlign: 'left', whiteSpace: 'nowrap' }}>
+          {/* Text zone — animates in when expanded */}
+          <motion.div
+            animate={{ opacity: isExpanded ? 1 : 0, x: isExpanded ? 0 : -10 }}
+            transition={{ duration: 0.25, delay: isExpanded ? 0.12 : 0, ease: 'easeOut' }}
+            style={{ textAlign: 'left', whiteSpace: 'nowrap' }}
+          >
             <div style={{ fontSize: '13px', letterSpacing: '0.38em', fontFamily: 'Raleway, sans-serif', fontWeight: 500, color: TEXT_ACTIVE, lineHeight: 1 }}>
               VELOURA
             </div>
             <div style={{ fontSize: '7.5px', letterSpacing: '0.42em', fontFamily: 'Raleway, sans-serif', fontWeight: 300, color: TEXT_MUTED, marginTop: 5, textTransform: 'uppercase' }}>
               Studio · Prague
             </div>
-          </div>
+          </motion.div>
         </button>
       </motion.div>
 
       {/* Divider */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.4, delay: 0.06 }}
+        animate={{ opacity: isExpanded ? 1 : 0 }}
+        transition={{ duration: 0.25, delay: isExpanded ? 0.12 : 0 }}
         style={{ margin: '0 28px', height: 1, backgroundColor: DIVIDER, flexShrink: 0 }}
       />
 
@@ -91,7 +94,7 @@ function SidebarInner({ activePage, onNavigate, lang, setLang, t }) {
               style={{
                 display: 'flex', alignItems: 'center',
                 width: '100%', background: 'none', border: 'none',
-                cursor: 'pointer', padding: '11px 0',
+                cursor: 'pointer', padding: '14px 0',
                 position: 'relative',
               }}
               onMouseEnter={e => { if (!isActive) e.currentTarget.style.backgroundColor = 'rgba(160,100,120,0.07)' }}
@@ -107,26 +110,34 @@ function SidebarInner({ activePage, onNavigate, lang, setLang, t }) {
               )}
               {/* Icon zone */}
               <div style={{ width: ICON_W, display: 'flex', justifyContent: 'center', flexShrink: 0 }}>
-                <Icon size={13} style={{ color: isActive ? TEXT_ACTIVE : TEXT_MUTED, transition: 'color 0.3s' }} />
+                <Icon size={16} style={{ color: isActive ? TEXT_ACTIVE : TEXT_MUTED, transition: 'color 0.3s' }} />
               </div>
               {/* Label */}
-              <span style={{
-                fontSize: '9.5px', letterSpacing: '0.28em', textTransform: 'uppercase',
-                fontFamily: 'Raleway, sans-serif',
-                fontWeight: isActive ? 500 : 300,
-                color: isActive ? TEXT_ACTIVE : TEXT_MUTED,
-                transition: 'color 0.3s',
-                whiteSpace: 'nowrap',
-              }}>
+              <motion.span
+                animate={{ opacity: isExpanded ? 1 : 0, x: isExpanded ? 0 : -10 }}
+                transition={{ duration: 0.25, delay: isExpanded ? 0.12 : 0, ease: 'easeOut' }}
+                style={{
+                  fontSize: '9.5px', letterSpacing: '0.28em', textTransform: 'uppercase',
+                  fontFamily: 'Raleway, sans-serif',
+                  fontWeight: isActive ? 500 : 300,
+                  color: isActive ? TEXT_ACTIVE : TEXT_MUTED,
+                  whiteSpace: 'nowrap',
+                  display: 'block',
+                }}
+              >
                 {t.nav[id]}
-              </span>
+              </motion.span>
             </motion.button>
           )
         })}
       </nav>
 
       {/* ── Bottom block ── */}
-      <div style={{ marginTop: 'auto', paddingBottom: 24, flexShrink: 0 }}>
+      <motion.div
+        animate={{ opacity: isExpanded ? 1 : 0, x: isExpanded ? 0 : -10 }}
+        transition={{ duration: 0.25, delay: isExpanded ? 0.12 : 0, ease: 'easeOut' }}
+        style={{ marginTop: 'auto', paddingBottom: isMobile ? 24 : 24, flexShrink: 0, pointerEvents: isExpanded ? 'auto' : 'none' }}
+      >
 
         {/* Instagram */}
         <motion.div
@@ -180,7 +191,7 @@ function SidebarInner({ activePage, onNavigate, lang, setLang, t }) {
             ))}
           </div>
         </motion.div>
-      </div>
+      </motion.div>
     </div>
   )
 }
@@ -190,16 +201,37 @@ export default function Sidebar({ activePage, onNavigate, isOpen, lang, setLang,
 
   return (
     <>
+      {/* Desktop backdrop */}
+      <AnimatePresence>
+        {isExpanded && (
+          <motion.div
+            key="sidebar-backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.28 }}
+            className="fixed inset-0 z-40 hidden lg:block"
+            style={{ backgroundColor: 'rgba(45,21,32,0.18)', backdropFilter: 'blur(2px)' }}
+            onMouseEnter={() => setIsExpanded(false)}
+          />
+        )}
+      </AnimatePresence>
+
       {/* Desktop — icon-only by default, expands on hover */}
       <motion.aside
         className="fixed left-0 top-0 bottom-0 z-50 hidden lg:block"
-        style={{ backgroundColor: SIDEBAR_BG, overflow: 'hidden' }}
+        style={{
+          backgroundColor: SIDEBAR_BG,
+          overflow: 'hidden',
+          boxShadow: isExpanded ? '4px 0 32px rgba(45,21,32,0.12)' : 'none',
+          transition: 'box-shadow 0.32s ease',
+        }}
         animate={{ width: isExpanded ? 260 : ICON_W }}
         transition={{ duration: 0.32, ease: [0.25, 0.46, 0.45, 0.94] }}
         onMouseEnter={() => setIsExpanded(true)}
         onMouseLeave={() => setIsExpanded(false)}
       >
-        <SidebarInner activePage={activePage} onNavigate={onNavigate} lang={lang} setLang={setLang} t={t} />
+        <SidebarInner activePage={activePage} onNavigate={onNavigate} lang={lang} setLang={setLang} t={t} isExpanded={isExpanded} />
       </motion.aside>
 
       {/* Mobile — slide in from right (unchanged) */}
@@ -214,7 +246,7 @@ export default function Sidebar({ activePage, onNavigate, isOpen, lang, setLang,
             className="fixed right-0 top-0 bottom-0 w-[260px] z-50 lg:hidden"
             style={{ backgroundColor: SIDEBAR_BG }}
           >
-            <SidebarInner activePage={activePage} onNavigate={onNavigate} lang={lang} setLang={setLang} t={t} />
+            <SidebarInner activePage={activePage} onNavigate={onNavigate} lang={lang} setLang={setLang} t={t} isMobile={true} />
           </motion.aside>
         )}
       </AnimatePresence>

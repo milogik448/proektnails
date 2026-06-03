@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Raleway:wght@200;300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Raleway:wght@200;300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -23,6 +23,7 @@
            transition-all duration-300;
     background: #2D1520;
     color: #F6EBF0;
+    border-radius: 999px;
   }
   .btn-primary:hover {
     background: #4A2535;
@@ -36,6 +37,7 @@
            border transition-all duration-300;
     border-color: #2D1520;
     color: #2D1520;
+    border-radius: 999px;
   }
   .btn-outline:hover {
     background: #2D1520;
