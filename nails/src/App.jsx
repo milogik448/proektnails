@@ -70,7 +70,7 @@ export default function App() {
       <div
         aria-hidden="true"
         className="fixed inset-0"
-        style={{ zIndex: -1, backgroundColor: '#F2DEE4' }}
+        style={{ zIndex: -1, backgroundColor: '#FAF7F2' }}
       />
 
       {/* Atmosphere: soft ambient gradient blobs */}
@@ -116,7 +116,7 @@ export default function App() {
         <rect width="100%" height="100%" filter="url(#app-grain)" />
       </svg>
 
-      <div className="flex min-h-screen" style={{ backgroundColor: 'rgba(242,222,228,0.94)' }}>
+      <div className="flex min-h-screen" style={{ backgroundColor: 'rgba(250,247,242,0.94)' }}>
         {/* Mobile backdrop */}
         <AnimatePresence>
           {menuOpen && (
@@ -145,11 +145,11 @@ export default function App() {
         {/* Main */}
         <div
           className="flex-1 lg:ml-[64px] flex flex-col min-h-screen"
-          style={{ backgroundColor: 'rgba(242,222,228,0.97)', overflow: 'hidden' }}
+          style={{ backgroundColor: 'rgba(250,247,242,0.97)', overflow: 'hidden' }}
         >
           {/* Mobile top bar */}
           <div className="lg:hidden fixed top-0 left-0 right-0 z-30 flex items-center justify-between px-5 py-4 border-b border-ghost"
-               style={{ backgroundColor: 'rgba(242,222,228,0.97)' }}>
+               style={{ backgroundColor: 'rgba(250,247,242,0.97)' }}>
             <button
               onClick={() => navigate('home')}
               style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 10 }}

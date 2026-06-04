@@ -12,10 +12,10 @@ const NAV_LINKS = [
 const SERVICES = ['Манікюр', 'Педикюр', 'Гель-лак', 'Укріплення', 'Дизайн нігтів']
 
 /* ── palette on soft rose block ── */
-const BG        = '#EAD1DA'
+const BG        = '#EDE8E1'
 const HEADING   = '#2D1520'
-const BODY      = '#6E4856'
-const MUTED     = '#9C7282'
+const BODY      = '#5A4A42'
+const MUTED     = '#8A7A72'
 const ACCENT    = '#A65F77'
 const HAIRLINE  = 'rgba(45,21,32,0.12)'
 
@@ -58,7 +58,7 @@ export default function Footer({ onNavigate }) {
       }}
     >
       {/* top hairline glow */}
-      <div style={{ height: 1, background: 'linear-gradient(90deg, transparent, rgba(166,95,119,0.4), transparent)' }} />
+      <div style={{ height: 1, background: 'linear-gradient(90deg, transparent, rgba(140,120,100,0.2), transparent)' }} />
 
       <div className="px-6 md:px-12" style={{ maxWidth: 1320, margin: '0 auto' }}>
 

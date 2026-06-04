@@ -16,7 +16,7 @@ const LANGS = [
   { code: 'cs', label: 'ČES' },
 ]
 
-const SIDEBAR_BG  = '#F0D8DF'
+const SIDEBAR_BG  = '#F2EDE6'
 const TEXT_MUTED  = '#A07888'
 const TEXT_ACTIVE = '#2D1520'
 const DIVIDER     = 'rgba(160,100,120,0.18)'

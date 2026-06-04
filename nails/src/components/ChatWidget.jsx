@@ -173,16 +173,16 @@ export default function ChatWidget({ menuOpen = false, lang = 'uk' }) {
           display: 'flex', alignItems: 'center', gap: 8,
           padding: isOpen ? '10px 16px' : '10px 18px 10px 14px',
           borderRadius: 100,
-          background: isOpen ? '#3D1E2A' : '#2D1520',
-          border: '1px solid rgba(200,160,174,0.18)',
+          background: isOpen ? '#E0D9D0' : '#EDE8E1',
+          border: '1px solid rgba(160,130,110,0.3)',
           boxShadow: isOpen
             ? '0 4px 16px rgba(45,21,32,0.25)'
             : '0 6px 24px rgba(45,21,32,0.32), 0 2px 8px rgba(45,21,32,0.18)',
           cursor: 'pointer',
           transition: 'all 0.25s ease',
         }}
-        onMouseEnter={e => { e.currentTarget.style.background = '#3D1E2A' }}
-        onMouseLeave={e => { e.currentTarget.style.background = isOpen ? '#3D1E2A' : '#2D1520' }}
+        onMouseEnter={e => { e.currentTarget.style.background = '#E0D9D0' }}
+        onMouseLeave={e => { e.currentTarget.style.background = isOpen ? '#E0D9D0' : '#EDE8E1' }}
       >
         <AnimatePresence mode="wait">
           {isOpen
@@ -198,7 +198,7 @@ export default function ChatWidget({ menuOpen = false, lang = 'uk' }) {
         <span style={{
           fontFamily: 'Raleway, sans-serif',
           fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase',
-          fontWeight: 500, color: '#F0DFE6', whiteSpace: 'nowrap',
+          fontWeight: 500, color: '#2D1520', whiteSpace: 'nowrap',
         }}>
           {isOpen ? 'Закрити' : AI_LABEL[lang] ?? AI_LABEL.uk}
         </span>

@@ -14,11 +14,11 @@ function BookingPanel({ c }) {
 
   return (
     <div style={{
-      background: 'linear-gradient(150deg, #3E1F2B 0%, #2D1520 50%, #3A1724 100%)',
+      background: '#EDE8E1',
       borderRadius: 20,
-      padding: '36px 32px',
+      padding: '24px 24px',
       border: '1px solid rgba(200,160,174,0.13)',
-      boxShadow: '0 48px 96px rgba(45,21,32,0.3), 0 10px 28px rgba(45,21,32,0.2), inset 0 1px 0 rgba(255,255,255,0.08)',
+      boxShadow: '0 8px 32px rgba(45,21,32,0.08), 0 0 0 1px rgba(160,130,110,0.18)',
       position: 'relative',
       overflow: 'hidden',
       height: '100%',
@@ -29,7 +29,7 @@ function BookingPanel({ c }) {
       {/* Glow orbs */}
       <div style={{ position: 'absolute', top: -60, right: -60, width: 200, height: 200, borderRadius: '50%', background: 'radial-gradient(circle, rgba(200,160,174,0.14) 0%, transparent 68%)', pointerEvents: 'none' }} />
       <div style={{ position: 'absolute', bottom: -40, left: -40, width: 160, height: 160, borderRadius: '50%', background: 'radial-gradient(circle, rgba(200,160,174,0.08) 0%, transparent 65%)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: 'linear-gradient(90deg, transparent, rgba(200,160,174,0.4), transparent)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: 'linear-gradient(90deg, transparent, rgba(140,120,100,0.25), transparent)', pointerEvents: 'none' }} />
 
       {/* Online status */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 20 }}>
@@ -41,18 +41,18 @@ function BookingPanel({ c }) {
             transition={{ duration: 2.8, repeat: Infinity }}
           />
         </div>
-        <span style={{ fontSize: '9.5px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(168,216,168,0.65)', fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
+        <span style={{ fontSize: '9.5px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(80,140,80,0.85)', fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
           AI assistant online
         </span>
       </div>
 
-      <div style={{ fontSize: '22px', color: '#F0DFE6', fontFamily: 'DM Serif Display, serif', fontWeight: 400, lineHeight: 1.25, marginBottom: 6 }}>
+      <div style={{ fontSize: '18px', color: '#2D1520', fontFamily: 'DM Serif Display, serif', fontWeight: 400, lineHeight: 1.25, marginBottom: 4 }}>
         {c.ctaTitle}
       </div>
-      <div style={{ fontSize: '11.5px', color: 'rgba(200,160,174,0.5)', letterSpacing: '0.05em', fontFamily: 'Raleway, sans-serif', fontWeight: 300, marginBottom: 10 }}>
+      <div style={{ fontSize: '11.5px', color: '#8A7060', letterSpacing: '0.05em', fontFamily: 'Raleway, sans-serif', fontWeight: 300, marginBottom: 6 }}>
         {c.ctaSubtitle}
       </div>
-      <div style={{ fontSize: '11px', color: 'rgba(200,160,174,0.35)', fontFamily: 'Raleway, sans-serif', fontWeight: 300, lineHeight: 1.65, borderTop: '1px solid rgba(200,160,174,0.1)', paddingTop: 10, marginBottom: 28 }}>
+      <div style={{ fontSize: '11px', color: '#8A7060', fontFamily: 'Raleway, sans-serif', fontWeight: 300, lineHeight: 1.55, borderTop: '1px solid rgba(45,21,32,0.1)', paddingTop: 8, marginBottom: 16 }}>
         Оберіть зручний спосіб запису — AI-чат або Instagram Direct.
       </div>
 
@@ -62,7 +62,7 @@ function BookingPanel({ c }) {
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         style={{
-          width: '100%', padding: '15px 20px',
+          width: '100%', padding: '11px 16px',
           background: 'rgba(200,160,174,0.16)',
           border: '1px solid rgba(200,160,174,0.28)',
           borderRadius: 14, color: '#F0DFE6',
@@ -70,22 +70,22 @@ function BookingPanel({ c }) {
           cursor: 'pointer', textAlign: 'left', marginBottom: 10,
           transition: 'all 0.25s ease',
         }}
-        onMouseEnter={e => { e.currentTarget.style.background = 'rgba(200,160,174,0.26)'; e.currentTarget.style.borderColor = 'rgba(200,160,174,0.48)' }}
-        onMouseLeave={e => { e.currentTarget.style.background = 'rgba(200,160,174,0.16)'; e.currentTarget.style.borderColor = 'rgba(200,160,174,0.28)' }}
+        onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.95)'; e.currentTarget.style.borderColor = 'rgba(45,21,32,0.28)' }}
+        onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.7)'; e.currentTarget.style.borderColor = 'rgba(45,21,32,0.15)' }}
       >
-        <div style={{ width: 38, height: 38, borderRadius: '50%', flexShrink: 0, background: 'rgba(200,160,174,0.2)', border: '1px solid rgba(200,160,174,0.28)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ width: 32, height: 32, borderRadius: '50%', flexShrink: 0, background: 'rgba(45,21,32,0.06)', border: '1px solid rgba(45,21,32,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <Sparkles size={14} style={{ color: '#C8A0AE' }} />
         </div>
         <div style={{ flex: 1 }}>
-          <div style={{ fontSize: '13px', fontWeight: 500, color: '#F0DFE6', fontFamily: 'Raleway, sans-serif' }}>{c.aiBtn}</div>
-          <div style={{ fontSize: '11px', color: 'rgba(200,160,174,0.55)', fontFamily: 'Raleway, sans-serif', marginTop: 2 }}>{c.aiNote}</div>
+          <div style={{ fontSize: '13px', fontWeight: 500, color: '#2D1520', fontFamily: 'Raleway, sans-serif' }}>{c.aiBtn}</div>
+          <div style={{ fontSize: '11px', color: '#8A7060', fontFamily: 'Raleway, sans-serif', marginTop: 2 }}>{c.aiNote}</div>
         </div>
-        <ArrowUpRight size={13} style={{ color: 'rgba(200,160,174,0.45)', flexShrink: 0 }} />
+        <ArrowUpRight size={13} style={{ color: 'rgba(45,21,32,0.35)', flexShrink: 0 }} />
       </motion.button>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
-        <div style={{ flex: 1, height: 1, background: 'rgba(200,160,174,0.12)' }} />
-        <div style={{ fontSize: '10px', color: 'rgba(200,160,174,0.35)', letterSpacing: '0.14em', textTransform: 'uppercase', fontFamily: 'Raleway, sans-serif' }}>{c.orDivider}</div>
+        <div style={{ flex: 1, height: 1, background: 'rgba(45,21,32,0.1)' }} />
+        <div style={{ fontSize: '10px', color: 'rgba(45,21,32,0.4)', letterSpacing: '0.14em', textTransform: 'uppercase', fontFamily: 'Raleway, sans-serif' }}>{c.orDivider}</div>
         <div style={{ flex: 1, height: 1, background: 'rgba(200,160,174,0.12)' }} />
       </div>
 
@@ -99,22 +99,22 @@ function BookingPanel({ c }) {
           background: 'transparent', border: '1px solid rgba(200,160,174,0.18)',
           borderRadius: 14, color: 'rgba(200,160,174,0.75)',
           display: 'flex', alignItems: 'center', gap: 14,
-          textDecoration: 'none', transition: 'all 0.25s ease', marginBottom: 20,
+          textDecoration: 'none', transition: 'all 0.25s ease', marginBottom: 12,
         }}
-        onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(200,160,174,0.32)'; e.currentTarget.style.color = 'rgba(200,160,174,0.95)' }}
-        onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(200,160,174,0.18)'; e.currentTarget.style.color = 'rgba(200,160,174,0.75)' }}
+        onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(45,21,32,0.28)'; e.currentTarget.style.color = '#2D1520' }}
+        onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(45,21,32,0.12)'; e.currentTarget.style.color = '#2D1520' }}
       >
-        <div style={{ width: 38, height: 38, borderRadius: '50%', flexShrink: 0, background: 'rgba(200,160,174,0.1)', border: '1px solid rgba(200,160,174,0.18)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <Instagram size={14} strokeWidth={1.5} style={{ color: 'rgba(200,160,174,0.7)' }} />
+        <div style={{ width: 32, height: 32, borderRadius: '50%', flexShrink: 0, background: 'rgba(45,21,32,0.05)', border: '1px solid rgba(45,21,32,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Instagram size={14} strokeWidth={1.5} style={{ color: '#2D1520' }} />
         </div>
         <div style={{ flex: 1 }}>
           <div style={{ fontSize: '13px', fontWeight: 400, fontFamily: 'Raleway, sans-serif' }}>Instagram Direct</div>
-          <div style={{ fontSize: '11px', color: 'rgba(200,160,174,0.4)', fontFamily: 'Raleway, sans-serif', marginTop: 2 }}>@anjelikaa_nails</div>
+          <div style={{ fontSize: '11px', color: '#8A7060', fontFamily: 'Raleway, sans-serif', marginTop: 2 }}>@anjelikaa_nails</div>
         </div>
         <ArrowUpRight size={13} style={{ opacity: 0.35, flexShrink: 0 }} />
       </motion.a>
 
-      <div style={{ fontSize: '10.5px', color: 'rgba(200,160,174,0.35)', textAlign: 'center', letterSpacing: '0.06em', fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
+      <div style={{ fontSize: '10.5px', color: 'rgba(45,21,32,0.4)', textAlign: 'center', letterSpacing: '0.06em', fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
         {c.responseTime}
       </div>
     </div>
@@ -194,7 +194,7 @@ export default function Contacts({ t }) {
 
       {/* ── HERO CARD (same style as Home) ── */}
       <section
-        className="relative grid grid-cols-1 lg:grid-cols-[55%_45%] mx-4 md:mx-6 lg:mx-8 mt-4"
+        className="relative grid grid-cols-1 lg:grid-cols-[58%_42%] lg:items-start mx-4 md:mx-6 lg:mx-8 mt-4"
         style={{
           background: 'rgba(255,255,255,0.62)',
           border: '1px solid rgba(200,160,174,0.24)',
@@ -266,11 +266,11 @@ export default function Contacts({ t }) {
         </div>
 
         {/* RIGHT — booking panel */}
-        <div className="relative p-6 lg:p-8 flex items-center">
+        <div className="relative p-6 lg:p-8 flex items-center justify-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9, delay: 0.2 }}
-            style={{ width: '100%' }}
+            style={{ width: '100%', maxWidth: 360, margin: '0 auto' }}
           >
             <BookingPanel c={c} />
           </motion.div>

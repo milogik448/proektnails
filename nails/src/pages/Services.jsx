@@ -165,7 +165,7 @@ export default function Services({ t }) {
                 <button
                   onClick={() => window.dispatchEvent(new CustomEvent('open-ai-chat', { detail: { service: active.name } }))}
                   className="inline-flex items-center gap-3 transition-all duration-300"
-                  style={{ background: '#2D1520', color: '#F6EBF0', padding: '16px 38px', fontSize: '11px', letterSpacing: '0.26em', textTransform: 'uppercase', fontWeight: 500, borderRadius: '4px', border: 'none', cursor: 'pointer' }}
+                  style={{ background: '#2D1520', color: '#F6EBF0', padding: '16px 38px', fontSize: '11px', letterSpacing: '0.26em', textTransform: 'uppercase', fontWeight: 500, borderRadius: '100px', border: 'none', cursor: 'pointer' }}
                   onMouseEnter={e => { e.currentTarget.style.background = '#4A2535'; e.currentTarget.style.boxShadow = '0 12px 36px rgba(45,21,32,0.26)'; e.currentTarget.style.transform = 'translateY(-2px)' }}
                   onMouseLeave={e => { e.currentTarget.style.background = '#2D1520'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.transform = 'translateY(0)' }}
                 >

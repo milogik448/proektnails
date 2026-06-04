@@ -110,11 +110,11 @@ function FeaturedReview({ review }) {
         <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
           <div style={{
             width: 44, height: 44, borderRadius: '50%', flexShrink: 0,
-            background: 'linear-gradient(135deg, #3D1E2A, #2D1520)',
+            background: '#EDE8E1',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            boxShadow: '0 4px 16px rgba(45,21,32,0.22)',
+            boxShadow: '0 4px 16px rgba(45,21,32,0.1)', border: '1px solid rgba(45,21,32,0.12)',
           }}>
-            <span style={{ fontFamily: 'DM Serif Display, serif', fontSize: 17, color: '#F6EBF0', fontWeight: 300 }}>
+            <span style={{ fontFamily: 'DM Serif Display, serif', fontSize: 17, color: '#2D1520', fontWeight: 300 }}>
               {review.name[0]}
             </span>
           </div>
@@ -215,11 +215,11 @@ function TrustCard({ t }) {
       viewport={{ once: true }}
       transition={{ duration: 0.75, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
       style={{
-        background: 'linear-gradient(150deg, #3D1E2A 0%, #2D1520 50%, #391723 100%)',
+        background: '#EDE8E1',
         borderRadius: 24,
         padding: '36px 30px',
         border: '1px solid rgba(200,160,174,0.12)',
-        boxShadow: '0 36px 80px rgba(45,21,32,0.22), 0 0 0 1px rgba(200,160,174,0.07), inset 0 1px 0 rgba(255,255,255,0.06)',
+        boxShadow: '0 8px 32px rgba(45,21,32,0.08), 0 0 0 1px rgba(160,130,110,0.18)',
         position: 'relative', overflow: 'hidden',
       }}
     >
@@ -238,7 +238,7 @@ function TrustCard({ t }) {
       {/* Top label */}
       <div style={{
         fontSize: 8.5, letterSpacing: '0.38em', textTransform: 'uppercase',
-        color: 'rgba(200,160,174,0.5)', fontFamily: 'Raleway, sans-serif', marginBottom: 8,
+        color: '#A08070', fontFamily: 'Raleway, sans-serif', marginBottom: 8,
       }}>
         VELOURA Studio
       </div>
@@ -254,7 +254,7 @@ function TrustCard({ t }) {
       {/* Stars + verified */}
       <div style={{ display: 'flex', gap: 4, alignItems: 'center', marginBottom: 26, flexWrap: 'wrap' }}>
         {Array.from({ length: 5 }).map((_, i) => (
-          <Star key={i} size={12} fill="#C8A0AE" stroke="#C8A0AE" strokeWidth={1.4} />
+          <Star key={i} size={12} fill="#A07070" stroke="#A07070" strokeWidth={1.4} />
         ))}
         <span style={{
           fontSize: 9.5, letterSpacing: '0.22em', textTransform: 'uppercase',
@@ -270,37 +270,37 @@ function TrustCard({ t }) {
           <div key={label}>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, paddingTop: 15, paddingBottom: 15 }}>
               <div style={{
-                fontSize: 28, color: '#F0DFE6',
+                fontSize: 28, color: '#2D1520',
                 fontFamily: 'DM Serif Display, serif', fontWeight: 400, lineHeight: 1,
               }}>
                 {value}
               </div>
               <div style={{
-                fontSize: 11, color: 'rgba(200,160,174,0.55)',
+                fontSize: 11, color: '#A08070',
                 fontFamily: 'Raleway, sans-serif', fontWeight: 300,
               }}>
                 {label}
               </div>
             </div>
             {i < STATS.length - 1 && (
-              <div style={{ height: 1, background: 'rgba(200,160,174,0.1)' }} />
+              <div style={{ height: 1, background: 'rgba(45,21,32,0.08)' }} />
             )}
           </div>
         ))}
       </div>
 
       {/* Divider */}
-      <div style={{ height: 1, background: 'rgba(200,160,174,0.12)', marginBottom: 22 }} />
+      <div style={{ height: 1, background: 'rgba(45,21,32,0.1)', marginBottom: 22 }} />
 
       {/* Italic quote with left border */}
       <div style={{ position: 'relative', paddingLeft: 16 }}>
         <div style={{
           position: 'absolute', left: 0, top: 0, bottom: 0, width: 2,
-          background: 'linear-gradient(180deg, rgba(200,160,174,0.6), rgba(200,160,174,0.08))',
+          background: 'linear-gradient(180deg, rgba(45,21,32,0.4), rgba(45,21,32,0.08))',
           borderRadius: 2,
         }} />
         <p style={{
-          fontSize: 12.5, color: 'rgba(240,223,230,0.52)',
+          fontSize: 12.5, color: 'rgba(45,21,32,0.45)',
           fontFamily: 'DM Serif Display, serif', fontStyle: 'italic',
           lineHeight: 1.85, fontWeight: 300,
         }}>
