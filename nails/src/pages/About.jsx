@@ -126,7 +126,7 @@ export default function About({ onNavigate, t }) {
             style={{
               marginBottom: '2rem',
               padding: '18px 20px',
-              background: 'linear-gradient(120deg, rgba(200,160,174,0.08), rgba(242,222,228,0.18))',
+              background: 'linear-gradient(120deg, rgba(200,160,174,0.08), rgba(250,247,242,0.18))',
               borderLeft: '2px solid #C8A0AE',
               borderRadius: '0 12px 12px 0',
             }}
@@ -200,7 +200,7 @@ export default function About({ onNavigate, t }) {
             transition={{ duration: 0.65, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
             style={{
               padding: '20px 22px',
-              background: 'linear-gradient(145deg, rgba(255,255,255,0.72), rgba(242,222,228,0.3))',
+              background: 'linear-gradient(145deg, rgba(255,255,255,0.72), rgba(250,247,242,0.3))',
               border: '1px solid rgba(200,160,174,0.25)',
               borderRadius: 20,
               boxShadow: '0 8px 32px rgba(45,21,32,0.06), inset 0 1px 0 rgba(255,255,255,0.7)',
@@ -284,12 +284,12 @@ export default function About({ onNavigate, t }) {
 
           {/* Corner accents */}
           <div aria-hidden style={{ position: 'absolute', top: 18, right: 18, zIndex: 5, pointerEvents: 'none' }}>
-            <div style={{ width: 22, height: 1, background: 'rgba(242,222,228,0.6)', position: 'absolute', top: 0, right: 0 }} />
-            <div style={{ width: 1, height: 22, background: 'rgba(242,222,228,0.6)', position: 'absolute', top: 0, right: 0 }} />
+            <div style={{ width: 22, height: 1, background: 'rgba(250,247,242,0.6)', position: 'absolute', top: 0, right: 0 }} />
+            <div style={{ width: 1, height: 22, background: 'rgba(250,247,242,0.6)', position: 'absolute', top: 0, right: 0 }} />
           </div>
           <div aria-hidden style={{ position: 'absolute', bottom: 18, left: 18, zIndex: 5, pointerEvents: 'none' }}>
-            <div style={{ width: 22, height: 1, background: 'rgba(242,222,228,0.6)', position: 'absolute', bottom: 0, left: 0 }} />
-            <div style={{ width: 1, height: 22, background: 'rgba(242,222,228,0.6)', position: 'absolute', bottom: 0, left: 0 }} />
+            <div style={{ width: 22, height: 1, background: 'rgba(250,247,242,0.6)', position: 'absolute', bottom: 0, left: 0 }} />
+            <div style={{ width: 1, height: 22, background: 'rgba(250,247,242,0.6)', position: 'absolute', bottom: 0, left: 0 }} />
           </div>
         </motion.div>
 

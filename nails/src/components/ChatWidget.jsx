@@ -236,7 +236,7 @@ export default function ChatWidget({ menuOpen = false, lang = 'uk' }) {
             {/* Header */}
             <div style={{
               padding: '14px 18px',
-              background: '#F0D8DF',
+              background: '#F2EDE6',
               borderBottom: '1px solid rgba(160,100,120,0.14)',
               display: 'flex', alignItems: 'center', gap: 10,
             }}>
@@ -284,7 +284,7 @@ export default function ChatWidget({ menuOpen = false, lang = 'uk' }) {
               flex: 1, overflowY: 'auto',
               padding: '14px 14px 8px',
               maxHeight: 320, minHeight: 180,
-              background: 'rgba(242,222,228,0.18)',
+              background: 'rgba(250,247,242,0.18)',
             }}>
               {messages.map((msg, i) => (
                 <Message key={i} role={msg.role} content={msg.content} />

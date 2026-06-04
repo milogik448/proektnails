@@ -287,7 +287,7 @@ export default function Home({ onNavigate, t }) {
             {/* Left-edge gradient — blends photo into text column */}
             <div aria-hidden style={{
               position: 'absolute', top: 0, left: 0, bottom: 0, width: '28%',
-              background: 'linear-gradient(to right, rgba(242,222,228,0.88) 0%, rgba(242,222,228,0.2) 60%, transparent 100%)',
+              background: 'linear-gradient(to right, rgba(250,247,242,0.88) 0%, rgba(250,247,242,0.2) 60%, transparent 100%)',
               zIndex: 2,
             }} />
             {/* Bottom gradient */}
@@ -337,7 +337,7 @@ export default function Home({ onNavigate, t }) {
               position: 'absolute', bottom: 18, left: 18, zIndex: 3,
               display: 'inline-flex', alignItems: 'center', gap: 7,
               padding: '6px 14px', borderRadius: 100,
-              background: 'rgba(242,222,228,0.96)',
+              background: 'rgba(250,247,242,0.96)',
               border: '1px solid rgba(200,160,174,0.4)',
               fontSize: '9px', fontFamily: 'Raleway, sans-serif',
               fontWeight: 600, letterSpacing: '0.24em',

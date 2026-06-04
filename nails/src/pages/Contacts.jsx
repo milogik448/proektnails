@@ -157,7 +157,7 @@ function MiniMap() {
           <div style={{ fontSize: '8px', fontWeight: 500, color: '#2D1520', fontFamily: 'Raleway, sans-serif', letterSpacing: '0.1em', whiteSpace: 'nowrap' }}>VELOURA</div>
           <div style={{ fontSize: '7px', color: '#A07888', fontFamily: 'Raleway, sans-serif', whiteSpace: 'nowrap' }}>Zličín · Praha 5</div>
         </div>
-        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 44%, transparent 30%, rgba(242,222,228,0.28) 100%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 44%, transparent 30%, rgba(250,247,242,0.28) 100%)', pointerEvents: 'none' }} />
       </div>
       {/* Footer */}
       <div style={{ padding: '16px 22px', background: 'rgba(255,255,255,0.72)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
