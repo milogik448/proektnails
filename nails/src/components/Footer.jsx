@@ -84,7 +84,7 @@ export default function Footer({ onNavigate }) {
               onClick={openChat}
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
-                background: HEADING, color: '#F0DFE6', border: 'none', cursor: 'pointer',
+                background: HEADING, color: '#EDE8DF', border: 'none', cursor: 'pointer',
                 padding: '12px 22px', borderRadius: 999,
                 fontSize: '9.5px', letterSpacing: '0.2em', textTransform: 'uppercase',
                 fontFamily: 'Raleway, sans-serif', fontWeight: 600,

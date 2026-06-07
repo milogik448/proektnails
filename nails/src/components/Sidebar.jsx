@@ -17,9 +17,9 @@ const LANGS = [
 ]
 
 const SIDEBAR_BG  = '#F2EDE6'
-const TEXT_MUTED  = '#A07888'
+const TEXT_MUTED  = '#887060'
 const TEXT_ACTIVE = '#2D1520'
-const DIVIDER     = 'rgba(160,100,120,0.18)'
+const DIVIDER     = 'rgba(130,110,90,0.18)'
 const ICON_W      = 64   // collapsed width
 
 const itemVariants = {
@@ -49,11 +49,11 @@ function SidebarInner({ activePage, onNavigate, lang, setLang, t, isExpanded = t
           {/* Icon zone — always 64px, centered */}
           <div style={{ width: ICON_W, display: 'flex', justifyContent: 'center', alignItems: 'center', flexShrink: 0 }}>
             <svg width="38" height="38" viewBox="0 0 40 40" fill="none">
-              <circle cx="20" cy="20" r="18.5" stroke="rgba(200,160,174,0.48)" strokeWidth="0.72"/>
+              <circle cx="20" cy="20" r="18.5" stroke="rgba(160,148,128,0.48)" strokeWidth="0.72"/>
               <line x1="9.5" y1="12.5" x2="14.5" y2="12.5" stroke={TEXT_ACTIVE} strokeWidth="1.15"/>
               <line x1="25.5" y1="12.5" x2="30.5" y2="12.5" stroke={TEXT_ACTIVE} strokeWidth="1.15"/>
               <polyline points="11.5,12.5 20,28.5 28.5,12.5" stroke={TEXT_ACTIVE} strokeWidth="1.15" fill="none" strokeLinejoin="miter"/>
-              <circle cx="20" cy="28.5" r="1.25" fill="rgba(200,160,174,0.72)"/>
+              <circle cx="20" cy="28.5" r="1.25" fill="rgba(160,148,128,0.72)"/>
             </svg>
           </div>
           {/* Text zone — animates in when expanded */}
@@ -97,7 +97,7 @@ function SidebarInner({ activePage, onNavigate, lang, setLang, t, isExpanded = t
                 cursor: 'pointer', padding: '14px 0',
                 position: 'relative',
               }}
-              onMouseEnter={e => { if (!isActive) e.currentTarget.style.backgroundColor = 'rgba(160,100,120,0.07)' }}
+              onMouseEnter={e => { if (!isActive) e.currentTarget.style.backgroundColor = 'rgba(130,110,90,0.07)' }}
               onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent' }}
             >
               {/* Active indicator */}

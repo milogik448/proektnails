@@ -12,7 +12,7 @@
     background-color: #FAF7F2;
     color: #0A0A0A;
   }
-  ::selection { background: #2D1520; color: #FDF5F7; }
+  ::selection { background: #2D1520; color: #FAF7F2; }
 }
 
 @layer components {
@@ -22,7 +22,7 @@
            text-[11px] font-medium tracking-[0.25em] uppercase
            transition-all duration-300;
     background: #2D1520;
-    color: #F6EBF0;
+    color: #F5F0E8;
     border-radius: 999px;
   }
   .btn-primary:hover {
@@ -41,7 +41,7 @@
   }
   .btn-outline:hover {
     background: #2D1520;
-    color: #F6EBF0;
+    color: #F5F0E8;
     transform: translateY(-1px);
     box-shadow: 0 8px 24px rgba(45,21,32,0.18);
   }
@@ -65,7 +65,7 @@
     @apply relative flex items-center gap-4 w-full text-left py-3.5 px-7
            text-[10.5px] font-normal tracking-[0.24em] uppercase cursor-pointer
            transition-colors duration-300;
-    color: #A07080;
+    color: #887060;
     border-left: 2px solid transparent;
   }
   .nav-item-btn::before {

@@ -21,16 +21,16 @@ function SkillTag({ label }) {
   return (
     <span
       className="inline-flex items-center px-4 py-2 text-[10.5px] tracking-[0.1em] font-light cursor-default transition-all duration-300"
-      style={{ border: '1px solid rgba(200,160,174,0.35)', color: '#8B6070', borderRadius: 100 }}
+      style={{ border: '1px solid rgba(160,148,128,0.35)', color: '#786050', borderRadius: 100 }}
       onMouseEnter={e => {
         e.currentTarget.style.backgroundColor = '#2D1520'
-        e.currentTarget.style.color = '#F6EBF0'
+        e.currentTarget.style.color = '#F5F0E8'
         e.currentTarget.style.borderColor = '#2D1520'
       }}
       onMouseLeave={e => {
         e.currentTarget.style.backgroundColor = 'transparent'
-        e.currentTarget.style.color = '#8B6070'
-        e.currentTarget.style.borderColor = 'rgba(200,160,174,0.35)'
+        e.currentTarget.style.color = '#786050'
+        e.currentTarget.style.borderColor = 'rgba(160,148,128,0.35)'
       }}
     >
       {label}
@@ -62,8 +62,8 @@ export default function About({ onNavigate, t }) {
 
           {/* Eyebrow */}
           <motion.div {...fadeUp(0.05)} style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 28 }}>
-            <div style={{ width: 32, height: 1, background: '#C8A0AE' }} />
-            <span style={{ fontSize: '9px', letterSpacing: '0.42em', textTransform: 'uppercase', color: '#C8A0AE', fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>
+            <div style={{ width: 32, height: 1, background: '#A09278' }} />
+            <span style={{ fontSize: '9px', letterSpacing: '0.42em', textTransform: 'uppercase', color: '#A09278', fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>
               VELOURA Studio · Praha
             </span>
           </motion.div>
@@ -85,7 +85,7 @@ export default function About({ onNavigate, t }) {
           <motion.div
             initial={{ scaleX: 0 }} animate={{ scaleX: 1 }}
             transition={{ duration: 1, delay: 0.24, ease: [0.22, 1, 0.36, 1] }}
-            style={{ height: 1, width: 56, backgroundColor: '#C8A0AE', marginBottom: '2rem', transformOrigin: 'left' }}
+            style={{ height: 1, width: 56, backgroundColor: '#A09278', marginBottom: '2rem', transformOrigin: 'left' }}
           />
 
           {/* Mobile-only photo */}
@@ -126,15 +126,15 @@ export default function About({ onNavigate, t }) {
             style={{
               marginBottom: '2rem',
               padding: '18px 20px',
-              background: 'linear-gradient(120deg, rgba(200,160,174,0.08), rgba(250,247,242,0.18))',
-              borderLeft: '2px solid #C8A0AE',
+              background: 'linear-gradient(120deg, rgba(160,148,128,0.08), rgba(250,247,242,0.18))',
+              borderLeft: '2px solid #A09278',
               borderRadius: '0 12px 12px 0',
             }}
           >
             <p style={{ fontFamily: 'DM Serif Display, serif', fontStyle: 'italic', fontSize: 'clamp(14px, 1.4vw, 17px)', color: '#2D1520', fontWeight: 400, lineHeight: 1.6, marginBottom: 8 }}>
               "Краса починається з деталей"
             </p>
-            <span style={{ fontSize: '9.5px', letterSpacing: '0.16em', color: '#C8A0AE', fontFamily: 'Raleway, sans-serif', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '9.5px', letterSpacing: '0.16em', color: '#A09278', fontFamily: 'Raleway, sans-serif', textTransform: 'uppercase' }}>
               — Анжеліка, Nail Master
             </span>
           </motion.div>
@@ -144,8 +144,8 @@ export default function About({ onNavigate, t }) {
             {a.trust.map(({ label }, i) => {
               const Icon = TRUST_ICONS[i]
               return (
-                <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '6px 13px', borderRadius: 100, background: 'rgba(200,160,174,0.1)', border: '1px solid rgba(200,160,174,0.22)' }}>
-                  <Icon size={11} strokeWidth={1.4} style={{ color: '#C8A0AE' }} />
+                <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '6px 13px', borderRadius: 100, background: 'rgba(160,148,128,0.1)', border: '1px solid rgba(160,148,128,0.22)' }}>
+                  <Icon size={11} strokeWidth={1.4} style={{ color: '#A09278' }} />
                   <span style={{ fontSize: '10.5px', color: '#5A4050', fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>{label}</span>
                 </div>
               )
@@ -187,8 +187,8 @@ export default function About({ onNavigate, t }) {
 
           {/* Location */}
           <motion.div {...fadeUp(0.62)} style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 24 }}>
-            <MapPin size={12} style={{ color: '#C8A0AE', strokeWidth: 1.5 }} />
-            <span style={{ fontSize: '11.5px', color: '#A07888', fontFamily: 'Raleway, sans-serif', fontWeight: 300, letterSpacing: '0.04em' }}>
+            <MapPin size={12} style={{ color: '#A09278', strokeWidth: 1.5 }} />
+            <span style={{ fontSize: '11.5px', color: '#887060', fontFamily: 'Raleway, sans-serif', fontWeight: 300, letterSpacing: '0.04em' }}>
               Praha, Česká republika
             </span>
           </motion.div>
@@ -201,13 +201,13 @@ export default function About({ onNavigate, t }) {
             style={{
               padding: '20px 22px',
               background: 'linear-gradient(145deg, rgba(255,255,255,0.72), rgba(250,247,242,0.3))',
-              border: '1px solid rgba(200,160,174,0.25)',
+              border: '1px solid rgba(160,148,128,0.25)',
               borderRadius: 20,
               boxShadow: '0 8px 32px rgba(45,21,32,0.06), inset 0 1px 0 rgba(255,255,255,0.7)',
               display: 'inline-flex', flexDirection: 'column', gap: 0,
             }}
           >
-            <div style={{ fontSize: '8.5px', letterSpacing: '0.36em', textTransform: 'uppercase', color: '#C8A0AE', fontFamily: 'Raleway, sans-serif', marginBottom: 14 }}>
+            <div style={{ fontSize: '8.5px', letterSpacing: '0.36em', textTransform: 'uppercase', color: '#A09278', fontFamily: 'Raleway, sans-serif', marginBottom: 14 }}>
               Стандарти
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
@@ -215,8 +215,8 @@ export default function About({ onNavigate, t }) {
                 <div key={perk} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                   <div style={{
                     width: 20, height: 20, borderRadius: '50%', flexShrink: 0,
-                    background: 'linear-gradient(135deg, rgba(200,160,174,0.2), rgba(200,160,174,0.08))',
-                    border: '1px solid rgba(200,160,174,0.3)',
+                    background: 'linear-gradient(135deg, rgba(160,148,128,0.2), rgba(160,148,128,0.08))',
+                    border: '1px solid rgba(160,148,128,0.3)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                   }}>
                     <Check size={10} style={{ color: '#B08898', strokeWidth: 2 }} />
@@ -245,8 +245,8 @@ export default function About({ onNavigate, t }) {
             cursor: 'default',
             minHeight: 320,
             boxShadow: photoHovered
-              ? '0 0 80px rgba(200,160,174,0.38), 0 32px 64px rgba(45,21,32,0.18)'
-              : '0 0 50px rgba(200,160,174,0.2), 0 20px 48px rgba(45,21,32,0.12)',
+              ? '0 0 80px rgba(160,148,128,0.38), 0 32px 64px rgba(45,21,32,0.18)'
+              : '0 0 50px rgba(160,148,128,0.2), 0 20px 48px rgba(45,21,32,0.12)',
             transition: 'box-shadow 0.6s ease',
           }}
         >
@@ -271,11 +271,11 @@ export default function About({ onNavigate, t }) {
           {/* Bottom gradient */}
           <div aria-hidden style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 50%, rgba(45,21,32,0.28) 100%)', zIndex: 2 }} />
           {/* Top soft glow */}
-          <div aria-hidden style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '30%', background: 'linear-gradient(to bottom, rgba(200,160,174,0.07), transparent)', zIndex: 2 }} />
+          <div aria-hidden style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '30%', background: 'linear-gradient(to bottom, rgba(160,148,128,0.07), transparent)', zIndex: 2 }} />
 
           {/* Nail Master badge */}
           <div style={{ position: 'absolute', bottom: 20, right: 20, zIndex: 6 }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, padding: '8px 16px', borderRadius: 100, background: 'rgba(45,21,32,0.72)', backdropFilter: 'blur(12px)', border: '1px solid rgba(200,160,174,0.25)', fontSize: '9px', fontFamily: 'Raleway, sans-serif', fontWeight: 400, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(246,235,240,0.92)' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, padding: '8px 16px', borderRadius: 100, background: 'rgba(45,21,32,0.72)', backdropFilter: 'blur(12px)', border: '1px solid rgba(160,148,128,0.25)', fontSize: '9px', fontFamily: 'Raleway, sans-serif', fontWeight: 400, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(246,235,240,0.92)' }}>
               <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#7ED9A5', boxShadow: '0 0 6px rgba(126,217,165,0.9)', display: 'inline-block' }} />
               Nail Master
             </div>

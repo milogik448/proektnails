@@ -36,7 +36,7 @@ export default function Services({ t }) {
 
         <p
           className="font-serif italic"
-          style={{ fontSize: 'clamp(13px, 1.4vw, 16px)', color: '#A07888', fontWeight: 300, letterSpacing: '0.02em' }}
+          style={{ fontSize: 'clamp(13px, 1.4vw, 16px)', color: '#887060', fontWeight: 300, letterSpacing: '0.02em' }}
         >
           {s.subtitle}
         </p>
@@ -68,8 +68,8 @@ export default function Services({ t }) {
                 padding: '9px 18px',
                 borderRadius: '100px',
                 ...(selected === svc.id
-                  ? { background: '#2D1520', color: '#F6EBF0', boxShadow: '0 4px 16px rgba(45,21,32,0.22)' }
-                  : { background: 'rgba(255,255,255,0.68)', color: '#8B6070', border: '1px solid rgba(200,160,174,0.28)' }
+                  ? { background: '#2D1520', color: '#F5F0E8', boxShadow: '0 4px 16px rgba(45,21,32,0.22)' }
+                  : { background: 'rgba(255,255,255,0.68)', color: '#786050', border: '1px solid rgba(160,148,128,0.28)' }
                 ),
               }}
             >
@@ -105,7 +105,7 @@ export default function Services({ t }) {
                 </h2>
                 <p
                   className="font-serif italic"
-                  style={{ fontSize: '13.5px', color: '#A07888', letterSpacing: '0.02em', lineHeight: '1.75', fontWeight: 300 }}
+                  style={{ fontSize: '13.5px', color: '#887060', letterSpacing: '0.02em', lineHeight: '1.75', fontWeight: 300 }}
                 >
                   {active.desc}
                 </p>
@@ -128,7 +128,7 @@ export default function Services({ t }) {
                       gap: '12px',
                       padding: '20px 26px',
                       borderRadius: '16px',
-                      border: `1px solid ${hoveredItem === item.name ? 'rgba(160,112,128,0.22)' : 'rgba(200,160,174,0.18)'}`,
+                      border: `1px solid ${hoveredItem === item.name ? 'rgba(160,112,128,0.22)' : 'rgba(160,148,128,0.18)'}`,
                       background: hoveredItem === item.name ? 'rgba(255,255,255,0.94)' : 'rgba(255,255,255,0.72)',
                       boxShadow: hoveredItem === item.name
                         ? '0 12px 36px rgba(45,21,32,0.1), 0 2px 8px rgba(45,21,32,0.06)'
@@ -143,7 +143,7 @@ export default function Services({ t }) {
                       <div style={{ fontSize: '15px', fontWeight: 400, color: '#2D1520', letterSpacing: '0.01em', marginBottom: '6px', fontFamily: 'Raleway, sans-serif' }}>
                         {item.name}
                       </div>
-                      <div style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', fontSize: '9.5px', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#C8A0AE', background: 'rgba(200,160,174,0.10)', padding: '3px 9px', borderRadius: '100px' }}>
+                      <div style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', fontSize: '9.5px', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#A09278', background: 'rgba(160,148,128,0.10)', padding: '3px 9px', borderRadius: '100px' }}>
                         <Clock size={9} strokeWidth={1.5} />
                         {item.duration}
                       </div>
@@ -154,7 +154,7 @@ export default function Services({ t }) {
                       <span className="font-serif" style={{ fontSize: 'clamp(22px, 2.4vw, 30px)', color: '#2D1520', fontWeight: 300, lineHeight: 1, transition: 'color 0.28s' }}>
                         {item.price}
                       </span>
-                      <span style={{ fontSize: '11px', color: '#A07888', fontWeight: 300, letterSpacing: '0.05em' }}>Kč</span>
+                      <span style={{ fontSize: '11px', color: '#887060', fontWeight: 300, letterSpacing: '0.05em' }}>Kč</span>
                     </div>
                   </motion.div>
                 ))}
@@ -165,14 +165,14 @@ export default function Services({ t }) {
                 <button
                   onClick={() => window.dispatchEvent(new CustomEvent('open-ai-chat', { detail: { service: active.name } }))}
                   className="inline-flex items-center gap-3 transition-all duration-300"
-                  style={{ background: '#2D1520', color: '#F6EBF0', padding: '16px 38px', fontSize: '11px', letterSpacing: '0.26em', textTransform: 'uppercase', fontWeight: 500, borderRadius: '100px', border: 'none', cursor: 'pointer' }}
+                  style={{ background: '#2D1520', color: '#F5F0E8', padding: '16px 38px', fontSize: '11px', letterSpacing: '0.26em', textTransform: 'uppercase', fontWeight: 500, borderRadius: '100px', border: 'none', cursor: 'pointer' }}
                   onMouseEnter={e => { e.currentTarget.style.background = '#4A2535'; e.currentTarget.style.boxShadow = '0 12px 36px rgba(45,21,32,0.26)'; e.currentTarget.style.transform = 'translateY(-2px)' }}
                   onMouseLeave={e => { e.currentTarget.style.background = '#2D1520'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.transform = 'translateY(0)' }}
                 >
                   {s.bookBtn} {active.name}
                   <ArrowRight size={13} strokeWidth={1.5} />
                 </button>
-                <span style={{ fontSize: '11px', color: '#C8A0AE', letterSpacing: '0.08em' }}>via AI-асистент</span>
+                <span style={{ fontSize: '11px', color: '#A09278', letterSpacing: '0.08em' }}>via AI-асистент</span>
               </div>
 
             </motion.div>

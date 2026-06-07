@@ -17,8 +17,8 @@ function Stars({ count, size = 11 }) {
       {Array.from({ length: 5 }).map((_, i) => (
         <Star
           key={i} size={size}
-          fill={i < count ? '#C8A0AE' : 'none'}
-          stroke={i < count ? '#C8A0AE' : 'rgba(200,160,174,0.3)'}
+          fill={i < count ? '#A09278' : 'none'}
+          stroke={i < count ? '#A09278' : 'rgba(160,148,128,0.3)'}
           strokeWidth={1.4}
         />
       ))}
@@ -32,21 +32,21 @@ function NavButton({ onClick, children }) {
       onClick={onClick}
       style={{
         width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center',
-        border: '1px solid rgba(200,160,174,0.35)', color: '#C8A0AE',
+        border: '1px solid rgba(160,148,128,0.35)', color: '#A09278',
         borderRadius: 10, background: 'transparent',
         cursor: 'pointer', transition: 'all 0.28s ease',
       }}
       onMouseEnter={e => {
         e.currentTarget.style.background = '#2D1520'
         e.currentTarget.style.borderColor = '#2D1520'
-        e.currentTarget.style.color = '#F6EBF0'
+        e.currentTarget.style.color = '#F5F0E8'
         e.currentTarget.style.transform = 'translateY(-1px)'
         e.currentTarget.style.boxShadow = '0 6px 18px rgba(45,21,32,0.2)'
       }}
       onMouseLeave={e => {
         e.currentTarget.style.background = 'transparent'
-        e.currentTarget.style.borderColor = 'rgba(200,160,174,0.35)'
-        e.currentTarget.style.color = '#C8A0AE'
+        e.currentTarget.style.borderColor = 'rgba(160,148,128,0.35)'
+        e.currentTarget.style.color = '#A09278'
         e.currentTarget.style.transform = 'translateY(0)'
         e.currentTarget.style.boxShadow = 'none'
       }}
@@ -60,7 +60,7 @@ function NavButton({ onClick, children }) {
 function DecoStar({ style }) {
   return (
     <div aria-hidden style={{ position: 'absolute', pointerEvents: 'none', ...style }}>
-      <Star size={style.size || 14} fill="rgba(200,160,174,0.22)" stroke="rgba(200,160,174,0.22)" strokeWidth={1} />
+      <Star size={style.size || 14} fill="rgba(160,148,128,0.22)" stroke="rgba(160,148,128,0.22)" strokeWidth={1} />
     </div>
   )
 }
@@ -75,7 +75,7 @@ function FeaturedReview({ review }) {
       transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
       style={{
         backgroundColor: 'rgba(255,255,255,0.82)',
-        border: '1px solid rgba(200,160,174,0.2)',
+        border: '1px solid rgba(160,148,128,0.2)',
         borderRadius: 26,
         padding: '42px 44px 38px',
         boxShadow: '0 16px 56px rgba(45,21,32,0.1), 0 3px 10px rgba(45,21,32,0.06)',
@@ -85,13 +85,13 @@ function FeaturedReview({ review }) {
       {/* Inner top glow */}
       <div style={{
         position: 'absolute', top: 0, left: 0, right: 0, height: 3,
-        background: 'linear-gradient(90deg, transparent, rgba(200,160,174,0.35), transparent)',
+        background: 'linear-gradient(90deg, transparent, rgba(160,148,128,0.35), transparent)',
       }} />
 
       {/* Decorative quote */}
       <div style={{
         fontSize: 120, fontFamily: 'DM Serif Display, serif', fontStyle: 'italic',
-        color: 'rgba(200,160,174,0.16)', lineHeight: 0.72, fontWeight: 300,
+        color: 'rgba(160,148,128,0.16)', lineHeight: 0.72, fontWeight: 300,
         marginBottom: 12, userSelect: 'none',
       }}>
         "
@@ -122,7 +122,7 @@ function FeaturedReview({ review }) {
             <div style={{ fontSize: 13, fontWeight: 500, color: '#2D1520', letterSpacing: '0.02em', fontFamily: 'Raleway, sans-serif' }}>
               {review.name}
             </div>
-            <div style={{ fontSize: 9.5, color: '#A07888', letterSpacing: '0.22em', textTransform: 'uppercase', fontFamily: 'Raleway, sans-serif', marginTop: 3 }}>
+            <div style={{ fontSize: 9.5, color: '#887060', letterSpacing: '0.22em', textTransform: 'uppercase', fontFamily: 'Raleway, sans-serif', marginTop: 3 }}>
               {review.city} · {review.date}
             </div>
           </div>
@@ -144,7 +144,7 @@ function ReviewCard({ review, isActive, onClick, delay }) {
       onClick={onClick}
       style={{
         backgroundColor: isActive ? 'rgba(255,255,255,0.96)' : 'rgba(255,255,255,0.68)',
-        border: `1px solid ${isActive ? 'rgba(200,160,174,0.48)' : 'rgba(200,160,174,0.18)'}`,
+        border: `1px solid ${isActive ? 'rgba(160,148,128,0.48)' : 'rgba(160,148,128,0.18)'}`,
         borderRadius: 22,
         padding: '28px 28px',
         boxShadow: isActive
@@ -159,7 +159,7 @@ function ReviewCard({ review, isActive, onClick, delay }) {
         if (!isActive) {
           e.currentTarget.style.transform = 'translateY(-4px)'
           e.currentTarget.style.boxShadow = '0 16px 40px rgba(45,21,32,0.09)'
-          e.currentTarget.style.borderColor = 'rgba(200,160,174,0.3)'
+          e.currentTarget.style.borderColor = 'rgba(160,148,128,0.3)'
           e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.84)'
         }
       }}
@@ -167,7 +167,7 @@ function ReviewCard({ review, isActive, onClick, delay }) {
         if (!isActive) {
           e.currentTarget.style.transform = 'translateY(0)'
           e.currentTarget.style.boxShadow = '0 2px 12px rgba(45,21,32,0.04)'
-          e.currentTarget.style.borderColor = 'rgba(200,160,174,0.16)'
+          e.currentTarget.style.borderColor = 'rgba(160,148,128,0.16)'
           e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.64)'
         }
       }}
@@ -176,7 +176,7 @@ function ReviewCard({ review, isActive, onClick, delay }) {
       {isActive && (
         <div style={{
           position: 'absolute', top: 0, left: 0, right: 0, height: 2,
-          background: 'linear-gradient(90deg, transparent, rgba(200,160,174,0.6), transparent)',
+          background: 'linear-gradient(90deg, transparent, rgba(160,148,128,0.6), transparent)',
         }} />
       )}
 
@@ -191,7 +191,7 @@ function ReviewCard({ review, isActive, onClick, delay }) {
         {review.text}
       </p>
       <div style={{
-        fontSize: 9.5, color: '#A07888', letterSpacing: '0.2em',
+        fontSize: 9.5, color: '#887060', letterSpacing: '0.2em',
         textTransform: 'uppercase', fontFamily: 'Raleway, sans-serif', fontWeight: 300,
       }}>
         {review.name} · {review.date}
@@ -218,7 +218,7 @@ function TrustCard({ t }) {
         background: '#EDE8E1',
         borderRadius: 24,
         padding: '36px 30px',
-        border: '1px solid rgba(200,160,174,0.12)',
+        border: '1px solid rgba(160,148,128,0.12)',
         boxShadow: '0 8px 32px rgba(45,21,32,0.08), 0 0 0 1px rgba(160,130,110,0.18)',
         position: 'relative', overflow: 'hidden',
       }}
@@ -226,12 +226,12 @@ function TrustCard({ t }) {
       {/* Glow orbs */}
       <div style={{
         position: 'absolute', top: -60, right: -60, width: 200, height: 200, borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(200,160,174,0.14), transparent)',
+        background: 'radial-gradient(circle, rgba(160,148,128,0.14), transparent)',
         pointerEvents: 'none',
       }} />
       <div style={{
         position: 'absolute', bottom: -40, left: -40, width: 140, height: 140, borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(200,160,174,0.08), transparent)',
+        background: 'radial-gradient(circle, rgba(160,148,128,0.08), transparent)',
         pointerEvents: 'none',
       }} />
 
@@ -245,7 +245,7 @@ function TrustCard({ t }) {
 
       {/* Title */}
       <div style={{
-        fontSize: 20, color: '#F0DFE6',
+        fontSize: 20, color: '#EDE8DF',
         fontFamily: 'DM Serif Display, serif', fontWeight: 400, marginBottom: 6,
       }}>
         Довіра клієнтів
@@ -258,7 +258,7 @@ function TrustCard({ t }) {
         ))}
         <span style={{
           fontSize: 9.5, letterSpacing: '0.22em', textTransform: 'uppercase',
-          color: 'rgba(200,160,174,0.45)', fontFamily: 'Raleway, sans-serif', marginLeft: 8,
+          color: 'rgba(160,148,128,0.45)', fontFamily: 'Raleway, sans-serif', marginLeft: 8,
         }}>
           Verified reviews
         </span>
@@ -332,12 +332,12 @@ export default function Reviews({ t }) {
         {/* Primary gradient blobs */}
         <div style={{
           position: 'absolute', top: 0, right: 0, width: 580, height: 580, borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(200,160,174,0.13) 0%, transparent 62%)',
+          background: 'radial-gradient(circle, rgba(160,148,128,0.13) 0%, transparent 62%)',
           transform: 'translate(28%, -32%)',
         }} />
         <div style={{
           position: 'absolute', bottom: '10%', left: 0, width: 420, height: 420, borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(200,160,174,0.09) 0%, transparent 68%)',
+          background: 'radial-gradient(circle, rgba(160,148,128,0.09) 0%, transparent 68%)',
           transform: 'translate(-42%, 0)',
         }} />
         <div style={{
@@ -355,7 +355,7 @@ export default function Reviews({ t }) {
           position: 'absolute', top: '4%', left: '50%', transform: 'translateX(-50%)',
           fontSize: 'clamp(200px, 28vw, 360px)',
           fontFamily: 'DM Serif Display, serif', fontStyle: 'italic', fontWeight: 300,
-          color: 'rgba(200,160,174,0.055)', lineHeight: 1, userSelect: 'none',
+          color: 'rgba(160,148,128,0.055)', lineHeight: 1, userSelect: 'none',
           letterSpacing: '-0.04em',
         }}>
           "
@@ -393,7 +393,7 @@ export default function Reviews({ t }) {
           transition={{ duration: 0.6, delay: 0.12 }}
           style={{
             fontSize: '10.5px', letterSpacing: '0.3em', textTransform: 'uppercase',
-            color: '#C8A0AE', fontFamily: 'Raleway, sans-serif', fontWeight: 300, marginTop: 12,
+            color: '#A09278', fontFamily: 'Raleway, sans-serif', fontWeight: 300, marginTop: 12,
           }}
         >
           Praha · Verified Reviews
@@ -406,7 +406,7 @@ export default function Reviews({ t }) {
           style={{ display: 'flex', justifyContent: 'flex-start', gap: 5, marginTop: 14 }}
         >
           {Array.from({ length: 5 }).map((_, i) => (
-            <Star key={i} size={12} fill="rgba(200,160,174,0.5)" stroke="rgba(200,160,174,0.5)" strokeWidth={1.2} />
+            <Star key={i} size={12} fill="rgba(160,148,128,0.5)" stroke="rgba(160,148,128,0.5)" strokeWidth={1.2} />
           ))}
         </motion.div>
 
@@ -416,7 +416,7 @@ export default function Reviews({ t }) {
           className="origin-left"
           style={{
             height: 1, width: 56, marginTop: 18,
-            background: 'linear-gradient(90deg, rgba(200,160,174,0.55), transparent)',
+            background: 'linear-gradient(90deg, rgba(160,148,128,0.55), transparent)',
           }}
         />
       </div>
@@ -439,7 +439,7 @@ export default function Reviews({ t }) {
                 <NavButton onClick={next}><ChevronRight size={15} /></NavButton>
                 <span style={{
                   fontSize: 9.5, letterSpacing: '0.28em', textTransform: 'uppercase',
-                  color: '#C8A0AE', fontFamily: 'Raleway, sans-serif', marginLeft: 6,
+                  color: '#A09278', fontFamily: 'Raleway, sans-serif', marginLeft: 6,
                 }}>
                   {current + 1} / {r.items.length}
                 </span>

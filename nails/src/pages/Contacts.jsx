@@ -17,7 +17,7 @@ function BookingPanel({ c }) {
       background: '#EDE8E1',
       borderRadius: 20,
       padding: '24px 24px',
-      border: '1px solid rgba(200,160,174,0.13)',
+      border: '1px solid rgba(160,148,128,0.13)',
       boxShadow: '0 8px 32px rgba(45,21,32,0.08), 0 0 0 1px rgba(160,130,110,0.18)',
       position: 'relative',
       overflow: 'hidden',
@@ -27,8 +27,8 @@ function BookingPanel({ c }) {
       justifyContent: 'center',
     }}>
       {/* Glow orbs */}
-      <div style={{ position: 'absolute', top: -60, right: -60, width: 200, height: 200, borderRadius: '50%', background: 'radial-gradient(circle, rgba(200,160,174,0.14) 0%, transparent 68%)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', bottom: -40, left: -40, width: 160, height: 160, borderRadius: '50%', background: 'radial-gradient(circle, rgba(200,160,174,0.08) 0%, transparent 65%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', top: -60, right: -60, width: 200, height: 200, borderRadius: '50%', background: 'radial-gradient(circle, rgba(160,148,128,0.14) 0%, transparent 68%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', bottom: -40, left: -40, width: 160, height: 160, borderRadius: '50%', background: 'radial-gradient(circle, rgba(160,148,128,0.08) 0%, transparent 65%)', pointerEvents: 'none' }} />
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: 'linear-gradient(90deg, transparent, rgba(140,120,100,0.25), transparent)', pointerEvents: 'none' }} />
 
       {/* Online status */}
@@ -63,9 +63,9 @@ function BookingPanel({ c }) {
         whileTap={{ scale: 0.98 }}
         style={{
           width: '100%', padding: '11px 16px',
-          background: 'rgba(200,160,174,0.16)',
-          border: '1px solid rgba(200,160,174,0.28)',
-          borderRadius: 14, color: '#F0DFE6',
+          background: 'rgba(160,148,128,0.16)',
+          border: '1px solid rgba(160,148,128,0.28)',
+          borderRadius: 14, color: '#EDE8DF',
           display: 'flex', alignItems: 'center', gap: 14,
           cursor: 'pointer', textAlign: 'left', marginBottom: 10,
           transition: 'all 0.25s ease',
@@ -74,7 +74,7 @@ function BookingPanel({ c }) {
         onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.7)'; e.currentTarget.style.borderColor = 'rgba(45,21,32,0.15)' }}
       >
         <div style={{ width: 32, height: 32, borderRadius: '50%', flexShrink: 0, background: 'rgba(45,21,32,0.06)', border: '1px solid rgba(45,21,32,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <Sparkles size={14} style={{ color: '#C8A0AE' }} />
+          <Sparkles size={14} style={{ color: '#A09278' }} />
         </div>
         <div style={{ flex: 1 }}>
           <div style={{ fontSize: '13px', fontWeight: 500, color: '#2D1520', fontFamily: 'Raleway, sans-serif' }}>{c.aiBtn}</div>
@@ -86,7 +86,7 @@ function BookingPanel({ c }) {
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
         <div style={{ flex: 1, height: 1, background: 'rgba(45,21,32,0.1)' }} />
         <div style={{ fontSize: '10px', color: 'rgba(45,21,32,0.4)', letterSpacing: '0.14em', textTransform: 'uppercase', fontFamily: 'Raleway, sans-serif' }}>{c.orDivider}</div>
-        <div style={{ flex: 1, height: 1, background: 'rgba(200,160,174,0.12)' }} />
+        <div style={{ flex: 1, height: 1, background: 'rgba(160,148,128,0.12)' }} />
       </div>
 
       {/* Instagram Button */}
@@ -96,8 +96,8 @@ function BookingPanel({ c }) {
         whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
         style={{
           width: '100%', padding: '15px 20px',
-          background: 'transparent', border: '1px solid rgba(200,160,174,0.18)',
-          borderRadius: 14, color: 'rgba(200,160,174,0.75)',
+          background: 'transparent', border: '1px solid rgba(160,148,128,0.18)',
+          borderRadius: 14, color: 'rgba(160,148,128,0.75)',
           display: 'flex', alignItems: 'center', gap: 14,
           textDecoration: 'none', transition: 'all 0.25s ease', marginBottom: 12,
         }}
@@ -129,7 +129,7 @@ function MiniMap() {
       viewport={{ once: true }} transition={{ duration: 0.65, delay: 0.2 }}
       style={{
         display: 'block', borderRadius: 22, overflow: 'hidden',
-        border: '1px solid rgba(200,160,174,0.2)',
+        border: '1px solid rgba(160,148,128,0.2)',
         boxShadow: '0 8px 36px rgba(45,21,32,0.08)',
         textDecoration: 'none', transition: 'all 0.32s ease',
       }}
@@ -138,12 +138,12 @@ function MiniMap() {
     >
       {/* Map visual */}
       <div style={{ height: 180, background: 'linear-gradient(145deg, #F6EAF0 0%, #EDE0E8 50%, #F1E5EB 100%)', position: 'relative', overflow: 'hidden' }}>
-        {[14,28,42,56,70,84].map(y => <div key={`h${y}`} style={{ position: 'absolute', left: 0, right: 0, top: `${y}%`, height: 1, background: 'rgba(200,160,174,0.16)' }} />)}
-        {[10,22,34,46,58,70,82,94].map(x => <div key={`v${x}`} style={{ position: 'absolute', top: 0, bottom: 0, left: `${x}%`, width: 1, background: 'rgba(200,160,174,0.16)' }} />)}
-        <div style={{ position: 'absolute', top: '44%', left: 0, right: 0, height: 9, background: 'rgba(255,255,255,0.55)', borderTop: '1px solid rgba(200,160,174,0.16)', borderBottom: '1px solid rgba(200,160,174,0.16)' }} />
-        <div style={{ position: 'absolute', top: 0, bottom: 0, left: '47%', width: 10, background: 'rgba(255,255,255,0.48)', borderLeft: '1px solid rgba(200,160,174,0.14)', borderRight: '1px solid rgba(200,160,174,0.14)' }} />
+        {[14,28,42,56,70,84].map(y => <div key={`h${y}`} style={{ position: 'absolute', left: 0, right: 0, top: `${y}%`, height: 1, background: 'rgba(160,148,128,0.16)' }} />)}
+        {[10,22,34,46,58,70,82,94].map(x => <div key={`v${x}`} style={{ position: 'absolute', top: 0, bottom: 0, left: `${x}%`, width: 1, background: 'rgba(160,148,128,0.16)' }} />)}
+        <div style={{ position: 'absolute', top: '44%', left: 0, right: 0, height: 9, background: 'rgba(255,255,255,0.55)', borderTop: '1px solid rgba(160,148,128,0.16)', borderBottom: '1px solid rgba(160,148,128,0.16)' }} />
+        <div style={{ position: 'absolute', top: 0, bottom: 0, left: '47%', width: 10, background: 'rgba(255,255,255,0.48)', borderLeft: '1px solid rgba(160,148,128,0.14)', borderRight: '1px solid rgba(160,148,128,0.14)' }} />
         {[{t:'10%',l:'12%',w:36,h:22},{t:'10%',l:'56%',w:26,h:18},{t:'56%',l:'58%',w:30,h:18},{t:'60%',l:'12%',w:20,h:16}].map((b,i) => (
-          <div key={i} style={{ position: 'absolute', top: b.t, left: b.l, width: b.w, height: b.h, borderRadius: 4, background: i%2===0 ? 'rgba(200,160,174,0.2)' : 'rgba(200,160,174,0.14)', border: '1px solid rgba(200,160,174,0.26)' }} />
+          <div key={i} style={{ position: 'absolute', top: b.t, left: b.l, width: b.w, height: b.h, borderRadius: 4, background: i%2===0 ? 'rgba(160,148,128,0.2)' : 'rgba(160,148,128,0.14)', border: '1px solid rgba(160,148,128,0.26)' }} />
         ))}
         {/* Pin */}
         <div style={{ position: 'absolute', top: '44%', left: '47%', transform: 'translate(-50%, -100%)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -153,9 +153,9 @@ function MiniMap() {
           <div style={{ width: 8, height: 3, borderRadius: '50%', background: 'rgba(45,21,32,0.22)', marginTop: 2 }} />
         </div>
         {/* Label */}
-        <div style={{ position: 'absolute', top: '18%', left: '52%', background: 'rgba(255,255,255,0.9)', border: '1px solid rgba(200,160,174,0.28)', borderRadius: 7, padding: '3px 8px', boxShadow: '0 2px 10px rgba(45,21,32,0.1)' }}>
+        <div style={{ position: 'absolute', top: '18%', left: '52%', background: 'rgba(255,255,255,0.9)', border: '1px solid rgba(160,148,128,0.28)', borderRadius: 7, padding: '3px 8px', boxShadow: '0 2px 10px rgba(45,21,32,0.1)' }}>
           <div style={{ fontSize: '8px', fontWeight: 500, color: '#2D1520', fontFamily: 'Raleway, sans-serif', letterSpacing: '0.1em', whiteSpace: 'nowrap' }}>VELOURA</div>
-          <div style={{ fontSize: '7px', color: '#A07888', fontFamily: 'Raleway, sans-serif', whiteSpace: 'nowrap' }}>Zličín · Praha 5</div>
+          <div style={{ fontSize: '7px', color: '#887060', fontFamily: 'Raleway, sans-serif', whiteSpace: 'nowrap' }}>Zličín · Praha 5</div>
         </div>
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 44%, transparent 30%, rgba(250,247,242,0.28) 100%)', pointerEvents: 'none' }} />
       </div>
@@ -163,7 +163,7 @@ function MiniMap() {
       <div style={{ padding: '16px 22px', background: 'rgba(255,255,255,0.72)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div>
           <div style={{ fontSize: '13px', fontWeight: 500, color: '#2D1520', fontFamily: 'Raleway, sans-serif', letterSpacing: '0.03em' }}>VELOURA · Zličín</div>
-          <div style={{ fontSize: '11px', color: '#A07888', fontFamily: 'Raleway, sans-serif', fontWeight: 300, marginTop: 2 }}>Praha 5 · Czech Republic · Точна адреса після запису</div>
+          <div style={{ fontSize: '11px', color: '#887060', fontFamily: 'Raleway, sans-serif', fontWeight: 300, marginTop: 2 }}>Praha 5 · Czech Republic · Точна адреса після запису</div>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 4, color: 'rgba(160,120,136,0.6)', fontSize: '10px', letterSpacing: '0.1em', fontFamily: 'Raleway, sans-serif', flexShrink: 0 }}>
           <MapPin size={11} />
@@ -197,14 +197,14 @@ export default function Contacts({ t }) {
         className="relative grid grid-cols-1 lg:grid-cols-[58%_42%] lg:items-start mx-4 md:mx-6 lg:mx-8 mt-4"
         style={{
           background: 'rgba(255,255,255,0.62)',
-          border: '1px solid rgba(200,160,174,0.24)',
+          border: '1px solid rgba(160,148,128,0.24)',
           borderRadius: 32,
           overflow: 'hidden',
           boxShadow: '0 16px 56px rgba(45,21,32,0.09), 0 2px 8px rgba(45,21,32,0.04), inset 0 1px 0 rgba(255,255,255,0.68)',
         }}
       >
         {/* Top shimmer */}
-        <div aria-hidden style={{ position: 'absolute', top: 0, left: '8%', right: '8%', height: 1, zIndex: 10, background: 'linear-gradient(90deg, transparent, rgba(200,160,174,0.5), transparent)' }} />
+        <div aria-hidden style={{ position: 'absolute', top: 0, left: '8%', right: '8%', height: 1, zIndex: 10, background: 'linear-gradient(90deg, transparent, rgba(160,148,128,0.5), transparent)' }} />
 
         {/* LEFT — info */}
         <div className="flex flex-col justify-center px-8 sm:px-10 md:px-14 lg:px-16 xl:px-20 pt-10 pb-10 sm:pt-14 sm:pb-14 lg:pt-20 lg:pb-20 relative z-10">
@@ -228,21 +228,21 @@ export default function Contacts({ t }) {
             initial={{ scaleX: 0 }} animate={{ scaleX: 1 }}
             transition={{ duration: 0.9, delay: 0.22, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="h-px w-14 mb-8 origin-left"
-            style={{ backgroundColor: '#C8A0AE' }}
+            style={{ backgroundColor: '#A09278' }}
           />
 
           {/* Info rows */}
           <motion.div {...fadeUp(0.3)} style={{ display: 'flex', flexDirection: 'column', gap: 18, marginBottom: '2rem' }}>
             {INFO.map(({ Icon, label, value, href, note, schedule }) => (
               <div key={label} style={{ display: 'flex', alignItems: 'flex-start', gap: 14 }}>
-                <div style={{ width: 36, height: 36, borderRadius: '50%', flexShrink: 0, background: 'linear-gradient(135deg, rgba(200,160,174,0.18), rgba(200,160,174,0.07))', border: '1px solid rgba(200,160,174,0.22)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <Icon size={14} strokeWidth={1.4} style={{ color: '#B08090' }} />
+                <div style={{ width: 36, height: 36, borderRadius: '50%', flexShrink: 0, background: 'linear-gradient(135deg, rgba(160,148,128,0.18), rgba(160,148,128,0.07))', border: '1px solid rgba(160,148,128,0.22)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Icon size={14} strokeWidth={1.4} style={{ color: '#907860' }} />
                 </div>
                 <div>
-                  <div style={{ fontSize: '8.5px', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#A07888', fontFamily: 'Raleway, sans-serif', marginBottom: 4 }}>{label}</div>
+                  <div style={{ fontSize: '8.5px', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#887060', fontFamily: 'Raleway, sans-serif', marginBottom: 4 }}>{label}</div>
                   {href ? (
                     <a href={href} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: '14px', fontWeight: 300, color: '#2D1520', fontFamily: 'Raleway, sans-serif', textDecoration: 'none' }}
-                      onMouseEnter={e => { e.currentTarget.style.color = '#8B6070' }}
+                      onMouseEnter={e => { e.currentTarget.style.color = '#786050' }}
                       onMouseLeave={e => { e.currentTarget.style.color = '#2D1520' }}
                     >
                       {value} <ArrowUpRight size={11} style={{ opacity: 0.4 }} />
@@ -254,13 +254,13 @@ export default function Contacts({ t }) {
                   ) : (
                     <div style={{ fontSize: '14px', color: '#2D1520', fontWeight: 300, fontFamily: 'Raleway, sans-serif' }}>{value}</div>
                   )}
-                  {note && <div style={{ fontSize: '11px', color: '#A07888', fontFamily: 'Raleway, sans-serif', fontWeight: 300, marginTop: 3 }}>{note}</div>}
+                  {note && <div style={{ fontSize: '11px', color: '#887060', fontFamily: 'Raleway, sans-serif', fontWeight: 300, marginTop: 3 }}>{note}</div>}
                 </div>
               </div>
             ))}
           </motion.div>
 
-          <motion.p {...fadeUp(0.38)} className="font-light" style={{ fontSize: '13px', color: '#8B6070', letterSpacing: '0.025em', lineHeight: 2, maxWidth: 300 }}>
+          <motion.p {...fadeUp(0.38)} className="font-light" style={{ fontSize: '13px', color: '#786050', letterSpacing: '0.025em', lineHeight: 2, maxWidth: 300 }}>
             {c.desc}
           </motion.p>
         </div>
@@ -290,22 +290,22 @@ export default function Contacts({ t }) {
             viewport={{ once: true }} transition={{ duration: 0.65, delay: 0.1 }}
             style={{
               background: 'rgba(255,255,255,0.72)',
-              border: '1px solid rgba(200,160,174,0.2)',
+              border: '1px solid rgba(160,148,128,0.2)',
               borderRadius: 22, padding: '32px 28px',
               boxShadow: '0 6px 28px rgba(45,21,32,0.07)',
               display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 16,
               position: 'relative', overflow: 'hidden',
             }}
           >
-            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: 'linear-gradient(90deg, transparent, rgba(200,160,174,0.38), transparent)' }} />
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: 'linear-gradient(90deg, transparent, rgba(160,148,128,0.38), transparent)' }} />
 
-            <div style={{ fontSize: '9px', letterSpacing: '0.38em', textTransform: 'uppercase', color: '#C8A0AE', fontFamily: 'Raleway, sans-serif' }}>VELOURA Studio</div>
+            <div style={{ fontSize: '9px', letterSpacing: '0.38em', textTransform: 'uppercase', color: '#A09278', fontFamily: 'Raleway, sans-serif' }}>VELOURA Studio</div>
 
             <div style={{ fontSize: '24px', fontFamily: 'DM Serif Display, serif', fontWeight: 300, color: '#2D1520', lineHeight: 1.2 }}>
               Zličín, Praha
             </div>
 
-            <div style={{ height: 1, background: 'linear-gradient(90deg, rgba(200,160,174,0.3), transparent)' }} />
+            <div style={{ height: 1, background: 'linear-gradient(90deg, rgba(160,148,128,0.3), transparent)' }} />
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {[
@@ -314,17 +314,17 @@ export default function Contacts({ t }) {
                 { icon: MapPin, text: 'Точна адреса — після запису' },
               ].map(({ icon: Icon, text }) => (
                 <div key={text} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                  <Icon size={12} strokeWidth={1.4} style={{ color: '#C8A0AE', flexShrink: 0 }} />
+                  <Icon size={12} strokeWidth={1.4} style={{ color: '#A09278', flexShrink: 0 }} />
                   <span style={{ fontSize: '12.5px', color: '#6B5060', fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>{text}</span>
                 </div>
               ))}
             </div>
 
-            <div style={{ height: 1, background: 'linear-gradient(90deg, rgba(200,160,174,0.3), transparent)' }} />
+            <div style={{ height: 1, background: 'linear-gradient(90deg, rgba(160,148,128,0.3), transparent)' }} />
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
               {['Premium Nail Studio', 'By appointment only'].map(label => (
-                <span key={label} style={{ fontSize: '8.5px', letterSpacing: '0.16em', textTransform: 'uppercase', color: '#7A5060', fontFamily: 'Raleway, sans-serif', fontWeight: 500, padding: '5px 12px', borderRadius: 100, background: 'rgba(200,160,174,0.1)', border: '1px solid rgba(200,160,174,0.26)' }}>{label}</span>
+                <span key={label} style={{ fontSize: '8.5px', letterSpacing: '0.16em', textTransform: 'uppercase', color: '#7A5060', fontFamily: 'Raleway, sans-serif', fontWeight: 500, padding: '5px 12px', borderRadius: 100, background: 'rgba(160,148,128,0.1)', border: '1px solid rgba(160,148,128,0.26)' }}>{label}</span>
               ))}
             </div>
           </motion.div>

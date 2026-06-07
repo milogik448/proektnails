@@ -28,7 +28,7 @@ function TypingDots() {
       {[0, 1, 2].map(i => (
         <motion.span
           key={i}
-          style={{ width: 6, height: 6, borderRadius: '50%', background: '#C8A0AE', display: 'block' }}
+          style={{ width: 6, height: 6, borderRadius: '50%', background: '#A09278', display: 'block' }}
           animate={{ opacity: [0.3, 1, 0.3] }}
           transition={{ duration: 1.2, repeat: Infinity, delay: i * 0.2 }}
         />
@@ -47,8 +47,8 @@ function Message({ role, content }) {
         fontSize: 13.5, lineHeight: 1.6,
         fontFamily: 'Raleway, sans-serif', fontWeight: 400, whiteSpace: 'pre-wrap',
         ...(isUser
-          ? { background: '#2D1520', color: '#F6EBF0' }
-          : { background: 'rgba(255,255,255,0.88)', color: '#2D1520', border: '1px solid rgba(200,160,174,0.2)' }
+          ? { background: '#2D1520', color: '#F5F0E8' }
+          : { background: 'rgba(255,255,255,0.88)', color: '#2D1520', border: '1px solid rgba(160,148,128,0.2)' }
         ),
       }}>
         {content}
@@ -186,10 +186,10 @@ export default function ChatWidget({ menuOpen = false, lang = 'uk' }) {
       >
         <AnimatePresence mode="wait">
           {isOpen
-            ? <motion.span key="x" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.16 }} style={{ lineHeight: 0, color: '#C8A0AE' }}>
+            ? <motion.span key="x" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.16 }} style={{ lineHeight: 0, color: '#A09278' }}>
                 <X size={14} />
               </motion.span>
-            : <motion.span key="spark" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.16 }} style={{ lineHeight: 0, color: '#C8A0AE' }}>
+            : <motion.span key="spark" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.16 }} style={{ lineHeight: 0, color: '#A09278' }}>
                 <Sparkles size={13} />
               </motion.span>
           }
@@ -227,9 +227,9 @@ export default function ChatWidget({ menuOpen = false, lang = 'uk' }) {
             style={{
               width: 340, maxWidth: 'calc(100vw - 32px)',
               borderRadius: 20, overflow: 'hidden',
-              boxShadow: '0 12px 48px rgba(45,21,32,0.16), 0 2px 12px rgba(45,21,32,0.08), 0 0 0 1px rgba(160,100,120,0.14)',
+              boxShadow: '0 12px 48px rgba(45,21,32,0.16), 0 2px 12px rgba(45,21,32,0.08), 0 0 0 1px rgba(130,110,90,0.14)',
               display: 'flex', flexDirection: 'column',
-              background: '#FDF5F7',
+              background: '#FAF7F2',
               order: -1,
             }}
           >
@@ -237,20 +237,20 @@ export default function ChatWidget({ menuOpen = false, lang = 'uk' }) {
             <div style={{
               padding: '14px 18px',
               background: '#F2EDE6',
-              borderBottom: '1px solid rgba(160,100,120,0.14)',
+              borderBottom: '1px solid rgba(130,110,90,0.14)',
               display: 'flex', alignItems: 'center', gap: 10,
             }}>
               <div style={{
                 width: 36, height: 36, borderRadius: '50%', flexShrink: 0,
                 background: 'rgba(45,21,32,0.08)',
-                border: '1px solid rgba(160,100,120,0.2)',
+                border: '1px solid rgba(130,110,90,0.2)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
                 <svg width="18" height="18" viewBox="0 0 40 40" fill="none">
                   <line x1="9.5" y1="12" x2="14.5" y2="12" stroke="#2D1520" strokeWidth="1.3"/>
                   <line x1="25.5" y1="12" x2="30.5" y2="12" stroke="#2D1520" strokeWidth="1.3"/>
                   <polyline points="11.5,12 20,28.5 28.5,12" stroke="#2D1520" strokeWidth="1.3" fill="none" strokeLinejoin="miter"/>
-                  <circle cx="20" cy="28.5" r="1.4" fill="rgba(200,160,174,0.9)"/>
+                  <circle cx="20" cy="28.5" r="1.4" fill="rgba(160,148,128,0.9)"/>
                 </svg>
               </div>
               <div style={{ flex: 1 }}>
@@ -261,7 +261,7 @@ export default function ChatWidget({ menuOpen = false, lang = 'uk' }) {
                   VELOURA
                 </div>
                 <div style={{
-                  fontSize: 9.5, color: '#A07888',
+                  fontSize: 9.5, color: '#887060',
                   letterSpacing: '0.08em', fontFamily: 'Raleway, sans-serif',
                   display: 'flex', alignItems: 'center', gap: 5, marginTop: 2,
                 }}>
@@ -271,9 +271,9 @@ export default function ChatWidget({ menuOpen = false, lang = 'uk' }) {
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                style={{ color: '#A07888', cursor: 'pointer', lineHeight: 0, padding: 4, background: 'none', border: 'none' }}
+                style={{ color: '#887060', cursor: 'pointer', lineHeight: 0, padding: 4, background: 'none', border: 'none' }}
                 onMouseEnter={e => e.currentTarget.style.color = '#2D1520'}
-                onMouseLeave={e => e.currentTarget.style.color = '#A07888'}
+                onMouseLeave={e => e.currentTarget.style.color = '#887060'}
               >
                 <X size={15} />
               </button>
@@ -293,7 +293,7 @@ export default function ChatWidget({ menuOpen = false, lang = 'uk' }) {
                 <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
                   <div style={{
                     background: 'rgba(255,255,255,0.88)',
-                    border: '1px solid rgba(200,160,174,0.2)',
+                    border: '1px solid rgba(160,148,128,0.2)',
                     borderRadius: '18px 18px 18px 4px',
                   }}>
                     <TypingDots />
@@ -306,8 +306,8 @@ export default function ChatWidget({ menuOpen = false, lang = 'uk' }) {
             {/* Input */}
             <div style={{
               padding: '10px 12px',
-              borderTop: '1px solid rgba(160,100,120,0.14)',
-              background: '#FDF5F7',
+              borderTop: '1px solid rgba(130,110,90,0.14)',
+              background: '#FAF7F2',
               display: 'flex', gap: 8, alignItems: 'flex-end',
             }}>
               <textarea
@@ -319,7 +319,7 @@ export default function ChatWidget({ menuOpen = false, lang = 'uk' }) {
                 rows={1}
                 style={{
                   flex: 1, resize: 'none',
-                  border: '1px solid rgba(200,160,174,0.3)',
+                  border: '1px solid rgba(160,148,128,0.3)',
                   borderRadius: 12, padding: '8px 12px',
                   fontSize: 13, fontFamily: 'Raleway, sans-serif',
                   color: '#2D1520', background: 'rgba(255,255,255,0.85)',
@@ -328,15 +328,15 @@ export default function ChatWidget({ menuOpen = false, lang = 'uk' }) {
                   transition: 'border-color 0.2s',
                 }}
                 onFocus={e => { e.target.style.borderColor = 'rgba(160,112,128,0.55)' }}
-                onBlur={e => { e.target.style.borderColor = 'rgba(200,160,174,0.3)' }}
+                onBlur={e => { e.target.style.borderColor = 'rgba(160,148,128,0.3)' }}
               />
               <button
                 onClick={sendMessage}
                 disabled={!input.trim() || loading}
                 style={{
                   width: 36, height: 36, borderRadius: '50%',
-                  background: input.trim() && !loading ? '#2D1520' : 'rgba(200,160,174,0.25)',
-                  color: '#F0DFE6',
+                  background: input.trim() && !loading ? '#2D1520' : 'rgba(160,148,128,0.25)',
+                  color: '#EDE8DF',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   cursor: input.trim() && !loading ? 'pointer' : 'default',
                   transition: 'all 0.2s', flexShrink: 0, border: 'none',
