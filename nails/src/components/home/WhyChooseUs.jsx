@@ -21,7 +21,7 @@ export default function WhyChooseUs({ t }) {
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.65, delay: i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
               style={{
-                background: 'rgba(255,255,255,0.82)',
+                background: 'rgba(250,247,242,0.92)',
                 border: '1px solid rgba(160,148,128,0.18)',
                 borderRadius: 20,
                 padding: '32px 28px',
@@ -33,13 +33,13 @@ export default function WhyChooseUs({ t }) {
                 e.currentTarget.style.transform = 'translateY(-6px)'
                 e.currentTarget.style.boxShadow = '0 22px 52px rgba(45,21,32,0.1), 0 4px 16px rgba(45,21,32,0.06)'
                 e.currentTarget.style.borderColor = 'rgba(160,148,128,0.38)'
-                e.currentTarget.style.background = 'rgba(255,255,255,0.88)'
+                e.currentTarget.style.background = 'rgba(250,247,242,0.99)'
               }}
               onMouseLeave={e => {
                 e.currentTarget.style.transform = 'translateY(0)'
                 e.currentTarget.style.boxShadow = '0 4px 24px rgba(45,21,32,0.06), 0 1px 4px rgba(45,21,32,0.03)'
                 e.currentTarget.style.borderColor = 'rgba(160,148,128,0.18)'
-                e.currentTarget.style.background = 'rgba(255,255,255,0.68)'
+                e.currentTarget.style.background = 'rgba(250,247,242,0.92)'
               }}
             >
               <div style={{

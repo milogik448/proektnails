@@ -49,11 +49,10 @@ function SnapGallery({ images, onImageClick }) {
   }
 
   const btnStyle = (disabled) => ({
-    width: 40, height: 40, borderRadius: '50%',
+    borderRadius: '50%',
     border: '1px solid rgba(160,148,128,0.5)',
     background: disabled ? 'transparent' : 'rgba(255,255,255,0.72)',
     backdropFilter: 'blur(8px)',
-    display: 'flex', alignItems: 'center', justifyContent: 'center',
     cursor: disabled ? 'default' : 'pointer',
     opacity: disabled ? 0.35 : 1,
     transition: 'all 0.2s',
@@ -62,56 +61,70 @@ function SnapGallery({ images, onImageClick }) {
 
   return (
     <div style={{ position: 'relative' }}>
-      <div
-        ref={trackRef}
-        onScroll={onScroll}
-        style={{
-          display: 'flex', gap: CARD_GAP, overflowX: 'auto',
-          scrollSnapType: 'x mandatory', scrollbarWidth: 'none',
-          WebkitOverflowScrolling: 'touch',
-          paddingLeft: 'clamp(20px, 4vw, 64px)',
-          paddingRight: 'clamp(20px, 4vw, 64px)',
-          paddingBottom: 8,
-        }}
-      >
-        {images.map((src, i) => (
-          <div
-            key={src}
-            onClick={() => onImageClick(src)}
-            style={{
-              flexShrink: 0, width: CARD_W, height: 320, borderRadius: 20,
-              overflow: 'hidden', scrollSnapAlign: 'start', cursor: 'pointer',
-              boxShadow: '0 8px 32px rgba(45,21,32,0.1)',
-              border: '1px solid rgba(160,148,128,0.15)',
-            }}
-            onMouseEnter={e => {
-              e.currentTarget.style.boxShadow = '0 20px 56px rgba(45,21,32,0.16)'
-              const img = e.currentTarget.querySelector('img')
-              if (img) img.style.transform = 'scale(1.05)'
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.boxShadow = '0 8px 32px rgba(45,21,32,0.1)'
-              const img = e.currentTarget.querySelector('img')
-              if (img) img.style.transform = 'scale(1)'
-            }}
-          >
-            <img
-              src={src} alt={`Work ${i + 1}`} loading="lazy"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s ease', display: 'block' }}
-            />
-          </div>
-        ))}
+      {/* Clip wrapper — ховає scrollbar (трек вищий на 20px, обгортка обрізає) */}
+      <div style={{ height: 320, overflow: 'hidden' }}>
+        <div
+          ref={trackRef}
+          onScroll={onScroll}
+          className="portfolio-track"
+          style={{
+            display: 'flex', gap: CARD_GAP, overflowX: 'auto',
+            scrollSnapType: 'x mandatory',
+            WebkitOverflowScrolling: 'touch',
+            paddingLeft: 'clamp(20px, 4vw, 64px)',
+            paddingRight: 'clamp(20px, 4vw, 64px)',
+            height: 340,
+            alignItems: 'flex-start',
+          }}
+        >
+          {images.map((src, i) => (
+            <div
+              key={src}
+              onClick={() => onImageClick(src)}
+              style={{
+                flexShrink: 0, width: CARD_W, height: 320, borderRadius: 20,
+                overflow: 'hidden', scrollSnapAlign: 'start', cursor: 'pointer',
+                boxShadow: '0 8px 32px rgba(45,21,32,0.1)',
+                border: '1px solid rgba(160,148,128,0.15)',
+                background: '#FAF7F2',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.boxShadow = '0 20px 56px rgba(45,21,32,0.16)'
+                const img = e.currentTarget.querySelector('img')
+                if (img) img.style.transform = 'scale(1.05)'
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.boxShadow = '0 8px 32px rgba(45,21,32,0.1)'
+                const img = e.currentTarget.querySelector('img')
+                if (img) img.style.transform = 'scale(1)'
+              }}
+            >
+              <img
+                src={src} alt={`Work ${i + 1}`} loading="lazy"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s ease', display: 'block', mixBlendMode: 'multiply' }}
+              />
+            </div>
+          ))}
+        </div>
       </div>
 
-      <div
-        className="px-5 sm:px-8 md:px-12 lg:px-16 xl:px-20"
-        style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginTop: 20 }}
-      >
-        <button onClick={() => scrollTo(active - 1)} disabled={active === 0} style={btnStyle(active === 0)}>
-          <ChevronLeft size={18} style={{ color: '#2D1520' }} />
+      {/* Стрілки — поза clip-обгорткою */}
+      <div className="flex items-center justify-center gap-3 mt-5 px-5 sm:px-8 md:px-12 lg:px-16 xl:px-20">
+        <button
+          onClick={() => scrollTo(active - 1)}
+          disabled={active === 0}
+          className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center"
+          style={btnStyle(active === 0)}
+        >
+          <ChevronLeft className="w-4 h-4 md:w-5 md:h-5" style={{ color: '#2D1520' }} />
         </button>
-        <button onClick={() => scrollTo(active + 1)} disabled={active >= getMaxActive()} style={btnStyle(active >= getMaxActive())}>
-          <ChevronRight size={18} style={{ color: '#2D1520' }} />
+        <button
+          onClick={() => scrollTo(active + 1)}
+          disabled={active >= getMaxActive()}
+          className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center"
+          style={btnStyle(active >= getMaxActive())}
+        >
+          <ChevronRight className="w-4 h-4 md:w-5 md:h-5" style={{ color: '#2D1520' }} />
         </button>
       </div>
     </div>

@@ -39,22 +39,21 @@ export default function ImageModal({ isOpen, image, onClose }) {
         onClick={(e) => e.stopPropagation()}
         style={{
           position: 'relative',
-          maxWidth: '90vw',
-          maxHeight: '90vh',
-          backgroundColor: 'white',
           borderRadius: 16,
           overflow: 'hidden',
-          boxShadow: '0 20px 60px rgba(0,0,0,0.3)',
+          boxShadow: '0 20px 60px rgba(0,0,0,0.4)',
+          lineHeight: 0,
         }}
       >
         <img
           src={image}
           alt="Enlarged view"
           style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'contain',
             display: 'block',
+            maxWidth: '90vw',
+            maxHeight: '90vh',
+            width: 'auto',
+            height: 'auto',
           }}
         />
         <button

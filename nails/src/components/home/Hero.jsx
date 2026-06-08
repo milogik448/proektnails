@@ -94,8 +94,8 @@ export default function Hero({ t, onNavigate, isMobileView }) {
 
         <motion.p
           {...fadeUp(0.36)}
-          className="font-light leading-[2] max-w-[280px]"
-          style={{ fontSize: '13px', color: '#786050', letterSpacing: '0.025em', marginBottom: '1.8rem' }}
+          className="font-medium leading-[2] max-w-[280px]"
+          style={{ fontSize: '13px', color: '#3D2818', letterSpacing: '0.025em', marginBottom: '1.8rem' }}
         >
           {h.desc}
         </motion.p>

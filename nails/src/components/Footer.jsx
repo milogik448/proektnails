@@ -37,7 +37,7 @@ function FooterLink({ onClick, href, children }) {
 
 function ColTitle({ children }) {
   return (
-    <div style={{ fontSize: '9.5px', letterSpacing: '0.32em', textTransform: 'uppercase', color: ACCENT, fontFamily: 'Raleway, sans-serif', fontWeight: 500, marginBottom: 13 }}>
+    <div style={{ fontSize: '9.5px', letterSpacing: '0.32em', textTransform: 'uppercase', color: ACCENT, fontFamily: 'Raleway, sans-serif', fontWeight: 700, marginBottom: 20 }}>
       {children}
     </div>
   )
@@ -85,8 +85,8 @@ export default function Footer({ onNavigate }) {
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
                 background: HEADING, color: '#EDE8DF', border: 'none', cursor: 'pointer',
-                padding: '12px 22px', borderRadius: 999,
-                fontSize: '9.5px', letterSpacing: '0.2em', textTransform: 'uppercase',
+                padding: '14px 32px', borderRadius: 999,
+                fontSize: '12px', letterSpacing: '0.2em', textTransform: 'uppercase',
                 fontFamily: 'Raleway, sans-serif', fontWeight: 600,
                 transition: 'transform 0.22s ease, box-shadow 0.22s ease',
               }}

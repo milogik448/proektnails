@@ -107,5 +107,11 @@
 .sidebar-scroll::-webkit-scrollbar-track { background: #0C0C0C; }
 .sidebar-scroll::-webkit-scrollbar-thumb { background: #333; }
 
+/* ── Portfolio track — hide scrollbar all browsers ── */
+.portfolio-track { scrollbar-width: none; -ms-overflow-style: none; }
+.portfolio-track::-webkit-scrollbar { display: none; height: 0 !important; width: 0 !important; }
+.portfolio-track::-webkit-scrollbar-track { display: none; height: 0 !important; background: transparent; }
+.portfolio-track::-webkit-scrollbar-thumb { display: none; height: 0 !important; }
+
 /* в”Ђв”Ђ Gallery lightbox в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
 .lightbox-open { overflow: hidden; }
