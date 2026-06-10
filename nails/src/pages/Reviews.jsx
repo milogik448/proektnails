@@ -245,7 +245,7 @@ function TrustCard({ t }) {
 
       {/* Title */}
       <div style={{
-        fontSize: 20, color: '#EDE8DF',
+        fontSize: 20, color: '#2D1520',
         fontFamily: 'DM Serif Display, serif', fontWeight: 400, marginBottom: 6,
       }}>
         Довіра клієнтів

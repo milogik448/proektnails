@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback } from 'react'
+import { motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import SectionHeader from '../SectionHeader'
 
@@ -78,23 +79,24 @@ function SnapGallery({ images, onImageClick }) {
           }}
         >
           {images.map((src, i) => (
-            <div
+            <motion.div
               key={src}
               onClick={() => onImageClick(src)}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.6, delay: Math.min(i, 5) * 0.07, ease: 'easeOut' }}
               style={{
                 flexShrink: 0, width: CARD_W, height: 320, borderRadius: 20,
                 overflow: 'hidden', scrollSnapAlign: 'start', cursor: 'pointer',
-                boxShadow: '0 8px 32px rgba(45,21,32,0.1)',
                 border: '1px solid rgba(160,148,128,0.15)',
                 background: '#FAF7F2',
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.boxShadow = '0 20px 56px rgba(45,21,32,0.16)'
                 const img = e.currentTarget.querySelector('img')
                 if (img) img.style.transform = 'scale(1.05)'
               }}
               onMouseLeave={e => {
-                e.currentTarget.style.boxShadow = '0 8px 32px rgba(45,21,32,0.1)'
                 const img = e.currentTarget.querySelector('img')
                 if (img) img.style.transform = 'scale(1)'
               }}
@@ -103,7 +105,7 @@ function SnapGallery({ images, onImageClick }) {
                 src={src} alt={`Work ${i + 1}`} loading="lazy"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s ease', display: 'block', mixBlendMode: 'multiply' }}
               />
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

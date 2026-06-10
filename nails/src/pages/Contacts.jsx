@@ -65,13 +65,13 @@ function BookingPanel({ c }) {
           width: '100%', padding: '11px 16px',
           background: 'rgba(160,148,128,0.16)',
           border: '1px solid rgba(160,148,128,0.28)',
-          borderRadius: 14, color: '#EDE8DF',
+          borderRadius: 14, color: '#2D1520',
           display: 'flex', alignItems: 'center', gap: 14,
           cursor: 'pointer', textAlign: 'left', marginBottom: 10,
           transition: 'all 0.25s ease',
         }}
         onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.95)'; e.currentTarget.style.borderColor = 'rgba(45,21,32,0.28)' }}
-        onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.7)'; e.currentTarget.style.borderColor = 'rgba(45,21,32,0.15)' }}
+        onMouseLeave={e => { e.currentTarget.style.background = 'rgba(160,148,128,0.16)'; e.currentTarget.style.borderColor = 'rgba(160,148,128,0.28)' }}
       >
         <div style={{ width: 32, height: 32, borderRadius: '50%', flexShrink: 0, background: 'rgba(45,21,32,0.06)', border: '1px solid rgba(45,21,32,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <Sparkles size={14} style={{ color: '#A09278' }} />
@@ -97,12 +97,12 @@ function BookingPanel({ c }) {
         style={{
           width: '100%', padding: '15px 20px',
           background: 'transparent', border: '1px solid rgba(160,148,128,0.18)',
-          borderRadius: 14, color: 'rgba(160,148,128,0.75)',
+          borderRadius: 14, color: '#2D1520',
           display: 'flex', alignItems: 'center', gap: 14,
           textDecoration: 'none', transition: 'all 0.25s ease', marginBottom: 12,
         }}
-        onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(45,21,32,0.28)'; e.currentTarget.style.color = '#2D1520' }}
-        onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(45,21,32,0.12)'; e.currentTarget.style.color = '#2D1520' }}
+        onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(45,21,32,0.28)' }}
+        onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(160,148,128,0.18)' }}
       >
         <div style={{ width: 32, height: 32, borderRadius: '50%', flexShrink: 0, background: 'rgba(45,21,32,0.05)', border: '1px solid rgba(45,21,32,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <Instagram size={14} strokeWidth={1.5} style={{ color: '#2D1520' }} />

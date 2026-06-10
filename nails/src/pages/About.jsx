@@ -293,9 +293,53 @@ export default function About({ onNavigate, t }) {
           </div>
         </motion.div>
 
-        {/* ══ COL 3: STATS + LUXURY CARD ══ */}
-        <div className="flex flex-col justify-between" style={{ paddingTop: 8, paddingBottom: 0 }}>
+        {/* ══ COL 3: STATS ══ */}
+        <div className="hidden lg:flex flex-col justify-center" style={{ paddingTop: 8, paddingBottom: 0, gap: 0 }}>
+          {[
+            { num: '1+', label: 'Рік досвіду' },
+            { num: '200+', label: 'Клієнтів' },
+            { num: '5.0 ★', label: 'Рейтинг' },
+          ].map(({ num, label }, i) => (
+            <motion.div
+              key={label}
+              initial={{ opacity: 0, x: 18 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.65, delay: 0.5 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+              style={{ padding: '22px 0' }}
+            >
+              <div style={{
+                fontFamily: 'DM Serif Display, serif',
+                fontSize: 'clamp(30px, 2.6vw, 40px)',
+                fontWeight: 400, color: '#2D1520', lineHeight: 1,
+                marginBottom: 8, fontVariantNumeric: 'tabular-nums',
+              }}>
+                {num}
+              </div>
+              <div style={{
+                fontSize: '9px', letterSpacing: '0.26em', textTransform: 'uppercase',
+                color: '#A09278', fontFamily: 'Raleway, sans-serif', fontWeight: 400,
+              }}>
+                {label}
+              </div>
+              {i < 2 && (
+                <div style={{ height: 1, background: 'linear-gradient(90deg, rgba(160,148,128,0.35), transparent)', marginTop: 22 }} />
+              )}
+            </motion.div>
+          ))}
 
+          {/* Міні-цитата */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1 }}
+            style={{
+              marginTop: 28,
+              fontFamily: 'DM Serif Display, serif', fontStyle: 'italic',
+              fontSize: '12.5px', color: 'rgba(45,21,32,0.45)', lineHeight: 1.8,
+            }}
+          >
+            Кожна деталь має значення.
+          </motion.p>
         </div>
 
       </section>

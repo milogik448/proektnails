@@ -59,28 +59,45 @@ export default function Services({ t }) {
             flexWrap: 'nowrap',
           }}
         >
-          {s.list.map((svc, i) => (
-            <button
-              key={svc.id}
-              onClick={() => setSelected(svc.id)}
-              className="flex items-center gap-2 transition-all duration-300 shrink-0"
-              style={{
-                padding: '9px 18px',
-                borderRadius: '100px',
-                ...(selected === svc.id
-                  ? { background: '#2D1520', color: '#F5F0E8', boxShadow: '0 4px 16px rgba(45,21,32,0.22)' }
-                  : { background: 'rgba(255,255,255,0.68)', color: '#786050', border: '1px solid rgba(160,148,128,0.28)' }
-                ),
-              }}
-            >
-              <span style={{ fontSize: '9px', fontWeight: 500, letterSpacing: '0.12em', opacity: 0.55 }}>
-                {CATEGORY_NUMS[i]}
-              </span>
-              <span style={{ fontSize: '10.5px', letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: selected === svc.id ? 500 : 400 }}>
-                {svc.name}
-              </span>
-            </button>
-          ))}
+          {s.list.map((svc, i) => {
+            const isActive = selected === svc.id
+            return (
+              <button
+                key={svc.id}
+                onClick={() => setSelected(svc.id)}
+                className="flex items-center gap-2 shrink-0"
+                style={{
+                  position: 'relative',
+                  padding: '9px 18px',
+                  borderRadius: '100px',
+                  background: isActive ? 'transparent' : 'rgba(250,247,242,0.85)',
+                  border: isActive ? '1px solid transparent' : '1px solid rgba(160,148,128,0.28)',
+                  color: isActive ? '#F5F0E8' : '#786050',
+                  transition: 'color 0.3s ease',
+                  cursor: 'pointer',
+                }}
+              >
+                {/* Перетікаюча темна пігулка */}
+                {isActive && (
+                  <motion.span
+                    layoutId="service-chip-pill"
+                    transition={{ type: 'spring', stiffness: 380, damping: 32 }}
+                    style={{
+                      position: 'absolute', inset: 0, borderRadius: '100px',
+                      background: '#2D1520', boxShadow: '0 4px 16px rgba(45,21,32,0.22)',
+                      zIndex: 0,
+                    }}
+                  />
+                )}
+                <span style={{ position: 'relative', zIndex: 1, fontSize: '9px', fontWeight: 500, letterSpacing: '0.12em', opacity: 0.55 }}>
+                  {CATEGORY_NUMS[i]}
+                </span>
+                <span style={{ position: 'relative', zIndex: 1, fontSize: '10.5px', letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: isActive ? 500 : 400 }}>
+                  {svc.name}
+                </span>
+              </button>
+            )
+          })}
         </div>
       </div>
 
@@ -129,7 +146,7 @@ export default function Services({ t }) {
                       padding: '20px 26px',
                       borderRadius: '16px',
                       border: `1px solid ${hoveredItem === item.name ? 'rgba(160,112,128,0.22)' : 'rgba(160,148,128,0.18)'}`,
-                      background: hoveredItem === item.name ? 'rgba(255,255,255,0.94)' : 'rgba(255,255,255,0.72)',
+                      background: hoveredItem === item.name ? 'rgba(250,247,242,0.99)' : 'rgba(250,247,242,0.9)',
                       boxShadow: hoveredItem === item.name
                         ? '0 12px 36px rgba(45,21,32,0.1), 0 2px 8px rgba(45,21,32,0.06)'
                         : '0 4px 16px rgba(45,21,32,0.05), 0 1px 4px rgba(45,21,32,0.03)',
@@ -151,7 +168,7 @@ export default function Services({ t }) {
 
                     {/* Right: price */}
                     <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px', flexShrink: 0 }}>
-                      <span className="font-serif" style={{ fontSize: 'clamp(22px, 2.4vw, 30px)', color: '#2D1520', fontWeight: 300, lineHeight: 1, transition: 'color 0.28s' }}>
+                      <span className="font-serif" style={{ fontSize: 'clamp(22px, 2.4vw, 30px)', color: '#2D1520', fontWeight: 300, lineHeight: 1, transition: 'color 0.28s', fontVariantNumeric: 'tabular-nums' }}>
                         {item.price}
                       </span>
                       <span style={{ fontSize: '11px', color: '#887060', fontWeight: 300, letterSpacing: '0.05em' }}>Kč</span>
