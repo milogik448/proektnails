@@ -62,14 +62,19 @@ export default function Hero({ t, onNavigate, isMobileView }) {
 
       {/* LEFT — text */}
       <div className="flex flex-col justify-center px-5 sm:px-8 md:px-12 lg:px-16 xl:px-20 pt-8 pb-8 sm:pt-14 sm:pb-14 lg:pt-20 lg:pb-20 relative z-10">
-        <div aria-hidden style={{ position: 'absolute', bottom: '28%', right: '-3%', pointerEvents: 'none', zIndex: 0, lineHeight: 1, overflow: 'hidden' }}>
+        <motion.div
+          aria-hidden
+          animate={{ opacity: [0.35, 1, 0.55, 1, 0.35] }}
+          transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+          style={{ position: 'absolute', bottom: '28%', right: '-3%', pointerEvents: 'none', zIndex: 0, lineHeight: 1, overflow: 'hidden' }}
+        >
           <span style={{
             fontFamily: 'DM Serif Display, serif',
             fontSize: 'clamp(160px, 20vw, 260px)',
-            fontWeight: 400, color: 'rgba(160,148,128,0.07)',
+            fontWeight: 400, color: 'rgba(160,148,128,0.16)',
             letterSpacing: '-0.04em', userSelect: 'none', display: 'block', fontStyle: 'italic',
           }}>V</span>
-        </div>
+        </motion.div>
 
         <motion.span {...fadeUp(0.05)} className="section-tag">Praha · Czech Republic</motion.span>
 

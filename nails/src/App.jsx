@@ -4,6 +4,7 @@ import { Menu, X } from 'lucide-react'
 import Sidebar from './components/Sidebar'
 import Footer from './components/Footer'
 import ChatWidget from './components/ChatWidget'
+import SplashScreen from './components/SplashScreen'
 import Home from './pages/Home'
 import About from './pages/About'
 import Services from './pages/Services'
@@ -20,10 +21,19 @@ const getPageFromHash = () => {
   return VALID_PAGES.includes(hash) ? hash : 'home'
 }
 
+// Показуємо splash тільки раз за сесію вкладки
+const splashShown = typeof window !== 'undefined' && window.sessionStorage.getItem('veloura-splash-shown') === '1'
+
 export default function App() {
   const [activePage, setActivePage] = useState(getPageFromHash)
   const [menuOpen, setMenuOpen] = useState(false)
   const [lang, setLang] = useState('uk')
+  const [splashVisible, setSplashVisible] = useState(!splashShown)
+
+  const hideSplash = () => {
+    setSplashVisible(false)
+    try { window.sessionStorage.setItem('veloura-splash-shown', '1') } catch (e) {}
+  }
 
   const navigate = (page) => {
     setActivePage(page)
@@ -51,6 +61,10 @@ export default function App() {
 
   return (
     <>
+      <AnimatePresence mode="wait">
+        {splashVisible && <SplashScreen key="splash" onDone={hideSplash} />}
+      </AnimatePresence>
+
       {/* Atmospheric background — fixed, blurred, darkened work photo */}
       <div className="fixed inset-0" style={{ zIndex: -1 }}>
         <img
