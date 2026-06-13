@@ -24,7 +24,7 @@ export default function Home({ onNavigate, t }) {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0, transition: { duration: 0 } }}
+      exit={{ opacity: 0, transition: { duration: 0.2, ease: 'easeOut' } }}
       transition={{ duration: 0.35 }}
       className="min-h-screen"
       style={{ overflow: 'hidden', width: '100%' }}

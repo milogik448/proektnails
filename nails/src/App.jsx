@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import Sidebar from './components/Sidebar'
@@ -29,23 +29,29 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [lang, setLang] = useState('uk')
   const [splashVisible, setSplashVisible] = useState(!splashShown)
+  const scrollRef = useRef(null)
 
   const hideSplash = () => {
     setSplashVisible(false)
     try { window.sessionStorage.setItem('veloura-splash-shown', '1') } catch (e) {}
   }
 
+  const resetScroll = () => {
+    if (scrollRef.current) scrollRef.current.scrollTop = 0
+    window.scrollTo(0, 0)
+  }
+
   const navigate = (page) => {
     setActivePage(page)
     setMenuOpen(false)
     window.location.hash = page === 'home' ? '' : page
-    window.scrollTo(0, 0)
+    resetScroll()
   }
 
   useEffect(() => {
     const onHashChange = () => {
       setActivePage(getPageFromHash())
-      window.scrollTo({ top: 0 })
+      resetScroll()
     }
     window.addEventListener('hashchange', onHashChange)
     return () => window.removeEventListener('hashchange', onHashChange)
@@ -190,7 +196,7 @@ export default function App() {
 
           {/* Page content */}
           <div className="flex-1 pt-[57px] lg:pt-0 flex flex-col overflow-hidden">
-            <div className="flex-1 overflow-y-auto overflow-x-hidden" style={{ position: 'relative' }}>
+            <div ref={scrollRef} className="flex-1 overflow-y-auto overflow-x-hidden" style={{ position: 'relative' }}>
               <AnimatePresence mode="wait">
                 <Page key={activePage} onNavigate={navigate} lang={lang} t={t} />
               </AnimatePresence>
